@@ -26,7 +26,7 @@ public class LoginUI implements ActionListener {
 
 	public void beginLogin() {
 		
-		frame = new JFrame();
+		frame = new JFrame("Manager Login");
 		frame.setSize(350, 200);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
