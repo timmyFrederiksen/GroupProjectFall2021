@@ -69,37 +69,12 @@ public class LoginUI implements ActionListener {
 		
 	}
 
-	public static Boolean managerExists(Manager m) {
-
-		Boolean isInFile = false;
-		String filename = "./target/resources/managers.txt";
-		String managerString = m.toString();
-		Scanner scanner = null;
-		String checkStr = null;
-		
-		try {
-			scanner = new Scanner(new File(filename));
-			while (scanner.hasNextLine()) {
-				checkStr = scanner.nextLine();
-				
-				if (checkStr.equals(managerString)) {
-					isInFile = true;
-				}
-			}
-		} catch (FileNotFoundException e) {
-			// File not found
-			e.printStackTrace();
-		}
-		
-		return isInFile;
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Manager manager = new Manager(usernameText.getText(), String.valueOf(passwordText.getPassword()));
 		if (e.getSource() == loginButton) {
 			
-			if (managerExists(manager)) {
+			if (manager.managerExists()) {
 				// manager authenticated
 				
 				//load
@@ -117,7 +92,7 @@ public class LoginUI implements ActionListener {
 		} else if (e.getSource() == registerButton) {
 			
 			//create file for this new manager
-			if(managerExists(manager)) {
+			if(manager.managerExists()) {
 				
 				// Attempted to register existing manager
 				JOptionPane.showMessageDialog(new JFrame("Error"), "Manager already exists", "Warning", JOptionPane.ERROR_MESSAGE);

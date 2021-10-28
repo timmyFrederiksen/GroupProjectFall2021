@@ -35,16 +35,16 @@ public class Card extends Payment {
 		if (cardNumber.length() > 13 && cvv < 10000 && cvv > 99 &&
 				expMonth > 0 && expMonth < 13 && expYear > 2020) {
 		
-		isComplete = true;
+			isComplete = true;
 				
-		if (wantsReceipt) {
-			// FIXME: Consider overriding printReceipt as well.
-			// Depends on implementation
-			printReceipt();
-		}
+			if (wantsReceipt) {
+				// FIXME: Consider overriding printReceipt as well.
+				// Depends on implementation
+				printReceipt();
+			}
 				
-		orderNumber = orderNumberGlobal;
-		orderNumberGlobal++;
+			orderNumber = orderNumberGlobal;
+			orderNumberGlobal++;
 		}
 		
 		return orderNumber;

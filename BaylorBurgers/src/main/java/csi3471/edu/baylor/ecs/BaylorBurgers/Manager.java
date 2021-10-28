@@ -1,5 +1,9 @@
 package csi3471.edu.baylor.ecs.BaylorBurgers;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class Manager {
 	
 	protected String username;
@@ -49,5 +53,30 @@ public class Manager {
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
+	}
+	
+	public Boolean managerExists() {
+
+		Boolean isInFile = false;
+		String filename = "./target/resources/managers.txt";
+		String managerString = this.toString();
+		Scanner scanner = null;
+		String checkStr = null;
+		
+		try {
+			scanner = new Scanner(new File(filename));
+			while (scanner.hasNextLine()) {
+				checkStr = scanner.nextLine();
+				
+				if (checkStr.equals(managerString)) {
+					isInFile = true;
+				}
+			}
+		} catch (FileNotFoundException e) {
+			// File not found
+			e.printStackTrace();
+		}
+		
+		return isInFile;
 	}
 }
