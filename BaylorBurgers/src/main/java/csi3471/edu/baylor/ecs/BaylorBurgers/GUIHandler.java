@@ -2,16 +2,23 @@ package csi3471.edu.baylor.ecs.BaylorBurgers;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
-public class GUIHandler {
+public class GUIHandler implements ActionListener {
 
 	private JFrame frame;
 	private JPanel panelMenu;	
@@ -43,10 +50,47 @@ public class GUIHandler {
 		    button.setText(names[i]);
 		    itemButtons.add(button);
 		    panelMenu.add(button);
+		    
+		    button.addActionListener(this);
 		}
 		
 		
 		frame.setVisible(true);
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		// FIXME: we will have to change this to be able to tell which item got selected
+		
+		
+		JDialog addItem = new JDialog();
+		addItem.setSize(500, 500);
+		addItem.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+		JPanel panel = new JPanel();
+		addItem.add(panel);
+		panel.setLayout(null);
+
+		JLabel label = new JLabel("How many of this item would you like?");
+		label.setBounds(10, 20, 250, 25);
+		panel.add(label);
+
+		JTextField quantity = new JTextField();
+		quantity.setBounds(10, 50, 65, 25);
+		panel.add(quantity);
+
+		JLabel notesLabel = new JLabel("Are there any changes you would like to make to the item?");
+		notesLabel.setBounds(10, 130, 375, 25);
+		panel.add(notesLabel);
+
+		JTextArea notes = new JTextArea();
+		notes.setLineWrap(true);
+		notes.setBounds(10, 160, 375, 200);
+		panel.add(notes);
+
+		addItem.setVisible(true);
 		
 	}
 
