@@ -1,27 +1,21 @@
 package csi3471.edu.baylor.ecs.BaylorBurgers;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.plaf.MenuBarUI;
 
 public class GUIHandler implements ActionListener {
 
 	private JFrame frame;
-	private JPanel panelMenu;	
+	private JPanel panelMenu;
+	private JMenuBar header;
+	private JMenu menu;
+	private JMenuItem exit;
 	
 	public void startGUI() {
 		
@@ -37,6 +31,16 @@ public class GUIHandler implements ActionListener {
 		frame.setSize(500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+
+		header = new JMenuBar();
+
+		menu = new JMenu("Menu");
+		menu.setSize(100, 100);
+		header.add(menu);
+		exit = new JMenuItem("Exit");
+		menu.add(exit);
+		frame.setJMenuBar(header);
+
 
 		panelMenu = new JPanel(new GridLayout(0, 2));
 		panelMenu.setBounds(0, 0, 200, 500);
