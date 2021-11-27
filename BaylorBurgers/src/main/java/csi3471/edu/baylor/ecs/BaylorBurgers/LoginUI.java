@@ -25,7 +25,7 @@ public class LoginUI implements ActionListener {
 	public static Manager manager;
 
 	public void beginLogin() {
-		frame = new JFrame("Manager Login");
+		frame = new JFrame("Manager LoginGUI");
 		frame.setSize(500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -50,7 +50,7 @@ public class LoginUI implements ActionListener {
 		passwordText.setBounds(100, 50, 165, 25);
 		panel.add(passwordText);
 
-		loginButton = new JButton("Login");
+		loginButton = new JButton("LoginGUI");
 		loginButton.setBounds(10, 80, 80, 25);
 		panel.add(loginButton);
 		loginButton.addActionListener(this);

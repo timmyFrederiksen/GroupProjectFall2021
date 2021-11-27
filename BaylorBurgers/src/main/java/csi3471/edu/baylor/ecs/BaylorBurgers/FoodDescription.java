@@ -9,6 +9,14 @@ public class FoodDescription {
 	public String details;
 	public LocalTime startTime;
 	public LocalTime endTime;
+
+	public FoodDescription(String name){
+		this.name = name;
+		price = 0.0f;
+		details = "No Details";
+		startTime = LocalTime.now();
+		endTime = LocalTime.now();
+	}
 	
 	
 	public FoodDescription(String name, Float price, String details,
