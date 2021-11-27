@@ -25,13 +25,12 @@ public class LoginUI implements ActionListener {
 	public static Manager manager;
 
 	public void beginLogin() {
-		
 		frame = new JFrame("Manager Login");
-		frame.setSize(350, 200);
+		frame.setSize(500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
 
 		panel = new JPanel();
+		panel.setVisible(true);
 		frame.add(panel);
 		panel.setLayout(null);
 
@@ -66,7 +65,8 @@ public class LoginUI implements ActionListener {
 		panel.add(failure);
 
 		frame.setVisible(true);
-		
+
+
 	}
 
 	@Override
