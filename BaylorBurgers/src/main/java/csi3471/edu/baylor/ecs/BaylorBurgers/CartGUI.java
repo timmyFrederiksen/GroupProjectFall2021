@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class CartGUI extends JFrame {
+public class CartGUI extends JDialog {
     JLabel cartLabel;
     JPanel cartLabelPanel, cartPanel, checkoutPanel;
     ArrayList<JPanel> cartItemPanels;
@@ -55,10 +55,17 @@ public class CartGUI extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
         add(checkoutPanel, BorderLayout.SOUTH);
 
+        checkoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PaymentGUI paymentGUI = new PaymentGUI();
+            }
+        });
+
     }
     private void createAndShowGUI() {
         this.setTitle("Baylor Burgers Cart");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
 
         addGUIComponents();
