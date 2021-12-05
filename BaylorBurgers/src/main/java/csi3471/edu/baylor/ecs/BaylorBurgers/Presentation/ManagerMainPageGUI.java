@@ -57,6 +57,13 @@ public class ManagerMainPageGUI extends JFrame {
         add(mainMenuHeader, BorderLayout.NORTH);
         add(mainMenuButtons, BorderLayout.CENTER);
 
+        viewMenuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ManagerMenuGUI managerMenuGUI = new ManagerMenuGUI();
+            }
+        });
+
 
     }
     private JMenuBar initMenu() {
