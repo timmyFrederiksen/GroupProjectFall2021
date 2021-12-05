@@ -1,12 +1,11 @@
-package csi3471.edu.baylor.ecs.BaylorBurgers;
+package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
+
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 import javax.swing.*;
 
@@ -25,7 +24,7 @@ public class LoginUI implements ActionListener {
 	public static Manager manager;
 
 	public void beginLogin() {
-		frame = new JFrame("Manager LoginGUI");
+		frame = new JFrame("Manager Login");
 		frame.setSize(500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -66,6 +65,13 @@ public class LoginUI implements ActionListener {
 
 		frame.setVisible(true);
 
+		loginButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ManagerMainPageGUI managerMainPageGUI = new ManagerMainPageGUI();
+			}
+		});
+
 
 	}
 
@@ -73,7 +79,6 @@ public class LoginUI implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Manager manager = new Manager(usernameText.getText(), String.valueOf(passwordText.getPassword()));
 		if (e.getSource() == loginButton) {
-			
 			if (manager.managerExists()) {
 				// manager authenticated
 				

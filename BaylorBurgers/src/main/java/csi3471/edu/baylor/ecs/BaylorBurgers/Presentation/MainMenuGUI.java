@@ -1,11 +1,14 @@
-package csi3471.edu.baylor.ecs.BaylorBurgers;
+package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
+
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.*;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+
 
 public class MainMenuGUI extends JFrame {
 
@@ -16,6 +19,29 @@ public class MainMenuGUI extends JFrame {
 
     public MainMenuGUI(){
         createAndShowGUI();
+    }
+    private JMenuBar initMenu() {
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu menu = new JMenu("Menu");
+
+        JMenuItem backMenu = new JMenuItem("Back");
+        JMenuItem helpMenu = new JMenuItem("Help");
+        JMenuItem cartMenu = new JMenuItem("Cart");
+
+        menu.add(backMenu);
+        menu.add(helpMenu);
+        menu.add(cartMenu);
+        cartMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CartGUI cartGUI = new CartGUI();
+            }
+        });
+
+        menuBar.add(menu);
+
+        return menuBar;
     }
     private void addGUIComponents() {
         mainMenuLabel = new JLabel("Main Menu");
@@ -51,17 +77,18 @@ public class MainMenuGUI extends JFrame {
 
         mainMenuHeader.add(mainMenuLabel);
 
-        JButton viewCart = new JButton("View Cart");
+        /*JButton viewCart = new JButton("View Cart");
         viewCart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CartGUI cartGUI = new CartGUI();
             }
-        });
+        });*/
 
+        setJMenuBar(initMenu());
         add(mainMenuHeader, BorderLayout.NORTH);
         add(mainMenuButtons, BorderLayout.CENTER);
-        add(viewCart, BorderLayout.SOUTH);
+        //add(viewCart, BorderLayout.SOUTH);
 
         drinksButton.addActionListener(new ActionListener() {
             @Override
@@ -71,6 +98,7 @@ public class MainMenuGUI extends JFrame {
             }
         });
     }
+
     private void createAndShowGUI() {
         this.setTitle("Baylor Burgers Main Menu");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,7 +107,7 @@ public class MainMenuGUI extends JFrame {
         addGUIComponents();
 
         //this.pack();
-        this.setSize(750, 625);
+        this.setSize(725, 510);
         this.setVisible(true);
     }
 

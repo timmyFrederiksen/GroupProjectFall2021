@@ -1,7 +1,6 @@
-package csi3471.edu.baylor.ecs.BaylorBurgers;
+package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 
@@ -30,21 +29,21 @@ public class CartItemPanel extends JPanel {
 
 
         formPanel.add(itemName);
-        formPanel.add(Box.createRigidArea(new Dimension(0, 25)));
+        formPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         formPanel.add(itemQuanity);
-        formPanel.add(Box.createRigidArea(new Dimension(0, 25)));
+        formPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         formPanel.add(itemPrice);
 
 
-        centerPanel.setPreferredSize(new Dimension(200, 150));
+        centerPanel.setPreferredSize(new Dimension(200, 125));
 
         rightPanel.add(editButton);
-        formPanel.add(Box.createRigidArea(new Dimension(0, 25)));
+        rightPanel.add(Box.createRigidArea(new Dimension(0, 15)));
         rightPanel.add(removeButton);
 
-        formPanel.setBackground(Color.YELLOW);
-        centerPanel.setBackground(Color.BLUE);
-        rightPanel.setBackground(Color.YELLOW);
+        //formPanel.setBackground(Color.YELLOW);
+        //centerPanel.setBackground(Color.BLUE);
+        //rightPanel.setBackground(Color.YELLOW);
 
         add(formPanel, BorderLayout.LINE_START);
         add(centerPanel, BorderLayout.CENTER);

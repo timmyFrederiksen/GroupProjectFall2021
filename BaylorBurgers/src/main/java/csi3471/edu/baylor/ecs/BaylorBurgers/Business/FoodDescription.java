@@ -1,4 +1,4 @@
-package csi3471.edu.baylor.ecs.BaylorBurgers;
+package csi3471.edu.baylor.ecs.BaylorBurgers.Business;
 
 import java.time.LocalTime;
 
