@@ -1,4 +1,6 @@
-package csi3471.edu.baylor.ecs.BaylorBurgers;
+package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
+
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.*;
 
 import javax.swing.*;
 import java.awt.*;

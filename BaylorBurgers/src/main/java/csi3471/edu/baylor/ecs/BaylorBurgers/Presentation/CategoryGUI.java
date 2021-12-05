@@ -1,4 +1,7 @@
-package csi3471.edu.baylor.ecs.BaylorBurgers;
+package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
+
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.Category;
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.FoodDescription;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

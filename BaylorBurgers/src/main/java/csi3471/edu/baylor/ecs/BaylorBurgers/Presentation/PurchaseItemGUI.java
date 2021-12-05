@@ -1,10 +1,12 @@
-package csi3471.edu.baylor.ecs.BaylorBurgers;
+package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
+
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Vector;
+
 
 public class PurchaseItemGUI extends JDialog {
 

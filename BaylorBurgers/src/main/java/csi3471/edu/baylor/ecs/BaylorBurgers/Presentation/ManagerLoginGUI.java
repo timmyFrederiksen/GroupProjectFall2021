@@ -1,13 +1,14 @@
-package csi3471.edu.baylor.ecs.BaylorBurgers;
+package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
+
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.*;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileWriter;
-import java.io.IOException;
 
-public class ManagerLoginGUI extends JFrame implements ActionListener {
+public class ManagerLoginGUI extends JFrame {
 
     private JPanel panel;
     private JLabel passwordLabel;
@@ -52,26 +53,28 @@ public class ManagerLoginGUI extends JFrame implements ActionListener {
         passwordText.setBounds(100, 50, 165, 25);
         panel.add(passwordText);
 
-        loginButton = new JButton("LoginGUI");
+        loginButton = new JButton("Login");
         loginButton.setBounds(10, 80, 80, 25);
         panel.add(loginButton);
-        loginButton.addActionListener(this);
 
         registerButton = new JButton("Register Manager");
         registerButton.setBounds(100, 80, 165, 25);
         panel.add(registerButton);
-        registerButton.addActionListener(this);
 
         failure = new JLabel("");
         failure.setBounds(10, 110, 300, 25);
         panel.add(failure);
 
         add(panel, BorderLayout.CENTER);
+
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ManagerMainPageGUI managerMainPageGUI = new ManagerMainPageGUI();
+            }
+        });
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
-    }
 }
 

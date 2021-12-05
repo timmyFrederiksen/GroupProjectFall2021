@@ -1,4 +1,4 @@
-package csi3471.edu.baylor.ecs.BaylorBurgers;
+package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
-import javax.swing.plaf.MenuBarUI;
 
 public class GUIHandler implements ActionListener {
 

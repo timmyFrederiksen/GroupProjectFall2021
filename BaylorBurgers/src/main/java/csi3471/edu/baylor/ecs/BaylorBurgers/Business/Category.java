@@ -1,4 +1,4 @@
-package csi3471.edu.baylor.ecs.BaylorBurgers;
+package csi3471.edu.baylor.ecs.BaylorBurgers.Business;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ public class Category {
     private Integer numberOfItems = 0;
     private ArrayList<FoodDescription> foodInCategory;
 
-    Category(String categoryName){
+    public Category(String categoryName){
         this.categoryName = categoryName;
         foodInCategory = new ArrayList<>();
     }
