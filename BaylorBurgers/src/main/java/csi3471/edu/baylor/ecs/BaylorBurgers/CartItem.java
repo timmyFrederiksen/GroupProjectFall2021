@@ -5,11 +5,13 @@ public class CartItem {
 	protected FoodDescription itemType;
 	protected Integer quantity;
 	protected String orderNotes;
+	protected Double price;
 	
-	public CartItem(FoodDescription itemType, Integer quantity, String orderNotes) {
+	public CartItem(FoodDescription itemType, Integer quantity, String orderNotes, Double price) {
 		this.itemType = itemType;
 		this.quantity = quantity;
 		this.orderNotes = orderNotes;
+		this.price = price;
 	}
 
 	public FoodDescription getItemType() {

@@ -37,7 +37,7 @@ public class CartGUI extends JDialog {
 
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         for(int i = 0; i < 3; i++){
-            JPanel panel = new JPanel();
+            CartItemPanel panel = new CartItemPanel();
             panel.setPreferredSize(new Dimension(500, 150));
             panel.setBorder(border);
             cartPanel.add(panel);
