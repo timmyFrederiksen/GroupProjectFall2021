@@ -65,6 +65,7 @@ public class ManagerMainPageGUI extends JFrame implements ActionListener{
         viewMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	dispose();
                 ManagerMenuGUI managerMenuGUI = new ManagerMenuGUI();
             }
         });
