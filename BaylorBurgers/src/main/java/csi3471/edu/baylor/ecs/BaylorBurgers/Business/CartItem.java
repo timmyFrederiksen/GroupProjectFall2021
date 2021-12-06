@@ -38,7 +38,7 @@ public class CartItem {
 		this.orderNotes = orderNotes;
 	}
 	
-	public Float getTotal() {
+	public Double getTotal() {
 		return this.quantity * itemType.getPrice();
 	}
 }

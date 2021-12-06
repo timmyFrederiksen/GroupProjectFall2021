@@ -1,11 +1,15 @@
 package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
 
 
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.FoodDescription;
+import csi3471.edu.baylor.ecs.BaylorBurgers.Persistence.MenuDAO;
+
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 class AddItemGUI extends JDialog {
@@ -55,7 +59,15 @@ class AddItemGUI extends JDialog {
         saveInfo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                MenuDAO gateway = new MenuDAO();
 
+                try {
+                    gateway.createEmployeeTable();
+                    gateway.save(new FoodDescription("ASD", "Drinks", 3.7d, "Tasty"));
+                } catch (SQLException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
             }
         });
         JButton cancelInfo = new JButton("Cancel");

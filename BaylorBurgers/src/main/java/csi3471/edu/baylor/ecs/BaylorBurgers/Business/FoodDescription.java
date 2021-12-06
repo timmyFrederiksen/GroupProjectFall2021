@@ -3,29 +3,26 @@ package csi3471.edu.baylor.ecs.BaylorBurgers.Business;
 import java.time.LocalTime;
 
 public class FoodDescription {
-	
+
+	public Long id;
 	public String name;
-	public Float price;
+	public String category;
+	public Double price;
 	public String details;
-	public LocalTime startTime;
-	public LocalTime endTime;
 
 	public FoodDescription(String name){
 		this.name = name;
-		price = 0.0f;
+		price = 0.0d;
 		details = "No Details";
-		startTime = LocalTime.now();
-		endTime = LocalTime.now();
 	}
-	
-	
-	public FoodDescription(String name, Float price, String details,
-			LocalTime startTime, LocalTime endTime) {
+
+
+	public FoodDescription(String name, String category, Double price, String details) {
 		this.name = name;
+		this.category = category;
 		this.price = price;
 		this.details = details;
-		this.startTime = startTime;
-		this.endTime = endTime;
+		id = (long) 0;
 	}
 
 
@@ -39,12 +36,12 @@ public class FoodDescription {
 	}
 
 
-	public Float getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
 
-	public void setPrice(Float price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -54,27 +51,30 @@ public class FoodDescription {
 	}
 
 
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getCategory() {
+		return category;
+	}
+
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+
 	public void setDetails(String details) {
 		this.details = details;
 	}
 
 
-	public LocalTime getStartTime() {
-		return startTime;
-	}
 
-
-	public void setStartTime(LocalTime startTime) {
-		this.startTime = startTime;
-	}
-
-
-	public LocalTime getEndTime() {
-		return endTime;
-	}
-
-
-	public void setEndTime(LocalTime endTime) {
-		this.endTime = endTime;
-	}
 }

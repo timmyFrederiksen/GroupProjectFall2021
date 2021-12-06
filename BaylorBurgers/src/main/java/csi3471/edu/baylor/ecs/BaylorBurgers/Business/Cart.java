@@ -19,8 +19,8 @@ public class Cart {
 		this.items.add(item);
 	}
 	
-	public Float getTotalPrice() {
-		Float total = 0.0f;
+	public Double getTotalPrice() {
+		Double total = 0.0d;
 		
 		for (int i = 0; i < items.size(); i++) {
 			total += items.get(i).getTotal();
