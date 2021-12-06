@@ -18,7 +18,6 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
     public ManagerMenuGUI(){
         managerMenuPanel = new JPanel();
         addItemPanel = new JPanel();
-        managerMenuPanel.setPreferredSize(new Dimension(700, 500));
         menuItemPanels = new ArrayList<>();
         createAndShowGUI();
     }
@@ -37,12 +36,7 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         menuLabelPanel.add(managerMenuLabel);
 
         Border border = BorderFactory.createLineBorder(Color.BLACK);
-        for(int i = 0; i < 3; i++){
-            CartItemPanel panel = new CartItemPanel();
-            panel.setPreferredSize(new Dimension(500, 150));
-            panel.setBorder(border);
-            managerMenuPanel.add(panel);
-        }
+
 
         managerMenuPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
         menuLabelPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
@@ -51,10 +45,24 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         addItemPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
         addItemPanel.add(addItemButton, BorderLayout.CENTER);
 
-        JScrollPane scrollPane = new JScrollPane(addItemPanel);
+        BoxLayout boxLayout = new BoxLayout(managerMenuPanel, BoxLayout.Y_AXIS);
+        managerMenuPanel.setLayout(boxLayout);
+
+        for(int i = 0; i < 5; i++){
+            MenuItemPanel panel = new MenuItemPanel();
+            panel.setPreferredSize(new Dimension(550, 175));
+            panel.setBorder(border);
+            managerMenuPanel.add(panel);
+            managerMenuPanel.add(Box.createRigidArea(new Dimension(0, 25)));
+        }
+
+        JScrollPane scrollPane = new JScrollPane(managerMenuPanel);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         add(menuLabelPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(addItemPanel, BorderLayout.SOUTH);
+
+
 
         menuBar = new MenuBar();
         menuBar.removeCartMenu();
@@ -73,12 +81,12 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
     private void createAndShowGUI() {
         this.setTitle("Baylor Burgers Manager Menu View");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setResizable(false);
+        //this.setResizable(false);
 
         addGUIComponents();
 
         //this.pack();
-        this.setSize(800, 725);
+        this.setSize(700, 700);
         this.setVisible(true);
     }
 
