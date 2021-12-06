@@ -10,9 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class CategoryGUI extends JFrame{
+public class CategoryGUI extends JFrame implements ActionListener{
 
     private Category category;
+    private MenuBar menuBar;
 
     private JLabel categoryLabel;
     private JPanel categoryPanel, categoryHeader, categoryButtons;
@@ -75,6 +76,12 @@ public class CategoryGUI extends JFrame{
 
         categoryHeader.add(categoryLabel);
 
+        menuBar = new MenuBar();
+
+        menuBar.getBackMenu().addActionListener(this);
+        menuBar.getCartMenu().addActionListener(this);
+        setJMenuBar(menuBar);
+
         JScrollPane scrollPane = new JScrollPane(categoryButtons);
         add(categoryHeader, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
@@ -88,5 +95,15 @@ public class CategoryGUI extends JFrame{
         //this.pack();
         this.setSize(800, 625);
         this.setVisible(true);
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == menuBar.getBackMenu()){
+            new MainMenuGUI();
+            dispose();
+        }else if(e.getSource() == menuBar.getCartMenu()){
+            dispose();
+            new CartGUI();
+        }
     }
 }

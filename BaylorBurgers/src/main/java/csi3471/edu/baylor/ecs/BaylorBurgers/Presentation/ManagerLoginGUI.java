@@ -70,6 +70,7 @@ public class ManagerLoginGUI extends JFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                dispose();
                 ManagerMainPageGUI managerMainPageGUI = new ManagerMainPageGUI();
             }
         });

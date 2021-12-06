@@ -7,14 +7,16 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 
 
-
-public class MainMenuGUI extends JFrame {
+public class MainMenuGUI extends JFrame implements ActionListener{
 
     JLabel mainMenuLabel;
     JPanel mainMenuPanel, mainMenuHeader, mainMenuButtons;
     JButton drinksButton, foodButton;
+    MenuBar menuBar;
 
 
     public MainMenuGUI(){
@@ -85,7 +87,14 @@ public class MainMenuGUI extends JFrame {
             }
         });*/
 
-        setJMenuBar(initMenu());
+        menuBar = new MenuBar();
+        setJMenuBar(menuBar);
+
+        menuBar.getBackMenu().addActionListener(this);
+        menuBar.getCartMenu().addActionListener(this);
+
+
+
         add(mainMenuHeader, BorderLayout.NORTH);
         add(mainMenuButtons, BorderLayout.CENTER);
         //add(viewCart, BorderLayout.SOUTH);
@@ -109,6 +118,17 @@ public class MainMenuGUI extends JFrame {
         //this.pack();
         this.setSize(725, 510);
         this.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == menuBar.getBackMenu()){
+            dispose();
+            javax.swing.SwingUtilities.invokeLater(LoginGUI::showGUI);
+        }else if(e.getSource() == menuBar.getCartMenu()){
+            dispose();
+            new CartGUI();
+        }
     }
 
 }
