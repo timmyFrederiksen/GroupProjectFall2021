@@ -11,7 +11,8 @@ import java.util.ArrayList;
 class AddItemGUI extends JDialog {
     private String[] input = null;
     ArrayList<JTextField> textFields = new ArrayList<>();
-    private String[] names = new String[]{"Item Name:", "Item Price:", "Item Description:"};
+    private String[] names = new String[]{"Item Name:", "Item Category:", "Item Price:", "Item Description:"};
+    private String[] categoryNames = new String[]{"Drinks", "Food"};
 
     public AddItemGUI() {
         super();
@@ -21,7 +22,7 @@ class AddItemGUI extends JDialog {
 
     private void createAndShowGUI() {
         setPreferredSize(new Dimension(450, 300));
-        setTitle(getClass().getSimpleName());
+        setTitle("Add Item");
 
         JPanel listPane = new JPanel();
         //listPane.setLayout(new BoxLayout(listPane, BoxLayout.Y_AXIS));
@@ -33,21 +34,22 @@ class AddItemGUI extends JDialog {
         listPane.add(label);
         listPane.setVisible(true);
 
-        JPanel gridPane = new JPanel();
-        gridPane.setLayout(new GridLayout(4,2, 2, 2));
+        int numPairs = names.length + 1;
+        JPanel infoPane = new JPanel(new SpringLayout());
 
-        ArrayList<JLabel> labels = new ArrayList<>();
-
-        for(int i = 0; i < names.length; i++){
-            textFields.add(new JTextField(""));
-            labels.add(new JLabel(names[i]));
+        for (int i = 0; i < (names.length); i++) {
+            JLabel l = new JLabel(names[i], JLabel.TRAILING);
+            infoPane.add(l);
+            if(i == 1){
+                JComboBox categoryBox = new JComboBox(categoryNames);
+                l.setLabelFor(categoryBox);
+                infoPane.add(categoryBox);
+            }else{
+                JTextField textField = new JTextField(15);
+                l.setLabelFor(textField);
+                infoPane.add(textField);
+            }
         }
-
-        for(int i = 0; i < names.length; i++){
-            gridPane.add(labels.get(i));
-            gridPane.add(textFields.get(i));
-        }
-
 
         JButton saveInfo = new JButton("Save");
         saveInfo.addActionListener(new ActionListener() {
@@ -63,14 +65,19 @@ class AddItemGUI extends JDialog {
                 dispose();
             }
         });
-        gridPane.add(saveInfo);
-        gridPane.add(cancelInfo);
+        infoPane.add(saveInfo);
+        infoPane.add(cancelInfo);
+
+        SpringUtilities.makeCompactGrid(infoPane,
+                numPairs, 2,            //rows, cols
+                6, 6,           //initX, initY
+                6, 6);             //xPad, yPad
 
 
         JPanel newPanel = new JPanel();
         newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
         newPanel.add(label);
-        newPanel.add(gridPane);
+        newPanel.add(infoPane);
 
         add(newPanel);
         setVisible(true);

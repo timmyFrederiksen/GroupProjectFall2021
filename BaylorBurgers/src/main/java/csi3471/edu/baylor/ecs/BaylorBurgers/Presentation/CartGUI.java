@@ -18,7 +18,7 @@ public class CartGUI extends JDialog implements ActionListener {
     public CartGUI(){
         cartPanel = new JPanel();
         checkoutPanel = new JPanel();
-        cartPanel.setPreferredSize(new Dimension(700, 500));
+        //cartPanel.setPreferredSize(new Dimension(700, 500));
         cartItemPanels = new ArrayList<>();
         createAndShowGUI();
     }
@@ -37,14 +37,19 @@ public class CartGUI extends JDialog implements ActionListener {
         cartLabelPanel.add(cartLabel);
 
         Border border = BorderFactory.createLineBorder(Color.BLACK);
-        for(int i = 0; i < 3; i++){
+        cartPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
+
+        BoxLayout boxLayout = new BoxLayout(cartPanel, BoxLayout.Y_AXIS);
+        cartPanel.setLayout(boxLayout);
+
+        for(int i = 0; i < 15; i++){
             CartItemPanel panel = new CartItemPanel();
             panel.setPreferredSize(new Dimension(500, 150));
             panel.setBorder(border);
             cartPanel.add(panel);
+            cartPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         }
 
-        cartPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
         cartLabelPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
 
         JButton checkoutButton = new JButton("Checkout");
