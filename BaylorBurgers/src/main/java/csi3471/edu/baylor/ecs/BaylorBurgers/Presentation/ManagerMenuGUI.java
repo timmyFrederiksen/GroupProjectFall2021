@@ -8,10 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class ManagerMenuGUI extends JFrame {
+public class ManagerMenuGUI extends JFrame implements ActionListener{
     JLabel managerMenuLabel;
     JPanel menuLabelPanel, managerMenuPanel, addItemPanel;
     ArrayList<JPanel> menuItemPanels;
+    MenuBar menuBar;
 
 
     public ManagerMenuGUI(){
@@ -55,6 +56,12 @@ public class ManagerMenuGUI extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
         add(addItemPanel, BorderLayout.SOUTH);
 
+        menuBar = new MenuBar();
+        menuBar.removeCartMenu();
+        menuBar.removeHelpMenu();
+        menuBar.getBackMenu().addActionListener(this);
+        setJMenuBar(menuBar);
+
         addItemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -73,5 +80,13 @@ public class ManagerMenuGUI extends JFrame {
         //this.pack();
         this.setSize(800, 725);
         this.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == menuBar.getBackMenu()){
+            dispose();
+            new ManagerMainPageGUI();
+        }
     }
 }
