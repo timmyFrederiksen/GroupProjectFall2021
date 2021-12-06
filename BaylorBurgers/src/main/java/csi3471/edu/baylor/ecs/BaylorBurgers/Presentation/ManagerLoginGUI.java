@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ManagerLoginGUI extends JFrame {
+public class ManagerLoginGUI extends JFrame implements ActionListener{
 
     private JPanel panel;
     private JLabel passwordLabel;
@@ -17,6 +17,7 @@ public class ManagerLoginGUI extends JFrame {
     private JLabel failure;
     private JTextField usernameText;
     private JPasswordField passwordText;
+    private MenuBar menuBar;
 
     ManagerLoginGUI(){
         createAndShowGUI();
@@ -65,6 +66,12 @@ public class ManagerLoginGUI extends JFrame {
         failure.setBounds(10, 110, 300, 25);
         panel.add(failure);
 
+        menuBar = new MenuBar();
+        menuBar.removeCartMenu();
+        menuBar.removeHelpMenu();
+        menuBar.getBackMenu().addActionListener(this);
+        setJMenuBar(menuBar);
+
         add(panel, BorderLayout.CENTER);
 
         loginButton.addActionListener(new ActionListener() {
@@ -76,6 +83,12 @@ public class ManagerLoginGUI extends JFrame {
         });
     }
 
-
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == menuBar.getBackMenu()){
+            dispose();
+            javax.swing.SwingUtilities.invokeLater(LoginGUI::showGUI);
+        }
+    }
 }
 
