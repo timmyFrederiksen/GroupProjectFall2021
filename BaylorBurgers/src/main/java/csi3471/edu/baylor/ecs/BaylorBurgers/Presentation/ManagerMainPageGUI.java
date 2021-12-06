@@ -10,10 +10,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
-public class ManagerMainPageGUI extends JFrame {
+public class ManagerMainPageGUI extends JFrame implements ActionListener{
     JLabel mainMenuLabel;
     JPanel mainMenuPanel, mainMenuHeader, mainMenuButtons;
     JButton viewMenuButton, viewPurchasesButton;
+    MenuBar menuBar;
 
     public ManagerMainPageGUI(){
         createAndShowGUI();
@@ -53,7 +54,11 @@ public class ManagerMainPageGUI extends JFrame {
 
         mainMenuHeader.add(mainMenuLabel);
 
-        setJMenuBar(initMenu());
+        menuBar = new MenuBar();
+        menuBar.removeCartMenu();
+        menuBar.removeHelpMenu();
+        menuBar.getBackMenu().addActionListener(this);
+        setJMenuBar(menuBar);
         add(mainMenuHeader, BorderLayout.NORTH);
         add(mainMenuButtons, BorderLayout.CENTER);
 
@@ -66,23 +71,7 @@ public class ManagerMainPageGUI extends JFrame {
 
 
     }
-    private JMenuBar initMenu() {
-        JMenuBar menuBar = new JMenuBar();
 
-        JMenu menu = new JMenu("Menu");
-
-        JMenuItem backMenu = new JMenuItem("Back");
-        JMenuItem helpMenu = new JMenuItem("Help");
-        //JMenuItem cartMenu = new JMenuItem("Cart");
-
-        menu.add(backMenu);
-        menu.add(helpMenu);
-        //menu.add(cartMenu);
-
-        menuBar.add(menu);
-
-        return menuBar;
-    }
     private void createAndShowGUI() {
         this.setTitle("Baylor Burgers Manager Main Page");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,5 +81,12 @@ public class ManagerMainPageGUI extends JFrame {
 
         this.setSize(675, 375);
         this.setVisible(true);
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == menuBar.getBackMenu()){
+            dispose();
+            ManagerLoginGUI managerLoginGUI = new ManagerLoginGUI();
+        }
     }
 }

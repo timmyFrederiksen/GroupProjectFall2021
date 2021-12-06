@@ -8,10 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class CartGUI extends JDialog {
+public class CartGUI extends JDialog implements ActionListener {
     JLabel cartLabel;
     JPanel cartLabelPanel, cartPanel, checkoutPanel;
     ArrayList<JPanel> cartItemPanels;
+    MenuBar menuBar;
 
 
     public CartGUI(){
@@ -50,6 +51,12 @@ public class CartGUI extends JDialog {
         checkoutPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
         checkoutPanel.add(checkoutButton, BorderLayout.CENTER);
 
+        menuBar = new MenuBar();
+        menuBar.removeCartMenu();
+        menuBar.getBackMenu().addActionListener(this);
+        setJMenuBar(menuBar);
+
+
         JScrollPane scrollPane = new JScrollPane(cartPanel);
         add(cartLabelPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
@@ -73,5 +80,13 @@ public class CartGUI extends JDialog {
         //this.pack();
         this.setSize(750, 650);
         this.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == menuBar.getBackMenu()){
+            new MainMenuGUI();
+            dispose();
+        }
     }
 }
