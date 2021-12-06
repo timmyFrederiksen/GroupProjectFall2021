@@ -40,18 +40,27 @@ class AddItemGUI extends JDialog {
 
         int numPairs = names.length + 1;
         JPanel infoPane = new JPanel(new SpringLayout());
-
+        
+        JTextField nameField = new JTextField(15);
+        JTextField categoryField = new JTextField(15);
+        JTextField priceField = new JTextField(15);
+        JTextField descriptionField = new JTextField(15);
+        textFields.add(nameField);
+        textFields.add(categoryField);
+        textFields.add(priceField);
+        textFields.add(descriptionField);
+        JComboBox categoryBox = new JComboBox(categoryNames);
         for (int i = 0; i < (names.length); i++) {
             JLabel l = new JLabel(names[i], JLabel.TRAILING);
             infoPane.add(l);
             if(i == 1){
-                JComboBox categoryBox = new JComboBox(categoryNames);
+                
                 l.setLabelFor(categoryBox);
                 infoPane.add(categoryBox);
             }else{
-                JTextField textField = new JTextField(15);
-                l.setLabelFor(textField);
-                infoPane.add(textField);
+                //JTextField textField = new JTextField(15);
+                l.setLabelFor(textFields.get(i));
+                infoPane.add(textFields.get(i));
             }
         }
 
@@ -62,8 +71,9 @@ class AddItemGUI extends JDialog {
                 MenuDAO gateway = new MenuDAO();
 
                 try {
-                    gateway.createEmployeeTable();
-                    gateway.save(new FoodDescription("ASD", "Drinks", 3.7d, "Tasty"));
+                    //gateway.createEmployeeTable();
+                    gateway.save(new FoodDescription(textFields.get(0).getText(),
+                    		(String)categoryBox.getSelectedItem(), Double.parseDouble(textFields.get(2).getText()), textFields.get(3).getText()));
                 } catch (SQLException e1) {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
