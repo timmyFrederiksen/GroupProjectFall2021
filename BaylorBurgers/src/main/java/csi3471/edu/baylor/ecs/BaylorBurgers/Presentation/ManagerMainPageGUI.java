@@ -53,7 +53,7 @@ public class ManagerMainPageGUI extends JFrame implements ActionListener{
         viewPurchasesButton.setPreferredSize(new Dimension(300, 150));
 
         mainMenuButtons.add(viewMenuButton);
-        mainMenuButtons.add(viewPurchasesButton);
+        //mainMenuButtons.add(viewPurchasesButton);
 
         mainMenuHeader.add(mainMenuLabel);
 
