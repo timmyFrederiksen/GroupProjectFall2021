@@ -1,10 +1,18 @@
 package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
 
-public class MenuItemPanel extends JPanel {
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.FoodDescription;
+import csi3471.edu.baylor.ecs.BaylorBurgers.Persistence.MenuDAO;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
+public class MenuItemPanel extends JPanel implements ActionListener{
 
     private JPanel p, centerPanel, rightPanel, leftPanel;
     private JTextField name, category, price, descriptionText;
@@ -12,9 +20,12 @@ public class MenuItemPanel extends JPanel {
     
     private JButton removeButton = new JButton("Remove Item");
     private JButton editButton = new JButton("Edit Item");
+    
+    private FoodDescription fd;
 
 
     public MenuItemPanel(String name, String category, Double price, String description){
+    	
     	
     	this.name = new JTextField(name); 
     	this.category = new JTextField(category); 
@@ -28,7 +39,22 @@ public class MenuItemPanel extends JPanel {
         createAndShowGUI();
     }
 
-    private void createAndShowGUI() {
+    public MenuItemPanel(FoodDescription foodDescription) {
+    	fd = foodDescription;
+    	this.name = new JTextField(foodDescription.getName()); 
+    	this.category = new JTextField(foodDescription.getCategory()); 
+    	this.descriptionText = new JTextField();    
+    	this.price = new JTextField(foodDescription.getPrice().toString());    
+        this.description = new JTextArea(foodDescription.getDetails());
+        
+        this.name.setColumns(15);
+        centerPanel = new JPanel();
+        rightPanel = new JPanel();
+        leftPanel = new JPanel();
+        createAndShowGUI();
+	}
+
+	private void createAndShowGUI() {
         String[] labels = {"Item Name: ", "Item Category: ", "Item Price: ", "Item Description: "};
         JTextField[] textFields = {name, category, price, descriptionText};
         int numPairs = labels.length;
@@ -75,5 +101,40 @@ public class MenuItemPanel extends JPanel {
         add(leftPanel, BorderLayout.LINE_START);
         add(centerPanel, BorderLayout.CENTER);
         add(rightPanel, BorderLayout.LINE_END);
+        
+        removeButton.addActionListener(this);
+        editButton.addActionListener(this);
+        
+        
     }
+    //@Override
+    
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == removeButton) {
+            MenuDAO gateway = new MenuDAO();
+            try {
+                //gateway.createEmployeeTable();
+                gateway.delete(name.getText());
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            Vector<FoodDescription> items = null;
+            try {
+                //gateway.createEmployeeTable();
+                items = gateway.findAll();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+           new ManagerMenuGUI(items);
+            
+
+        }
+        else if(e.getSource() == editButton) {
+        	AddItemGUI addItemGUI = new AddItemGUI(fd);
+
+        }
+    }
+
 }

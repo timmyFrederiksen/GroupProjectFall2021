@@ -22,7 +22,7 @@ public class FoodDescription {
 		this.category = category;
 		this.price = price;
 		this.details = details;
-		id = (long) 0;
+		id = null;
 	}
 
 

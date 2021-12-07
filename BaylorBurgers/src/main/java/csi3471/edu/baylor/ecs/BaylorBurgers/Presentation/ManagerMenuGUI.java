@@ -57,7 +57,8 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         managerMenuPanel.setLayout(boxLayout);
 
         for(int i = 0; i < items.size(); i++){
-            MenuItemPanel panel = new MenuItemPanel(items.get(i).getName(), items.get(i).getCategory(), items.get(i).getPrice(), items.get(i).getDetails());
+        	
+            MenuItemPanel panel = new MenuItemPanel(items.get(i));
             panel.setPreferredSize(new Dimension(550, 175));
             panel.setBorder(border);
             managerMenuPanel.add(panel);

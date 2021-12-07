@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
 
 class AddItemGUI extends JDialog implements ActionListener{
     private JPanel listPane;
@@ -23,9 +24,11 @@ class AddItemGUI extends JDialog implements ActionListener{
     private String[] names = new String[]{"Item Name:", "Item Category:", "Item Price:", "Item Description:"};
     private String[] categoryNames = new String[]{"Drinks", "Food"};
 
-
+    private Long id;
+    
     public AddItemGUI() {
         super();
+        id = null;
         nameField = new JTextField(15);
         categoryField = new JTextField(15);
         priceField = new JTextField(15);
@@ -37,7 +40,24 @@ class AddItemGUI extends JDialog implements ActionListener{
     }
 
 
-    private void createAndShowGUI() {
+    public AddItemGUI(FoodDescription fd) {
+    	super();
+    	id = fd.getId();
+        nameField = new JTextField(fd.getName());
+        categoryField = new JTextField(fd.getCategory());
+        priceField = new JTextField(fd.getPrice().toString());
+        descriptionField = new JTextField(fd.getDetails());
+        categoryBox = new JComboBox(categoryNames);
+        if(fd.getCategory().equals("Food")) {
+        	categoryBox.setSelectedIndex(1);
+        }
+        saveInfo = new JButton("Save");
+        cancelInfo = new JButton("Cancel");
+        createAndShowGUI();
+	}
+
+
+	private void createAndShowGUI() {
         setPreferredSize(new Dimension(450, 300));
         setTitle("Add Item");
 
@@ -103,13 +123,24 @@ class AddItemGUI extends JDialog implements ActionListener{
 
             try {
                 //gateway.createEmployeeTable();
-                gateway.save(new FoodDescription(textFields.get(0).getText(),
-                		(String)categoryBox.getSelectedItem(), Double.parseDouble(textFields.get(2).getText()), textFields.get(3).getText()));
+            	FoodDescription query = new FoodDescription(textFields.get(0).getText(),
+                		(String)categoryBox.getSelectedItem(), Double.parseDouble(textFields.get(2).getText()), textFields.get(3).getText());
+                query.setId(id);
+            	gateway.save(query);
             } catch (SQLException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
             dispose();
+            Vector<FoodDescription> items = null;
+            try {
+                //gateway.createEmployeeTable();
+                items = gateway.findAll();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+           new ManagerMenuGUI(items);
 		}else if(e.getSource() == cancelInfo) {
 			dispose();
 		}
