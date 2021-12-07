@@ -6,6 +6,7 @@ import java.util.List;
 public final class Cart {
 
 	protected static List<CartItem> items = new ArrayList<CartItem>();
+	protected static double discount = 0.0;
 
 	public List<CartItem> getItems() {
 		return items;
@@ -31,11 +32,13 @@ public final class Cart {
 			total += items.get(i).getTotal();
 		}
 		
+		total *= ((100.0 - discount) / 100.0);
+		
 		return total;
 	}
 	
-	public void addDiscount() {
-		// FIXME: do this
+	public void addDiscount(Double discountGot) {
+		discount = discountGot;
 	}
 	
 }

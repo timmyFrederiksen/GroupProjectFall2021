@@ -11,7 +11,7 @@ import java.util.Random;
 public class PaymentGUI extends JDialog {
 	
 	private JLabel rewardLabel;
-	// FIXME: I think putting a private double(or float) price here makes sense
+	private JLabel priceLabel = null;
 	
     public PaymentGUI(){
         createAndShowGUI();
@@ -33,8 +33,11 @@ public class PaymentGUI extends JDialog {
         JPanel paymentPanel = new JPanel();
         
         JPanel gridPane = new JPanel();
-        gridPane.setLayout(new GridLayout(2, 2, 2, 2));
+        gridPane.setLayout(new GridLayout(6, 1, 2, 2));
         
+        Cart c = new Cart();
+        Double sum = c.getTotalPrice();
+        priceLabel = new JLabel("Price: $" + sum);
         rewardLabel = new JLabel();
         
         JButton cardButton = new JButton("Card");
@@ -42,13 +45,18 @@ public class PaymentGUI extends JDialog {
         JButton rewardButton = new JButton("Press for Discount");
         JButton cancelButton = new JButton("Cancel");
         
+        
         gridPane.add(cardButton);
         gridPane.add(otherButton);
         gridPane.add(cancelButton);
         gridPane.add(rewardButton);
         
+       
+        gridPane.add(rewardLabel);
+        gridPane.add(priceLabel);
+
         paymentPanel.add(gridPane);
-        paymentPanel.add(rewardLabel);
+        
         add(paymentPanel);
         
         cardButton.addActionListener(new ActionListener() {
@@ -68,17 +76,24 @@ public class PaymentGUI extends JDialog {
         rewardButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Cart c = new Cart();
 				Random random = new Random();
 				int pick = random.nextInt();
 				if (pick % 1000 == 0) {
-					rewardLabel.setText("You won a 100% discount!!!");
+					rewardLabel.setText("You won a 100% discount!!!!");
+					c.addDiscount(100.0);
 					PurchaseLogGUI receipt = new PurchaseLogGUI();
 				} else if (pick % 100 == 0) {
 					rewardLabel.setText("You won a 50% discount!!!");
-					// Add discount to price
+					c.addDiscount(50.0);
+					priceLabel.setText("Price: $" + c.getTotalPrice());
+					
+					
 				} else if (pick % 10 == 0) {
 					// Add discount to price
-					rewardLabel.setText("You won a 10% discount!!!");
+					c.addDiscount(10.0);
+					rewardLabel.setText("You won a 10% discount!!");
+					priceLabel.setText("Price: $" + c.getTotalPrice());
 				} else {
 					rewardLabel.setText("You did not win a discount");
 				}

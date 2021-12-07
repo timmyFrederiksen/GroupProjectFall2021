@@ -8,6 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.Cart;
+
 import java.util.Random;
 
 public class PurchaseLogGUI extends JDialog {
@@ -38,11 +41,12 @@ public class PurchaseLogGUI extends JDialog {
     
     private void addGUIComponents(int type) {
         JPanel receiptPanel = new JPanel();
-        receiptPanel.setLayout(new GridLayout(3, 1, 2, 2));
+        receiptPanel.setLayout(new GridLayout(4, 1, 2, 2));
         Random random = new Random();
         int orderNumber = Math.abs(random.nextInt() % 1000);
-        
+        Cart c = new Cart();
         JLabel label = new JLabel("Your order number: " + orderNumber);
+        JLabel priceLabel = new JLabel("Price: $" + c.getTotalPrice());
        
         JButton doneButton = new JButton("Okay");
         JLabel cardLabel = new JLabel();
@@ -64,6 +68,7 @@ public class PurchaseLogGUI extends JDialog {
         }
         
         receiptPanel.add(label);
+        receiptPanel.add(priceLabel);
         receiptPanel.add(doneButton);
         add(receiptPanel);
         
