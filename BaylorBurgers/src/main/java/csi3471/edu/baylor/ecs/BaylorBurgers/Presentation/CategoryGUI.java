@@ -84,7 +84,7 @@ public class CategoryGUI extends JFrame implements ActionListener{
             categoryButtons.add(button);
         }
 
-        EmptyBorder panelBorder = new EmptyBorder(10, 10 , 0, 0);
+        EmptyBorder panelBorder = new EmptyBorder(10, 10 , 10, 10);
         //Border border = BorderFactory.createLineBorder(Color.BLACK);
         //mainMenuLabel.setBorder(border);
         categoryLabel.setBorder(panelBorder);

@@ -112,11 +112,9 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         if(e.getSource() == menuBar.getBackMenu()){
             dispose();
             new ManagerMainPageGUI();
-
         }else if(e.getSource() == addItemButton) {
-            
+            dispose();
             AddItemGUI addItemGUI = new AddItemGUI();
-
         }
     }
 }

@@ -151,6 +151,16 @@ class AddItemGUI extends JDialog implements ActionListener{
             new ManagerMenuGUI(items);
         }else if(e.getSource() == cancelInfo) {
             dispose();
+            MenuDAO gateway = new MenuDAO();
+            Vector<FoodDescription> items = null;
+            try {
+                //gateway.createEmployeeTable();
+                items = gateway.findAll();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            new ManagerMenuGUI(items);
         }
     }
 }

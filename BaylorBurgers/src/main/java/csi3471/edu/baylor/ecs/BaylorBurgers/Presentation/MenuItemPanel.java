@@ -157,6 +157,7 @@ public class MenuItemPanel extends JPanel implements ActionListener{
 
         }
         else if(e.getSource() == editButton) {
+            managerMenuGUI.dispose();
             AddItemGUI addItemGUI = new AddItemGUI(fd);
         }
     }
