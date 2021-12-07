@@ -7,8 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenuBar extends JMenuBar {
-    JMenu menu;
-    JMenuItem backMenu, helpMenu, cartMenu;
+    private JMenu menu;
+    private JMenuItem backMenu, helpMenu, cartMenu;
     public MenuBar(){
         menu = new JMenu("Menu");
 

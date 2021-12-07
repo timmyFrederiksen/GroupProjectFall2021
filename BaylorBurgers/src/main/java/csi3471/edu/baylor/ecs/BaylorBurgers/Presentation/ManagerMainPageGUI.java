@@ -1,6 +1,8 @@
 package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
 
 import csi3471.edu.baylor.ecs.BaylorBurgers.Business.Category;
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.FoodDescription;
+import csi3471.edu.baylor.ecs.BaylorBurgers.Persistence.MenuDAO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -9,17 +11,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.sql.SQLException;
+import java.util.Vector;
 
 public class ManagerMainPageGUI extends JFrame implements ActionListener{
-    JLabel mainMenuLabel;
-    JPanel mainMenuPanel, mainMenuHeader, mainMenuButtons;
-    JButton viewMenuButton, viewPurchasesButton;
-    MenuBar menuBar;
+    private JLabel mainMenuLabel;
+    private JPanel mainMenuPanel, mainMenuHeader, mainMenuButtons;
+    private JButton viewMenuButton, viewPurchasesButton;
+    private MenuBar menuBar;
 
     public ManagerMainPageGUI(){
         createAndShowGUI();
     }
-
 
     private void addGUIComponents() {
         mainMenuLabel = new JLabel("Manager Main Page");
@@ -58,18 +61,12 @@ public class ManagerMainPageGUI extends JFrame implements ActionListener{
         menuBar.removeCartMenu();
         menuBar.removeHelpMenu();
         menuBar.getBackMenu().addActionListener(this);
+        
         setJMenuBar(menuBar);
         add(mainMenuHeader, BorderLayout.NORTH);
         add(mainMenuButtons, BorderLayout.CENTER);
 
-        viewMenuButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                ManagerMenuGUI managerMenuGUI = new ManagerMenuGUI();
-            }
-        });
-
+        viewMenuButton.addActionListener(this);
 
     }
 
@@ -88,6 +85,18 @@ public class ManagerMainPageGUI extends JFrame implements ActionListener{
         if(e.getSource() == menuBar.getBackMenu()){
             dispose();
             ManagerLoginGUI managerLoginGUI = new ManagerLoginGUI();
+        }else if(e.getSource() == viewMenuButton) {
+        	 dispose();
+             MenuDAO gateway = new MenuDAO();
+             Vector<FoodDescription> items = null;
+             try {
+                 //gateway.createEmployeeTable();
+                 items = gateway.findAll();
+             } catch (SQLException e1) {
+                 // TODO Auto-generated catch block
+                 e1.printStackTrace();
+             }
+             ManagerMenuGUI managerMenuGUI = new ManagerMenuGUI(items);
         }
     }
 }
