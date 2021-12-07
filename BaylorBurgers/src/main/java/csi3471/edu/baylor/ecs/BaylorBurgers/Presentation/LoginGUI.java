@@ -27,7 +27,11 @@ public class LoginGUI extends JPanel implements ActionListener{
         BoxLayout boxLayout = new BoxLayout(buttonPanel, BoxLayout.Y_AXIS);
 
         buttonPanel.setLayout(boxLayout);
-
+        
+        
+        Color gold = new Color(255, 184, 28);
+        buttonPanel.setBackground(gold);
+        
         buttonPanel.setBorder(new EmptyBorder(new Insets(75, 100, 75, 100)));
         buttonPanel.add(customerViewButton);
         buttonPanel.add(Box.createRigidArea(new Dimension(0, 10)));
@@ -49,7 +53,7 @@ public class LoginGUI extends JPanel implements ActionListener{
         LoginGUI newContentPane = new LoginGUI();
         newContentPane.setOpaque(true); // content panes must be opaque
         frame.setContentPane(newContentPane);
-
+        
         //Display the window.
         frame.pack();
         frame.setVisible(true);
