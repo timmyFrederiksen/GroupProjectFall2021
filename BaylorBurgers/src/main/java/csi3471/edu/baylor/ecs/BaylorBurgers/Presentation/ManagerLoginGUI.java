@@ -85,7 +85,7 @@ public class ManagerLoginGUI extends JFrame implements ActionListener{
                 dispose();
                 ManagerMainPageGUI managerMainPageGUI = new ManagerMainPageGUI();
             	}else {
-            		failure.setText("Incorrect Credentails!");
+            		failure.setText("Incorrect Credentials!");
             	}
             }
         });
