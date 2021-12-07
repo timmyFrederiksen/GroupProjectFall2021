@@ -11,8 +11,10 @@ import java.util.Vector;
 public class PurchaseItemGUI extends JDialog {
 
     JPanel panel;
+    protected FoodDescription itemType;
 
-    public PurchaseItemGUI(){
+    public PurchaseItemGUI(FoodDescription itemType){
+    	this.itemType = itemType;
         panel = new JPanel();
         createAndShowGUI();
     }
@@ -59,6 +61,19 @@ public class PurchaseItemGUI extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+            }
+        });
+        purchaseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	Integer index = quantityCB.getSelectedIndex()+1;
+            	if(index > 0) {
+            	
+                CartItem item = new CartItem(itemType, index, notes.getText(), (double)itemType.getPrice());
+                Cart c = new Cart();
+                c.addItem(item);
+                JOptionPane.showMessageDialog(new JFrame("Purchased!"), "You have purchased your item(s)", "Successful", JOptionPane.PLAIN_MESSAGE);
+            	}
             }
         });
     }
