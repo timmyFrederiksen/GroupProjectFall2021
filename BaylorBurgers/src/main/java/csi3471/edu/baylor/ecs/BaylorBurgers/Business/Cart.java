@@ -5,18 +5,18 @@ import java.util.List;
 
 public class Cart {
 
-	protected List<CartItem> items = new ArrayList<CartItem>();
+	protected static List<CartItem> items = new ArrayList<CartItem>();
 
 	public List<CartItem> getItems() {
 		return items;
 	}
 
 	public void setItems(List<CartItem> items) {
-		this.items = items;
+		Cart.items = items;
 	}
 	
 	public void addItem(CartItem item) {
-		this.items.add(item);
+		Cart.items.add(item);
 	}
 	
 	public Float getTotalPrice() {
