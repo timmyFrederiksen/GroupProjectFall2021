@@ -27,6 +27,8 @@ public class CartGUI extends JDialog implements ActionListener {
     }
 
     private void addGUIComponents() {
+    	
+    	
 
         cartLabel = new JLabel("Cart");
         cartLabel.setFont(new Font("Arial", Font.PLAIN, 48));
@@ -55,6 +57,11 @@ public class CartGUI extends JDialog implements ActionListener {
         }
 
         cartLabelPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
+        
+        Color green = new Color(21, 71, 52);
+        Color gold = new Color(255, 184, 28);
+        cartLabelPanel.setBackground(green);
+        cartPanel.setBackground(gold);
 
         checkoutPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
         checkoutPanel.add(checkoutButton, BorderLayout.CENTER);

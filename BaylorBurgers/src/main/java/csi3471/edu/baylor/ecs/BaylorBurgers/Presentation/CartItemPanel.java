@@ -66,6 +66,14 @@ public class CartItemPanel extends JPanel implements ActionListener {
         //rightPanel.add(editButton);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 15)));
         rightPanel.add(removeButton);
+        
+        
+        Color gold = new Color(255, 184, 28);
+        formPanel.setBackground(gold);
+        centerPanel.setBackground(gold);
+        rightPanel.setBackground(gold);
+        setBackground(gold);
+
 
         removeButton.addActionListener(this);
 
