@@ -120,7 +120,7 @@ class CardPaymentGUI extends JDialog {
             	
             	if (isValid) {
             		dispose();
-            		// Print Receipt/log of purchase (might want to include price in here too)
+            		// Prints receipt (might want to include price in here too)
             		PurchaseLogGUI receipt = new PurchaseLogGUI(cardNum);
             	} else {
             		// Invalid Card Info
