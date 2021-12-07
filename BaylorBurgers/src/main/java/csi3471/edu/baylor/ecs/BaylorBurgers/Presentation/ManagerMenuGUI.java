@@ -46,6 +46,10 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
 
         Border border = BorderFactory.createLineBorder(Color.BLACK);
 
+        Color green = new Color(21, 71, 52);
+        Color gold = new Color(255, 184, 28);
+        menuLabelPanel.setBackground(green);
+        addItemPanel.setBackground(gold);
 
         managerMenuPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
         menuLabelPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
@@ -55,7 +59,8 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
 
         BoxLayout boxLayout = new BoxLayout(managerMenuPanel, BoxLayout.Y_AXIS);
         managerMenuPanel.setLayout(boxLayout);
-
+        managerMenuPanel.setBackground(gold);
+        
         for(int i = 0; i < items.size(); i++){
 
             MenuItemPanel panel = new MenuItemPanel(items.get(i), this);
@@ -69,6 +74,7 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
 
         JScrollPane scrollPane = new JScrollPane(managerMenuPanel);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setBackground(gold);
         add(menuLabelPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(addItemPanel, BorderLayout.SOUTH);
@@ -108,7 +114,7 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
             new ManagerMainPageGUI();
 
         }else if(e.getSource() == addItemButton) {
-            dispose();
+            
             AddItemGUI addItemGUI = new AddItemGUI();
 
         }

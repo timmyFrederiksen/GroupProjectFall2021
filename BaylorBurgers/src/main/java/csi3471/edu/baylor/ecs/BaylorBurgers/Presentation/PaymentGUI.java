@@ -32,8 +32,12 @@ public class PaymentGUI extends JDialog {
     private void addGUIComponents() {
         JPanel paymentPanel = new JPanel();
         
+        Color gold = new Color(255, 184, 28);
+        paymentPanel.setBackground(gold);
+        
         JPanel gridPane = new JPanel();
         gridPane.setLayout(new GridLayout(6, 1, 2, 2));
+        gridPane.setBackground(gold);
         
         Cart c = new Cart();
         Double sum = c.getTotalPrice();

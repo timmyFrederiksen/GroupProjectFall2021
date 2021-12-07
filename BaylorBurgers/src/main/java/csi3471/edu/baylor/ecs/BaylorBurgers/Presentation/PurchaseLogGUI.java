@@ -1,5 +1,6 @@
 package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,6 +51,9 @@ public class PurchaseLogGUI extends JDialog {
        
         JButton doneButton = new JButton("Okay");
         JLabel cardLabel = new JLabel();
+        
+        Color gold = new Color(255, 184, 28);
+        receiptPanel.setBackground(gold);
        
         if (type == 1) {
         	

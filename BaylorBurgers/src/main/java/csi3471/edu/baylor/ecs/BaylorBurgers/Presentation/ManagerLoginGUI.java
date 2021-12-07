@@ -37,6 +37,10 @@ public class ManagerLoginGUI extends JFrame implements ActionListener{
         panel = new JPanel();
         panel.setVisible(true);
         panel.setLayout(null);
+        
+        Color green = new Color(21, 71, 52);
+        Color gold = new Color(255, 184, 28);
+        panel.setBackground(gold);
 
         JLabel label = new JLabel("Username:");
         label.setBounds(10, 20, 80, 25);

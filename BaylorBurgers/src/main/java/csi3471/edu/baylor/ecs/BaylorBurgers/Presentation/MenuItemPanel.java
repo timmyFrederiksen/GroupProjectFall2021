@@ -99,6 +99,14 @@ public class MenuItemPanel extends JPanel implements ActionListener{
         leftPanel.setLayout(leftBoxLayout);
         description.setEditable(false);
         description.setLineWrap(true);
+        
+        Color gold = new Color(255, 184, 28);
+        p.setBackground(gold);
+        this.setBackground(gold);
+        rightPanel.setBackground(gold);
+        leftPanel.setBackground(gold);
+        centerPanel.setBackground(gold);
+
         description.setPreferredSize(new Dimension(50, 30));
         JScrollPane scroll = new JScrollPane(description);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -150,7 +158,6 @@ public class MenuItemPanel extends JPanel implements ActionListener{
         }
         else if(e.getSource() == editButton) {
             AddItemGUI addItemGUI = new AddItemGUI(fd);
-            managerMenuGUI.dispose();
         }
     }
 

@@ -36,6 +36,11 @@ public class ManagerMainPageGUI extends JFrame implements ActionListener{
         mainMenuHeader = new JPanel(flowLayout);
         mainMenuButtons = new JPanel(flowLayout);
 
+        Color green = new Color(21, 71, 52);
+        Color gold = new Color(255, 184, 28);
+        mainMenuHeader.setBackground(green);
+        mainMenuButtons.setBackground(gold);
+        
         EmptyBorder panelBorder = new EmptyBorder(10, 10 , 0, 0);
         //Border border = BorderFactory.createLineBorder(Color.BLACK);
         //mainMenuLabel.setBorder(border);

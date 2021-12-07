@@ -1,6 +1,7 @@
 package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
@@ -41,6 +42,9 @@ public class ManagerRegistrarGUI extends JFrame  {
     }
     public void addGUIComponents() {
         panel = new JPanel();
+        Color green = new Color(21, 71, 52);
+        Color gold = new Color(255, 184, 28);
+        panel.setBackground(gold);
         panel.setVisible(true);
         panel.setLayout(null);
 

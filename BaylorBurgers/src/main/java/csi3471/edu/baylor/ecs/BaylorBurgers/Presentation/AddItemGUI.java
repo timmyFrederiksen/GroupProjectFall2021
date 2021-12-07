@@ -110,9 +110,12 @@ class AddItemGUI extends JDialog implements ActionListener{
 
 
         JPanel newPanel = new JPanel();
+        newPanel.setBackground(gold);
+        infoPane.setBackground(gold);
         newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
         newPanel.add(label);
         newPanel.add(infoPane);
+        
 
         add(newPanel);
         setVisible(true);
