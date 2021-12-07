@@ -16,41 +16,50 @@ public class PurchaseLogGUI extends JDialog {
 	
     public PurchaseLogGUI(String cardNum){
     	this.cardNum = cardNum;
-        createAndShowGUI();
+        createAndShowGUI(0);
     }
     
-    private void createAndShowGUI(){
+    public PurchaseLogGUI() {
+    	this.cardNum = "";
+    	createAndShowGUI(1);
+    }
+    
+    private void createAndShowGUI(int type){
         this.setTitle("Receipt");
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setResizable(false);
 
-        addGUIComponents();
+        addGUIComponents(type);
 
         //this.pack();
         this.setSize(400, 250);
         this.setVisible(true);
     }
     
-    private void addGUIComponents() {
+    private void addGUIComponents(int type) {
         JPanel receiptPanel = new JPanel();
         receiptPanel.setLayout(new GridLayout(3, 1, 2, 2));
         Random random = new Random();
         int orderNumber = Math.abs(random.nextInt() % 1000);
         
         JLabel label = new JLabel("Your order number: " + orderNumber);
-        JLabel labelCard = new JLabel();
-        String str = "Card: ";
-        
-        for (int i = 0; i < cardNum.length() - 4; i++) {
-        	str += "*";
-        }
-        str += cardNum.substring(cardNum.length() - 4, cardNum.length());
-        
-        labelCard.setText(str);
        
         JButton doneButton = new JButton("Okay");
+        JLabel cardLabel = new JLabel();
        
-        receiptPanel.add(labelCard);
+        if (type == 0) {
+        	
+            String str = "Card: ";
+            
+            for (int i = 0; i < cardNum.length() - 4; i++) {
+            	str += "*";
+            }
+            str += cardNum.substring(cardNum.length() - 4, cardNum.length());
+            
+            cardLabel.setText(str);
+        	receiptPanel.add(cardLabel);
+        }
+        
         receiptPanel.add(label);
         receiptPanel.add(doneButton);
         add(receiptPanel);

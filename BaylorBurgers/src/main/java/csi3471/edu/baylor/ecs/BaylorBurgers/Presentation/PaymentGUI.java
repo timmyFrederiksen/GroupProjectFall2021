@@ -69,10 +69,16 @@ public class PaymentGUI extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Random random = new Random();
-				
-				if (random.nextInt() % 10 == 0) {
+				int pick = random.nextInt();
+				if (pick % 1000 == 0) {
+					rewardLabel.setText("You won a 100% discount!!!");
+					PurchaseLogGUI receipt = new PurchaseLogGUI();
+				} else if (pick % 100 == 0) {
+					rewardLabel.setText("You won a 50% discount!!!");
+					// Add discount to price
+				} else if (pick % 10 == 0) {
+					// Add discount to price
 					rewardLabel.setText("You won a 10% discount!!!");
-					// FIXME: apply a 10% discount
 				} else {
 					rewardLabel.setText("You did not win a discount");
 				}
