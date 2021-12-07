@@ -68,8 +68,6 @@ public class ManagerMainPageGUI extends JFrame implements ActionListener{
 
 
         viewMenuButton.addActionListener(this);
-
-
     }
 
     private void createAndShowGUI() {
