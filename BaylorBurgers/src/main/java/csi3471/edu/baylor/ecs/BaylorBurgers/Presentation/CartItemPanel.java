@@ -1,6 +1,9 @@
 package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
 
 import javax.swing.*;
+
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.CartItem;
+
 import java.awt.*;
 
 
@@ -10,10 +13,10 @@ public class CartItemPanel extends JPanel {
 
 	private JButton removeButton, editButton;
 
-    public CartItemPanel(){
-    	itemName = new JLabel("Item Name: ");
-        itemQuantity = new JLabel("Item Quantity: ");
-        itemPrice = new JLabel("Item Price: ");
+    public CartItemPanel(CartItem ci) {
+    	itemName = new JLabel("Item Name: " + ci.getItemType().getName());
+        itemQuantity = new JLabel("Item Quantity: " + ci.getQuantity());
+        itemPrice = new JLabel("Item Price: " + (ci.getItemType().getPrice())*ci.getQuantity());
         formPanel = new JPanel();
         removeButton = new JButton("Remove Item");
         editButton = new JButton("Edit Item");

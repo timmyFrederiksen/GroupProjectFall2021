@@ -3,6 +3,9 @@ package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.Cart;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,9 +46,10 @@ public class CartGUI extends JDialog implements ActionListener {
 
         BoxLayout boxLayout = new BoxLayout(cartPanel, BoxLayout.Y_AXIS);
         cartPanel.setLayout(boxLayout);
+        Cart c = new Cart();
 
-        for(int i = 0; i < 15; i++){
-            CartItemPanel panel = new CartItemPanel();
+        for(int i = 0; i < c.getItems().size(); i++){
+            CartItemPanel panel = new CartItemPanel(c.getItems().get(i));
             panel.setPreferredSize(new Dimension(500, 150));
             panel.setBorder(border);
             cartPanel.add(panel);
