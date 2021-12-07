@@ -5,18 +5,20 @@ import java.awt.*;
 
 
 public class CartItemPanel extends JPanel {
+	private JLabel itemName, itemQuantity, itemPrice;
+	private JPanel formPanel, centerPanel, rightPanel;
 
-    JLabel itemName = new JLabel("Item Name: ");
-    JLabel itemQuanity = new JLabel("Item Quantity: ");
-    JLabel itemPrice = new JLabel("Item Price: ");
-    JPanel formPanel = new JPanel();
-    JButton removeButton = new JButton("Remove Item");
-    JButton editButton = new JButton("Edit Item");
-    JPanel centerPanel = new JPanel();
-    JPanel rightPanel = new JPanel();
-
+	private JButton removeButton, editButton;
 
     public CartItemPanel(){
+    	itemName = new JLabel("Item Name: ");
+        itemQuantity = new JLabel("Item Quantity: ");
+        itemPrice = new JLabel("Item Price: ");
+        formPanel = new JPanel();
+        removeButton = new JButton("Remove Item");
+        editButton = new JButton("Edit Item");
+        centerPanel = new JPanel();
+        rightPanel = new JPanel();
         createAndShowGUI();
     }
 
@@ -30,7 +32,7 @@ public class CartItemPanel extends JPanel {
 
         formPanel.add(itemName);
         formPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        formPanel.add(itemQuanity);
+        formPanel.add(itemQuantity);
         formPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         formPanel.add(itemPrice);
 

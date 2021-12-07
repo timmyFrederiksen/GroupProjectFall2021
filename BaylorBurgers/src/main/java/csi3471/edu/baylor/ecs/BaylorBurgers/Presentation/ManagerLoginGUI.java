@@ -74,13 +74,7 @@ public class ManagerLoginGUI extends JFrame implements ActionListener{
 
         add(panel, BorderLayout.CENTER);
 
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                ManagerMainPageGUI managerMainPageGUI = new ManagerMainPageGUI();
-            }
-        });
+        loginButton.addActionListener(this);
     }
 
     @Override
@@ -88,6 +82,9 @@ public class ManagerLoginGUI extends JFrame implements ActionListener{
         if(e.getSource() == menuBar.getBackMenu()){
             dispose();
             javax.swing.SwingUtilities.invokeLater(LoginGUI::showGUI);
+        }else if(e.getSource() == loginButton) {
+        	dispose();
+            ManagerMainPageGUI managerMainPageGUI = new ManagerMainPageGUI();
         }
     }
 }

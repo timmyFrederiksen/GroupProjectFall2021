@@ -166,7 +166,7 @@ public class MenuDAO {
 
         return e;
     }
-
+	*/
     public void delete(Long id) throws SQLException {
         this.dbConnection = null;
         this.statement = null;
@@ -174,7 +174,7 @@ public class MenuDAO {
         try {
             this.dbConnection = getDBConnection();
             this.statement = this.dbConnection.createStatement();
-            this.statement.executeUpdate("DELETE FROM EMPLOYEE WHERE ID = " + id);
+            this.statement.executeUpdate("DELETE FROM MENU WHERE ID = " + id);
             System.out.println("Employee removed from Employee table.");
         } catch (SQLException var6) {
             System.out.println(var6.getMessage());
@@ -191,26 +191,21 @@ public class MenuDAO {
         }
 
     }
-
-    public Vector<Employee> findAll() throws SQLException {
+    
+    public Vector<FoodDescription> findAll() throws SQLException {
         this.dbConnection = null;
         this.statement = null;
-        Vector employees = new Vector();
+        Vector<FoodDescription> descriptions = new Vector<FoodDescription>();
 
         try {
             this.dbConnection = getDBConnection();
             this.statement = this.dbConnection.createStatement();
-            ResultSet rs = this.statement.executeQuery("SELECT ID, NAME, EMAIL,AGE, GENDER, SALARY FROM EMPLOYEE");
+            ResultSet rs = this.statement.executeQuery("SELECT ID, NAME, CATEGORYNAME, PRICE, DESCRIPTION FROM MENU");
 
             while(rs.next()) {
-                Employee e = new Employee();
+                FoodDescription e = new FoodDescription(rs.getString("NAME"), rs.getString("CATEGORYNAME"), rs.getDouble("PRICE"), rs.getString("DESCRIPTION"));
                 e.setId(rs.getLong("ID"));
-                e.setName(rs.getString("NAME"));
-                e.setEmail(rs.getString("EMAIL"));
-                e.setAge(rs.getInt("AGE"));
-                e.setGender(rs.getString("GENDER"));
-                e.setSalary(rs.getLong("SALARY"));
-                employees.add(e);
+                descriptions.add(e);
             }
 
             System.out.println("Found all Employees in the Employee table.");
@@ -228,9 +223,9 @@ public class MenuDAO {
 
         }
 
-        return employees;
+        return descriptions;
     }
-
+    /*
     public int count() throws SQLException {
         int count = 0;
         this.dbConnection = null;
@@ -265,38 +260,28 @@ public class MenuDAO {
 
         return 0;
     }
-
-    public Set<Employee> find(String query) throws SQLException {
+	*/
+    //"Drinks or Food"
+    public Vector<FoodDescription> find(String query) throws SQLException {
         this.dbConnection = null;
         this.statement = null;
-        HashSet employeeSet = new HashSet();
+        Vector<FoodDescription> descriptions = new Vector<FoodDescription>();
 
         try {
             this.dbConnection = getDBConnection();
             this.statement = this.dbConnection.createStatement();
-            ResultSet rs = this.statement.executeQuery("SELECT ID, NAME, EMAIL, AGE, GENDER, SALARY FROM EMPLOYEE WHERE " + query);
-            ResultSet rss = this.statement.executeQuery("SELECT " + query);
-            rs.getInt(1);
-            if (rs == null) {
-                System.out.println("No Employees returned from query.");
-            } else {
-                while(rs.next()) {
-                    Employee e = new Employee();
-                    e.setId(rs.getLong("ID"));
-                    e.setId(rs.getLong("ID"));
-                    e.setName(rs.getString("NAME"));
-                    e.setEmail(rs.getString("EMAIL"));
-                    e.setAge(rs.getInt("AGE"));
-                    e.setGender(rs.getString("GENDER"));
-                    e.setSalary(rs.getLong("SALARY"));
-                    employeeSet.add(e);
-                }
+            ResultSet rs = this.statement.executeQuery("SELECT ID, NAME, CATEGORYNAME, PRICE, DESCRIPTION FROM MENU WHERE CATEGORYNAME = '" +query+"'");
 
-                System.out.println("Employees matching query found in Employee table.");
+            while(rs.next()) {
+                FoodDescription e = new FoodDescription(rs.getString("NAME"), rs.getString("CATEGORYNAME"), rs.getDouble("PRICE"), rs.getString("DESCRIPTION"));
+                e.setId(rs.getLong("ID"));
+                descriptions.add(e);
             }
-        } catch (SQLException var9) {
-            System.out.println(var9.getMessage());
-            System.out.println("Did not succeed: find");
+
+            System.out.println("Found all Employees in the Employee table.");
+        } catch (SQLException var7) {
+            System.out.println(var7.getMessage());
+            System.out.println("Did not succeed: findAll");
         } finally {
             if (this.statement != null) {
                 this.statement.close();
@@ -308,9 +293,9 @@ public class MenuDAO {
 
         }
 
-        return employeeSet;
+        return descriptions;
     }
-	*/
+	
     /*
     public static void main(String[] args) throws SQLException {
         EmployeeDTO gateway = new EmployeeDTO();
