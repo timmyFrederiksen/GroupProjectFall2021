@@ -24,7 +24,7 @@ public class ItemGUI extends JDialog {
     	itemDescription = null;
     	itemDescription = items.stream().filter(s->s.getName() == text).collect(Collectors.toList()).get(0);
 
-        itemLabels = new String[]{itemDescription.getName(), itemDescription.getPrice().toString()};
+        itemLabels = new String[]{itemDescription.getName(), String.format("%.2f", itemDescription.getPrice())};
 
         titleLabels = new ArrayList<>();
 

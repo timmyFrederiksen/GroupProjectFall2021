@@ -47,7 +47,7 @@ public class PurchaseLogGUI extends JDialog {
         int orderNumber = Math.abs(random.nextInt() % 1000);
         Cart c = new Cart();
         JLabel label = new JLabel("Your order number: " + orderNumber);
-        JLabel priceLabel = new JLabel("Price: $" + c.getTotalPrice());
+        JLabel priceLabel = new JLabel(String.format("Price: $%.2f", c.getTotalPrice()));
        
         JButton doneButton = new JButton("Okay");
         JLabel cardLabel = new JLabel();

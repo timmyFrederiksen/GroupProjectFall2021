@@ -34,7 +34,6 @@ public class ManagerPaymentConfirmGUI extends JFrame {
         setVisible(true);
     }
     public void addGUIComponents() {
-    	Color green = new Color(21, 71, 52);
         Color gold = new Color(255, 184, 28);
     	
         panel = new JPanel();

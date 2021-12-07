@@ -35,7 +35,7 @@ public class CartItemPanel extends JPanel implements ActionListener {
         this.ci = ci;
         itemName = new JLabel("Item Name: " + ci.getItemType().getName());
         itemQuantity = new JLabel("Item Quantity: " + ci.getQuantity());
-        itemPrice = new JLabel("Item Price: " + (ci.getItemType().getPrice())*ci.getQuantity());
+        itemPrice = new JLabel(String.format("Item Price: %.2f", (ci.getItemType().getPrice())*ci.getQuantity()));
         formPanel = new JPanel();
         removeButton = new JButton("Remove Item");
         editButton = new JButton("Edit Item");

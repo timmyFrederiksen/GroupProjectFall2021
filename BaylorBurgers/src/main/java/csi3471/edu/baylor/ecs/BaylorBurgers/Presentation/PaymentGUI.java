@@ -41,7 +41,7 @@ public class PaymentGUI extends JDialog {
         
         Cart c = new Cart();
         Double sum = c.getTotalPrice();
-        priceLabel = new JLabel("Price: $" + sum);
+        priceLabel = new JLabel(String.format("Price: $%.2f", sum));
         rewardLabel = new JLabel();
         
         JButton cardButton = new JButton("Card");
@@ -90,14 +90,14 @@ public class PaymentGUI extends JDialog {
 				} else if (pick % 100 == 0) {
 					rewardLabel.setText("You won a 50% discount!!!");
 					c.addDiscount(50.0);
-					priceLabel.setText("Price: $" + c.getTotalPrice());
+					priceLabel.setText(String.format("Price: $%.2f", c.getTotalPrice()));
 					
 					
 				} else if (pick % 10 == 0) {
 					// Add discount to price
 					c.addDiscount(10.0);
 					rewardLabel.setText("You won a 10% discount!!");
-					priceLabel.setText("Price: $" + c.getTotalPrice());
+					priceLabel.setText(String.format("Price: $%.2f", c.getTotalPrice()));
 				} else {
 					rewardLabel.setText("You did not win a discount");
 				}
