@@ -121,7 +121,7 @@ class CardPaymentGUI extends JDialog {
             	if (isValid) {
             		dispose();
             		// Prints receipt (might want to include price in here too)
-            		PurchaseLogGUI receipt = new PurchaseLogGUI(cardNum);
+            		PurchaseLogGUI receipt = new PurchaseLogGUI(cardNum, 1);
             	} else {
             		// Invalid Card Info
             		JOptionPane.showMessageDialog(new JFrame("Error"), "Invalid Card Information", "Warning", JOptionPane.ERROR_MESSAGE);

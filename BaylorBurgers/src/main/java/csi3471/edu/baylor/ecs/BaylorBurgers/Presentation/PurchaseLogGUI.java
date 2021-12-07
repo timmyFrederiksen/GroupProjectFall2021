@@ -14,14 +14,14 @@ public class PurchaseLogGUI extends JDialog {
 	
 	private String cardNum = null;
 	
-    public PurchaseLogGUI(String cardNum){
+    public PurchaseLogGUI(String cardNum, int choice){
     	this.cardNum = cardNum;
-        createAndShowGUI(0);
+        createAndShowGUI(choice);
     }
     
     public PurchaseLogGUI() {
     	this.cardNum = "";
-    	createAndShowGUI(1);
+    	createAndShowGUI(0);
     }
     
     private void createAndShowGUI(int type){
@@ -47,7 +47,7 @@ public class PurchaseLogGUI extends JDialog {
         JButton doneButton = new JButton("Okay");
         JLabel cardLabel = new JLabel();
        
-        if (type == 0) {
+        if (type == 1) {
         	
             String str = "Card: ";
             
@@ -57,6 +57,9 @@ public class PurchaseLogGUI extends JDialog {
             str += cardNum.substring(cardNum.length() - 4, cardNum.length());
             
             cardLabel.setText(str);
+        	receiptPanel.add(cardLabel);
+        } else if (type == 2) {
+        	cardLabel.setText("Helped by: " + cardNum);
         	receiptPanel.add(cardLabel);
         }
         

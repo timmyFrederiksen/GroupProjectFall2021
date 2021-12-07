@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class ManagerPaymentConfirmGUI extends JFrame {
 
@@ -65,12 +67,18 @@ public class ManagerPaymentConfirmGUI extends JFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                // Check for valid credentials
-                // If valid, complete purchase
                 
-                // Else, 
-        		JOptionPane.showMessageDialog(new JFrame("Error"), "Invalid Crednetials", "Warning", JOptionPane.ERROR_MESSAGE);
+                // Check for valid credentials
+                // If valid, complete purchase. else don't
+                Manager m = new Manager(usernameText.getText(), new String(passwordText.getPassword()));
+                if (m.managerExists()) {
+                	// Complete purchase
+                	PurchaseLogGUI receipt = new PurchaseLogGUI(usernameText.getText(), 2);
+                	dispose();
+                } else {
+                	JOptionPane.showMessageDialog(new JFrame("Error"), "Manager does not exist", "Warning", JOptionPane.ERROR_MESSAGE);
+                }
+                
             }
         });
     }
