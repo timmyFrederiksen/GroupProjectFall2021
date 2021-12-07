@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Vector;
+import java.util.stream.Collectors;
 
 public class ItemGUI extends JDialog {
 
@@ -18,9 +20,10 @@ public class ItemGUI extends JDialog {
     private ArrayList<JLabel> titleLabels;
     private ArrayList<JLabel> detailsLabels;
 
+    public ItemGUI(String text, Vector<FoodDescription> items) {
+    	itemDescription = null;
+    	itemDescription = items.stream().filter(s->s.getName() == text).collect(Collectors.toList()).get(0);
 
-    public ItemGUI(FoodDescription itemDescription){
-        this.itemDescription = itemDescription;
         itemLabels = new String[]{itemDescription.getName(), itemDescription.getPrice().toString()};
 
         titleLabels = new ArrayList<>();
@@ -40,7 +43,8 @@ public class ItemGUI extends JDialog {
 
         createAndShowGUI();
     }
-    private void addGUIComponents() {
+    
+	private void addGUIComponents() {
         //GridLayout detailsGrid = new GridLayout(2, 2);
         //JPanel detailsPanel = new JPanel();
         //detailsPanel.setBorder(new EmptyBorder(new Insets(0, 25, 0, 0)));

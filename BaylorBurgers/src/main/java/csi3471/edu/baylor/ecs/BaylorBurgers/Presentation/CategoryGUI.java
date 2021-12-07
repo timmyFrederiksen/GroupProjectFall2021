@@ -9,21 +9,29 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class CategoryGUI extends JFrame implements ActionListener{
 
     private Category category;
     private MenuBar menuBar;
+    
+    private int count;
 
     private JLabel categoryLabel;
     private JPanel categoryPanel, categoryHeader, categoryButtons;
 
     private ArrayList<JButton> foodItemButtons;
+    
+    private Vector<FoodDescription> items;
 
-    public CategoryGUI(Category category){
+    public CategoryGUI(Category category, Vector<FoodDescription> items){
         foodItemButtons = new ArrayList<>();
         // add Buttons
         this.category = category;
+        this.items = items;
+        count = 0;
+        
         createAndShowGUI();
     }
     private void addGUIComponents() {
@@ -39,17 +47,20 @@ public class CategoryGUI extends JFrame implements ActionListener{
 
 
         // DELETE THE FOLLOWING FOR EXAMPLES USE ONLY:
-        for(int i = 0; i < 10; i++){
-            JButton button = new JButton("Example #" + i);
+        for(int i = 0; i < items.size(); i++){
+            JButton button = new JButton(items.get(i).getName());
+            
             button.setBackground(Color.WHITE);
             button.setPreferredSize(new Dimension(200, 200));
             foodItemButtons.add(button);
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    ItemGUI itemGUI = new ItemGUI(new FoodDescription("Item #1"));
+                    ItemGUI itemGUI = new ItemGUI(button.getText(), items);
+                    count++;
                 }
             });
+            
         }
 
         int size = (category.getNumberOfItems() / 3);

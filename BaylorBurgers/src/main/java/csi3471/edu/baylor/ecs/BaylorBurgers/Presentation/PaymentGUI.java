@@ -11,6 +11,7 @@ import java.util.Random;
 public class PaymentGUI extends JDialog {
 	
 	private JLabel rewardLabel;
+	// FIXME: I think putting a private double(or float) price here makes sense
 	
     public PaymentGUI(){
         createAndShowGUI();

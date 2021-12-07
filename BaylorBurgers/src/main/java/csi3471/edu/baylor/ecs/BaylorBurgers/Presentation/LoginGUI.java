@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class LoginGUI extends JPanel{
+public class LoginGUI extends JPanel implements ActionListener{
 
     private JButton customerViewButton;
     private JButton managerViewButton;
@@ -23,7 +23,6 @@ public class LoginGUI extends JPanel{
         customerViewButton.setSize(150, 10);
         managerViewButton.setSize(150, 10);
 
-
         buttonPanel = new JPanel();
         BoxLayout boxLayout = new BoxLayout(buttonPanel, BoxLayout.Y_AXIS);
 
@@ -36,20 +35,8 @@ public class LoginGUI extends JPanel{
 
         add(buttonPanel);
 
-        customerViewButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                MainMenuGUI mainMenuGUI = new MainMenuGUI();
-            }
-        });
-        managerViewButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                ManagerLoginGUI managerLoginGUI = new ManagerLoginGUI();
-            }
-        });
+        customerViewButton.addActionListener(this);
+        managerViewButton.addActionListener(this);
 
     }
     private static void createAndShowGUI() {
@@ -74,5 +61,16 @@ public class LoginGUI extends JPanel{
         //Schedule a job for the event-dispatching thread:
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(LoginGUI::createAndShowGUI);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == customerViewButton){
+            frame.dispose();
+            MainMenuGUI mainMenuGUI = new MainMenuGUI();
+        }else if(e.getSource() == managerViewButton){
+            frame.dispose();
+            ManagerLoginGUI managerLoginGUI = new ManagerLoginGUI();
+        }
     }
 }

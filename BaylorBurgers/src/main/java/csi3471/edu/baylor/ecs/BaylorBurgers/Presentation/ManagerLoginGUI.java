@@ -96,6 +96,7 @@ public class ManagerLoginGUI extends JFrame implements ActionListener{
                 ManagerRegistrarGUI ManagerRegistrarGUI = new ManagerRegistrarGUI();
             }
         });
+
     }
 
     @Override

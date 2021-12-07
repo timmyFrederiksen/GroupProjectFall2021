@@ -9,17 +9,19 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class CartGUI extends JDialog implements ActionListener {
-    JLabel cartLabel;
-    JPanel cartLabelPanel, cartPanel, checkoutPanel;
-    ArrayList<JPanel> cartItemPanels;
-    MenuBar menuBar;
+    private JLabel cartLabel;
+    private JPanel cartLabelPanel, cartPanel, checkoutPanel;
+    private ArrayList<JPanel> cartItemPanels;
+    private MenuBar menuBar;
+    private JButton checkoutButton;
+
 
 
     public CartGUI(){
         cartPanel = new JPanel();
         checkoutPanel = new JPanel();
-        //cartPanel.setPreferredSize(new Dimension(700, 500));
         cartItemPanels = new ArrayList<>();
+        checkoutButton = new JButton("Checkout");
         createAndShowGUI();
     }
 
@@ -52,7 +54,6 @@ public class CartGUI extends JDialog implements ActionListener {
 
         cartLabelPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
 
-        JButton checkoutButton = new JButton("Checkout");
         checkoutPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
         checkoutPanel.add(checkoutButton, BorderLayout.CENTER);
 
@@ -68,13 +69,7 @@ public class CartGUI extends JDialog implements ActionListener {
         add(scrollPane, BorderLayout.CENTER);
         add(checkoutPanel, BorderLayout.SOUTH);
 
-        checkoutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PaymentGUI paymentGUI = new PaymentGUI();
-            }
-        });
-
+        checkoutButton.addActionListener(this);
     }
     private void createAndShowGUI() {
         this.setTitle("Baylor Burgers Cart");
@@ -93,6 +88,8 @@ public class CartGUI extends JDialog implements ActionListener {
         if(e.getSource() == menuBar.getBackMenu()){
             new MainMenuGUI();
             dispose();
+        }else if(e.getSource() == checkoutButton) {
+            PaymentGUI paymentGUI = new PaymentGUI();
         }
         else if(e.getSource()== menuBar.getHelp()) {
         	JOptionPane.showMessageDialog(new JFrame("Help Request"), "An employee will assist you momentarily", "Warning", JOptionPane.ERROR_MESSAGE);

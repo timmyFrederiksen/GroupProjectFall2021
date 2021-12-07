@@ -12,14 +12,27 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-class AddItemGUI extends JDialog {
+class AddItemGUI extends JDialog implements ActionListener{
+    private JPanel listPane;
+    private JTextField nameField, categoryField, priceField, descriptionField;
+    private JComboBox categoryBox;
+    private JButton saveInfo, cancelInfo;
+
     private String[] input = null;
-    ArrayList<JTextField> textFields = new ArrayList<>();
+    private ArrayList<JTextField> textFields = new ArrayList<>();
     private String[] names = new String[]{"Item Name:", "Item Category:", "Item Price:", "Item Description:"};
     private String[] categoryNames = new String[]{"Drinks", "Food"};
 
+
     public AddItemGUI() {
         super();
+        nameField = new JTextField(15);
+        categoryField = new JTextField(15);
+        priceField = new JTextField(15);
+        descriptionField = new JTextField(15);
+        categoryBox = new JComboBox(categoryNames);
+        saveInfo = new JButton("Save");
+        cancelInfo = new JButton("Cancel");
         createAndShowGUI();
     }
 
@@ -28,7 +41,7 @@ class AddItemGUI extends JDialog {
         setPreferredSize(new Dimension(450, 300));
         setTitle("Add Item");
 
-        JPanel listPane = new JPanel();
+        listPane = new JPanel();
         //listPane.setLayout(new BoxLayout(listPane, BoxLayout.Y_AXIS));
 
         JLabel label = new JLabel("Enter Information:");
@@ -41,59 +54,34 @@ class AddItemGUI extends JDialog {
         int numPairs = names.length + 1;
         JPanel infoPane = new JPanel(new SpringLayout());
         
-        JTextField nameField = new JTextField(15);
-        JTextField categoryField = new JTextField(15);
-        JTextField priceField = new JTextField(15);
-        JTextField descriptionField = new JTextField(15);
         textFields.add(nameField);
         textFields.add(categoryField);
         textFields.add(priceField);
         textFields.add(descriptionField);
-        JComboBox categoryBox = new JComboBox(categoryNames);
+        
+        
         for (int i = 0; i < (names.length); i++) {
             JLabel l = new JLabel(names[i], JLabel.TRAILING);
             infoPane.add(l);
             if(i == 1){
-                
                 l.setLabelFor(categoryBox);
                 infoPane.add(categoryBox);
             }else{
-                //JTextField textField = new JTextField(15);
                 l.setLabelFor(textFields.get(i));
                 infoPane.add(textFields.get(i));
             }
         }
 
-        JButton saveInfo = new JButton("Save");
-        saveInfo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MenuDAO gateway = new MenuDAO();
-
-                try {
-                    //gateway.createEmployeeTable();
-                    gateway.save(new FoodDescription(textFields.get(0).getText(),
-                    		(String)categoryBox.getSelectedItem(), Double.parseDouble(textFields.get(2).getText()), textFields.get(3).getText()));
-                } catch (SQLException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-            }
-        });
-        JButton cancelInfo = new JButton("Cancel");
-        cancelInfo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+        saveInfo.addActionListener(this);
+        cancelInfo.addActionListener(this);
+        
         infoPane.add(saveInfo);
         infoPane.add(cancelInfo);
 
         SpringUtilities.makeCompactGrid(infoPane,
-                numPairs, 2,            //rows, cols
-                6, 6,           //initX, initY
-                6, 6);             //xPad, yPad
+                numPairs, 2,
+            	6, 6,           			
+                6, 6);            	
 
 
         JPanel newPanel = new JPanel();
@@ -106,4 +94,24 @@ class AddItemGUI extends JDialog {
         pack();
         setLocationRelativeTo(getParent());
     }
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == saveInfo) {
+			MenuDAO gateway = new MenuDAO();
+
+            try {
+                //gateway.createEmployeeTable();
+                gateway.save(new FoodDescription(textFields.get(0).getText(),
+                		(String)categoryBox.getSelectedItem(), Double.parseDouble(textFields.get(2).getText()), textFields.get(3).getText()));
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            dispose();
+		}else if(e.getSource() == cancelInfo) {
+			dispose();
+		}
+	}
 }
