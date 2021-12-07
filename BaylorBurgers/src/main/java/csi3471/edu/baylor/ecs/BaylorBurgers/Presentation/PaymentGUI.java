@@ -6,11 +6,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class PaymentGUI extends JDialog {
+	
+	private JLabel rewardLabel;
+	
     public PaymentGUI(){
         createAndShowGUI();
     }
+    
     private void createAndShowGUI(){
         this.setTitle("Baylor Burgers Pay for Cart");
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -22,29 +27,27 @@ public class PaymentGUI extends JDialog {
         this.setSize(400, 450);
         this.setVisible(true);
     }
+    
     private void addGUIComponents() {
         JPanel paymentPanel = new JPanel();
         
         JPanel gridPane = new JPanel();
-        gridPane.setLayout(new GridLayout(3, 2, 2, 2));
+        gridPane.setLayout(new GridLayout(2, 2, 2, 2));
         
-        JLabel codeLabel = new JLabel("Rewards Code:");
-        gridPane.add(codeLabel);
-
-        JTextField codeTextField = new JTextField();
-        gridPane.add(codeTextField);
+        rewardLabel = new JLabel();
         
         JButton cardButton = new JButton("Card");
         JButton otherButton = new JButton("Other");
-        JButton applyCodeButton = new JButton("Apply Code");
+        JButton rewardButton = new JButton("Press for Discount");
         JButton cancelButton = new JButton("Cancel");
         
         gridPane.add(cardButton);
         gridPane.add(otherButton);
         gridPane.add(cancelButton);
-        gridPane.add(applyCodeButton);
+        gridPane.add(rewardButton);
         
         paymentPanel.add(gridPane);
+        paymentPanel.add(rewardLabel);
         add(paymentPanel);
         
         cardButton.addActionListener(new ActionListener() {
@@ -61,10 +64,18 @@ public class PaymentGUI extends JDialog {
 			}
         });
     
-        applyCodeButton.addActionListener(new ActionListener() {
+        rewardButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Check Reward for the entered code
+				Random random = new Random();
+				
+				if (random.nextInt() % 10 == 0) {
+					rewardLabel.setText("You won a 10% discount!!!");
+					// FIXME: apply a 10% discount
+				} else {
+					rewardLabel.setText("You did not win a discount");
+				}
+				rewardButton.setEnabled(false);
 			}
         });
         
