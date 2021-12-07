@@ -68,8 +68,9 @@ public class ManagerPaymentConfirmGUI extends JFrame {
                 dispose();
                 // Check for valid credentials
                 // If valid, complete purchase
+                
                 // Else, 
-        		// JOptionPane.showMessageDialog(new JFrame("Error"), "Invalid Card Information", "Warning", JOptionPane.ERROR_MESSAGE);
+        		JOptionPane.showMessageDialog(new JFrame("Error"), "Invalid Crednetials", "Warning", JOptionPane.ERROR_MESSAGE);
             }
         });
     }

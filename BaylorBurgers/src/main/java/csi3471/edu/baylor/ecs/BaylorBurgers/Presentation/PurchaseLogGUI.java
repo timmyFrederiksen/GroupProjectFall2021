@@ -59,7 +59,7 @@ public class PurchaseLogGUI extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				// Kills program
+				// Exits program
 				System.exit(0);
 			}
         });

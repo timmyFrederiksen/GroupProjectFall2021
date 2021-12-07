@@ -89,6 +89,7 @@ public class CartGUI extends JDialog implements ActionListener {
             new MainMenuGUI();
             dispose();
         }else if(e.getSource() == checkoutButton) {
+        	// FIXME: Give this price, when we have that in here
             PaymentGUI paymentGUI = new PaymentGUI();
         }
         else if(e.getSource()== menuBar.getHelp()) {

@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Mon Dec 06 18:42:24 CST 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-017d-9257-7118-000006f12e90 
-on database directory C:\Users\boyle\Documents\DBGP\GroupProjectFall2021\BaylorBurgers\menuconnect with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@659e0bfd 
-Loaded from file:/C:/Users/boyle/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
+Mon Dec 06 19:22:09 CST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-017d-927b-d83f-000006e42000 
+on database directory /Users/timmyfrederiksen/Desktop/GroupProjectFall2021/BaylorBurgers/menuconnect with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@55054057 
+Loaded from file:/Users/timmyfrederiksen/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
 java.vendor=Oracle Corporation
-java.runtime.version=16.0.2+7-67
-user.dir=C:\Users\boyle\Documents\DBGP\GroupProjectFall2021\BaylorBurgers
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
+java.runtime.version=13.0.2+8
+user.dir=/Users/timmyfrederiksen/Desktop/GroupProjectFall2021/BaylorBurgers
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.14.6
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
