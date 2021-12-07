@@ -22,6 +22,8 @@ public class MenuItemPanel extends JPanel implements ActionListener{
     private JButton editButton = new JButton("Edit Item");
     
     private FoodDescription fd;
+    
+    private ManagerMenuGUI managerMenuGUI;
 
 
     public MenuItemPanel(String name, String category, Double price, String description){
@@ -41,6 +43,22 @@ public class MenuItemPanel extends JPanel implements ActionListener{
 
     public MenuItemPanel(FoodDescription foodDescription) {
     	fd = foodDescription;
+    	this.name = new JTextField(foodDescription.getName()); 
+    	this.category = new JTextField(foodDescription.getCategory()); 
+    	this.descriptionText = new JTextField();    
+    	this.price = new JTextField(foodDescription.getPrice().toString());    
+        this.description = new JTextArea(foodDescription.getDetails());
+        
+        this.name.setColumns(15);
+        centerPanel = new JPanel();
+        rightPanel = new JPanel();
+        leftPanel = new JPanel();
+        createAndShowGUI();
+	}
+
+	public MenuItemPanel(FoodDescription foodDescription, ManagerMenuGUI managerMenuGUI) {
+		this.managerMenuGUI = managerMenuGUI;
+		fd = foodDescription;
     	this.name = new JTextField(foodDescription.getName()); 
     	this.category = new JTextField(foodDescription.getCategory()); 
     	this.descriptionText = new JTextField();    
@@ -127,13 +145,14 @@ public class MenuItemPanel extends JPanel implements ActionListener{
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
-           new ManagerMenuGUI(items);
+            managerMenuGUI.dispose();	
+            new ManagerMenuGUI(items);
             
 
         }
         else if(e.getSource() == editButton) {
         	AddItemGUI addItemGUI = new AddItemGUI(fd);
-
+        	managerMenuGUI.dispose();
         }
     }
 
