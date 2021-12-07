@@ -91,7 +91,7 @@ public class ItemGUI extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                PurchaseItemGUI purchaseItemGUI = new PurchaseItemGUI();
+                PurchaseItemGUI purchaseItemGUI = new PurchaseItemGUI(itemDescription);
             }
         });
     }
