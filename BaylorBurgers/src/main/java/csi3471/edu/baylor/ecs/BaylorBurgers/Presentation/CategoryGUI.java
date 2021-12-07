@@ -45,7 +45,11 @@ public class CategoryGUI extends JFrame implements ActionListener{
         FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
         categoryHeader = new JPanel(flowLayout);
 
-
+        Color green = new Color(21, 71, 52);
+        Color gold = new Color(255, 184, 28);
+        categoryHeader.setBackground(gold);
+        this.setBackground(green);
+        
         // DELETE THE FOLLOWING FOR EXAMPLES USE ONLY:
         for(int i = 0; i < items.size(); i++){
             JButton button = new JButton(items.get(i).getName());
@@ -73,6 +77,8 @@ public class CategoryGUI extends JFrame implements ActionListener{
         gridLayout.setVgap(10);
 
         categoryButtons = new JPanel(gridLayout);
+        categoryButtons.setBackground(green);
+
 
         for(JButton button : foodItemButtons){
             categoryButtons.add(button);

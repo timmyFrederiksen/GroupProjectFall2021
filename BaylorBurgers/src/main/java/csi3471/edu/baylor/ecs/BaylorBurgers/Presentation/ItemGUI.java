@@ -60,6 +60,10 @@ public class ItemGUI extends JDialog {
         }*/
 
         JPanel descriptionPanel = new JPanel();
+        Color green = new Color(21, 71, 52);
+        Color gold = new Color(255, 184, 28);
+        descriptionPanel.setBackground(gold);
+        this.setBackground(green);
 
         BoxLayout boxLayout = new BoxLayout(descriptionPanel, BoxLayout.Y_AXIS);
 

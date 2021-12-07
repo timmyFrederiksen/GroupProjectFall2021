@@ -3,6 +3,8 @@ package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
 import csi3471.edu.baylor.ecs.BaylorBurgers.Business.*;
 
 import javax.swing.*;
+
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
@@ -24,7 +26,11 @@ public class PurchaseItemGUI extends JDialog {
         JLabel label = new JLabel("How many of this item would you like? (max 50)");
         label.setBounds(10, 20, 450, 25);
         panel.add(label);
-
+        
+        Color green = new Color(21, 71, 52);
+        Color gold = new Color(255, 184, 28);
+        panel.setBackground(gold);
+        this.setBackground(green);
 
         Vector<Integer> listOfQuantities = new Vector<>();
         for(int i = 0; i < 50; i++){

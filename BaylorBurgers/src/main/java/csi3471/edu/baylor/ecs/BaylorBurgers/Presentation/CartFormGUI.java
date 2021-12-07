@@ -41,6 +41,11 @@ class CartFormGUI extends JDialog implements ActionListener{
         setTitle("Add Item");
 
         listPane = new JPanel();
+        
+        Color green = new Color(21, 71, 52);
+        Color gold = new Color(255, 184, 28);
+        listPane.setBackground(green);
+        this.setBackground(gold);
         //listPane.setLayout(new BoxLayout(listPane, BoxLayout.Y_AXIS));
 
         JLabel label = new JLabel("Enter Information:");

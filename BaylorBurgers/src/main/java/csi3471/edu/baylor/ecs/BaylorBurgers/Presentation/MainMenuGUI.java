@@ -38,6 +38,11 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
         mainMenuHeader = new JPanel(flowLayout);
         mainMenuButtons = new JPanel(flowLayout);
+        
+        Color green = new Color(21, 71, 52);
+        Color gold = new Color(255, 184, 28);
+        mainMenuHeader.setBackground(gold);
+        mainMenuButtons.setBackground(green);
 
         EmptyBorder panelBorder = new EmptyBorder(10, 10 , 0, 0);
 
@@ -49,19 +54,15 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         drinksButton = new JButton("Drinks");
         foodButton = new JButton("Food");
 
-        drinksButton.setBackground(Color.WHITE);
-        foodButton.setBackground(Color.WHITE);
-
-
         drinksButton.setPreferredSize(new Dimension(300, 300));
         foodButton.setPreferredSize(new Dimension(300, 300));
-
+        
         mainMenuButtons.add(drinksButton);
         mainMenuButtons.add(foodButton);
 
         mainMenuHeader.add(mainMenuLabel);
 
-             menuBar = new MenuBar();
+        menuBar = new MenuBar();
         setJMenuBar(menuBar);
         menuBar.getBackMenu().addActionListener(this);
         menuBar.getCartMenu().addActionListener(this);
@@ -69,11 +70,11 @@ public class MainMenuGUI extends JFrame implements ActionListener{
 
         drinksButton.addActionListener(this);
         foodButton.addActionListener(this);
-
-
+        
         add(mainMenuHeader, BorderLayout.NORTH);
         add(mainMenuButtons, BorderLayout.CENTER);
         //add(viewCart, BorderLayout.SOUTH);
+        
     }
 
     private void createAndShowGUI() {
