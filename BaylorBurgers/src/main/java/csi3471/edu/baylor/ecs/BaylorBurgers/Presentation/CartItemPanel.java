@@ -2,18 +2,25 @@ package csi3471.edu.baylor.ecs.BaylorBurgers.Presentation;
 
 import javax.swing.*;
 
+import csi3471.edu.baylor.ecs.BaylorBurgers.Business.Cart;
 import csi3471.edu.baylor.ecs.BaylorBurgers.Business.CartItem;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class CartItemPanel extends JPanel {
+public class CartItemPanel extends JPanel implements ActionListener {
 	private JLabel itemName, itemQuantity, itemPrice;
 	private JPanel formPanel, centerPanel, rightPanel;
+	private CartItem ci;
+    private CartGUI cartDisplay;
 
-	private JButton removeButton, editButton;
+
+    private JButton removeButton, editButton;
 
     public CartItemPanel(CartItem ci) {
+        this.ci = ci;
     	itemName = new JLabel("Item Name: " + ci.getItemType().getName());
         itemQuantity = new JLabel("Item Quantity: " + ci.getQuantity());
         itemPrice = new JLabel("Item Price: " + (ci.getItemType().getPrice())*ci.getQuantity());
@@ -24,6 +31,20 @@ public class CartItemPanel extends JPanel {
         rightPanel = new JPanel();
         createAndShowGUI();
     }
+    public CartItemPanel(CartItem ci, CartGUI cartGUI) {
+        this.ci = ci;
+        itemName = new JLabel("Item Name: " + ci.getItemType().getName());
+        itemQuantity = new JLabel("Item Quantity: " + ci.getQuantity());
+        itemPrice = new JLabel("Item Price: " + (ci.getItemType().getPrice())*ci.getQuantity());
+        formPanel = new JPanel();
+        removeButton = new JButton("Remove Item");
+        editButton = new JButton("Edit Item");
+        centerPanel = new JPanel();
+        rightPanel = new JPanel();
+        this.cartDisplay = cartGUI;
+        createAndShowGUI();
+    }
+
 
     private void createAndShowGUI() {
 
@@ -39,12 +60,14 @@ public class CartItemPanel extends JPanel {
         formPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         formPanel.add(itemPrice);
 
-
         centerPanel.setPreferredSize(new Dimension(200, 125));
+        //rightPanel.setPreferredSize(new Dimension(200, 125));
 
-        rightPanel.add(editButton);
+        //rightPanel.add(editButton);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 15)));
         rightPanel.add(removeButton);
+
+        removeButton.addActionListener(this);
 
         //formPanel.setBackground(Color.YELLOW);
         //centerPanel.setBackground(Color.BLUE);
@@ -53,5 +76,14 @@ public class CartItemPanel extends JPanel {
         add(formPanel, BorderLayout.LINE_START);
         add(centerPanel, BorderLayout.CENTER);
         add(rightPanel, BorderLayout.LINE_END);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == removeButton){
+            Cart.removeItem(ci);
+            cartDisplay.dispose();
+            new CartGUI();
+        }
     }
 }

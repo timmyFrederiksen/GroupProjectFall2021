@@ -3,7 +3,7 @@ package csi3471.edu.baylor.ecs.BaylorBurgers.Business;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cart {
+public final class Cart {
 
 	protected static List<CartItem> items = new ArrayList<CartItem>();
 
@@ -16,7 +16,12 @@ public class Cart {
 	}
 	
 	public void addItem(CartItem item) {
-		Cart.items.add(item);
+		if(!items.contains(item)){
+			Cart.items.add(item);
+		}
+	}
+	public static void removeItem(CartItem item) {
+			Cart.items.remove(item);
 	}
 	
 	public Double getTotalPrice() {

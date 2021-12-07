@@ -1,12 +1,14 @@
 package csi3471.edu.baylor.ecs.BaylorBurgers.Business;
 
+import csi3471.edu.baylor.ecs.BaylorBurgers.Presentation.CartGUI;
+
 public class CartItem {
 	
 	protected FoodDescription itemType;
 	protected Integer quantity;
 	protected String orderNotes;
 	protected Double price;
-	
+
 	public CartItem(FoodDescription itemType, Integer quantity, String orderNotes, Double price) {
 		this.itemType = itemType;
 		this.quantity = quantity;

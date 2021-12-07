@@ -109,11 +109,13 @@ public class MenuItemPanel extends JPanel implements ActionListener{
         leftPanel.add(scroll);
 
 
-        centerPanel.setPreferredSize(new Dimension(75, 125));
+        centerPanel.setPreferredSize(new Dimension(125, 125));
+        rightPanel.setPreferredSize(new Dimension(125, 125));
 
-        rightPanel.add(editButton);
+
+        /*rightPanel.add(editButton);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 15)));
-        rightPanel.add(removeButton);
+        rightPanel.add(removeButton);*/
 
 
         add(leftPanel, BorderLayout.LINE_START);
@@ -151,7 +153,7 @@ public class MenuItemPanel extends JPanel implements ActionListener{
 
         }
         else if(e.getSource() == editButton) {
-        	AddItemGUI addItemGUI = new AddItemGUI(fd);
+        	AddItemGUI addItemGUI = new AddItemGUI();
         	managerMenuGUI.dispose();
         }
     }

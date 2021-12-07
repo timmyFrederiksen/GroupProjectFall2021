@@ -18,8 +18,6 @@ public class CartGUI extends JDialog implements ActionListener {
     private MenuBar menuBar;
     private JButton checkoutButton;
 
-
-
     public CartGUI(){
         cartPanel = new JPanel();
         checkoutPanel = new JPanel();
@@ -49,7 +47,7 @@ public class CartGUI extends JDialog implements ActionListener {
         Cart c = new Cart();
 
         for(int i = 0; i < c.getItems().size(); i++){
-            CartItemPanel panel = new CartItemPanel(c.getItems().get(i));
+            CartItemPanel panel = new CartItemPanel(c.getItems().get(i), this);
             panel.setPreferredSize(new Dimension(500, 150));
             panel.setBorder(border);
             cartPanel.add(panel);
@@ -93,11 +91,11 @@ public class CartGUI extends JDialog implements ActionListener {
             new MainMenuGUI();
             dispose();
         }else if(e.getSource() == checkoutButton) {
-        	// FIXME: Give this price, when we have that in here
+            // FIXME: Give this price, when we have that in here
             PaymentGUI paymentGUI = new PaymentGUI();
         }
         else if(e.getSource()== menuBar.getHelp()) {
-        	JOptionPane.showMessageDialog(new JFrame("Help Request"), "An employee will assist you momentarily", "Warning", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame("Help Request"), "An employee will assist you momentarily", "Warning", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

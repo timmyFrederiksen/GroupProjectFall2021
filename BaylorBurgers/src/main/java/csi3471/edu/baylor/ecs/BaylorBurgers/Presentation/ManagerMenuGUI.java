@@ -18,7 +18,7 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
 	private ArrayList<JPanel> menuItemPanels;
 	private MenuBar menuBar;
 	private Vector<FoodDescription> items;
-	private JButton addItemButton;
+	private JButton addItemButton, editItemButton, removeItemButton;
 
 
 
@@ -27,7 +27,10 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         managerMenuPanel = new JPanel();
         addItemPanel = new JPanel();
         menuItemPanels = new ArrayList<>();
-        addItemButton = new JButton("Add Item to the Menu");
+        addItemButton = new JButton("Add Item");
+        editItemButton = new JButton("Edit Item");
+        removeItemButton = new JButton("Remove Item");
+
         createAndShowGUI();
     }
 
@@ -52,20 +55,20 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
 
         addItemPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
         addItemPanel.add(addItemButton, BorderLayout.CENTER);
+        addItemPanel.add(editItemButton, BorderLayout.PAGE_START);
+        addItemPanel.add(removeItemButton, BorderLayout.PAGE_END);
 
         BoxLayout boxLayout = new BoxLayout(managerMenuPanel, BoxLayout.Y_AXIS);
         managerMenuPanel.setLayout(boxLayout);
 
         for(int i = 0; i < items.size(); i++){
-        	
             MenuItemPanel panel = new MenuItemPanel(items.get(i), this);
             panel.setPreferredSize(new Dimension(550, 175));
             panel.setBorder(border);
             managerMenuPanel.add(panel);
             managerMenuPanel.add(Box.createRigidArea(new Dimension(0, 25)));
         }
-        
-        
+
 
         JScrollPane scrollPane = new JScrollPane(managerMenuPanel);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -73,14 +76,6 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         add(scrollPane, BorderLayout.CENTER);
         add(addItemPanel, BorderLayout.SOUTH);
         
-        menuBar = new MenuBar();
-        menuBar.removeCartMenu();
-        menuBar.removeHelpMenu();
-        menuBar.getBackMenu().addActionListener(this);
-        setJMenuBar(menuBar);
-
-
-
         menuBar = new MenuBar();
         menuBar.removeCartMenu();
         menuBar.removeHelpMenu();
@@ -106,11 +101,13 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         if(e.getSource() == menuBar.getBackMenu()){
             dispose();
             new ManagerMainPageGUI();
-
         }else if(e.getSource() == addItemButton) {
         	dispose();
         	AddItemGUI addItemGUI = new AddItemGUI();
-
+        } else if(e.getSource() == editItemButton) {
+            dispose();
+        } else if(e.getSource() == removeItemButton) {
+            dispose();
         }
     }
 }

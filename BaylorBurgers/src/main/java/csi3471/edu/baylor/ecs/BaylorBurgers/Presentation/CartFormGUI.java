@@ -12,25 +12,24 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-class AddItemGUI extends JDialog implements ActionListener{
+class CartFormGUI extends JDialog implements ActionListener{
     private JPanel listPane;
-    private JTextField nameField, categoryField, priceField, descriptionField;
+    private JTextField nameField, quantityField, priceField, customizationField;
     private JComboBox categoryBox;
     private JButton saveInfo, cancelInfo;
 
     private String[] input = null;
     private ArrayList<JTextField> textFields = new ArrayList<>();
-    private String[] names = new String[]{"Item Name:", "Item Category:", "Item Price:", "Item Description:"};
-    private String[] categoryNames = new String[]{"Drinks", "Food"};
+    private String[] names = new String[]{"Item Name:", "Item Price:", "Item Quantity:", "Item Customization:"};
 
 
-    public AddItemGUI() {
+    public CartFormGUI() {
         super();
         nameField = new JTextField(15);
-        categoryField = new JTextField(15);
+        quantityField = new JTextField(15);
         priceField = new JTextField(15);
-        descriptionField = new JTextField(15);
-        categoryBox = new JComboBox(categoryNames);
+        customizationField = new JTextField(15);
+        //categoryBox = new JComboBox(categoryNames);
         saveInfo = new JButton("Save");
         cancelInfo = new JButton("Cancel");
         createAndShowGUI();
@@ -53,13 +52,13 @@ class AddItemGUI extends JDialog implements ActionListener{
 
         int numPairs = names.length + 1;
         JPanel infoPane = new JPanel(new SpringLayout());
-        
+
         textFields.add(nameField);
-        textFields.add(categoryField);
+        //textFields.add(categoryField);
         textFields.add(priceField);
-        textFields.add(descriptionField);
-        
-        
+        textFields.add(customizationField);
+
+
         for (int i = 0; i < (names.length); i++) {
             JLabel l = new JLabel(names[i], JLabel.TRAILING);
             infoPane.add(l);
@@ -74,14 +73,14 @@ class AddItemGUI extends JDialog implements ActionListener{
 
         saveInfo.addActionListener(this);
         cancelInfo.addActionListener(this);
-        
+
         infoPane.add(saveInfo);
         infoPane.add(cancelInfo);
 
         SpringUtilities.makeCompactGrid(infoPane,
                 numPairs, 2,
-            	6, 6,           			
-                6, 6);            	
+                6, 6,
+                6, 6);
 
 
         JPanel newPanel = new JPanel();
@@ -96,22 +95,23 @@ class AddItemGUI extends JDialog implements ActionListener{
     }
 
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == saveInfo) {
-			MenuDAO gateway = new MenuDAO();
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == saveInfo) {
+            MenuDAO gateway = new MenuDAO();
 
             try {
                 //gateway.createEmployeeTable();
                 gateway.save(new FoodDescription(textFields.get(0).getText(),
-                		(String)categoryBox.getSelectedItem(), Double.parseDouble(textFields.get(2).getText()), textFields.get(3).getText()));
+                        (String)categoryBox.getSelectedItem(), Double.parseDouble(textFields.get(2).getText()), textFields.get(3).getText()));
             } catch (SQLException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
             dispose();
-		}else if(e.getSource() == cancelInfo) {
-			dispose();
-		}
-	}
+            //new ManagerMenuGUI();
+        }else if(e.getSource() == cancelInfo) {
+            dispose();
+        }
+    }
 }
