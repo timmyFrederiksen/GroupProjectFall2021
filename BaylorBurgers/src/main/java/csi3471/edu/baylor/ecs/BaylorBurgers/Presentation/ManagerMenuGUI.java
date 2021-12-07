@@ -13,24 +13,21 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class ManagerMenuGUI extends JFrame implements ActionListener{
-	private JLabel managerMenuLabel;
-	private JPanel menuLabelPanel, managerMenuPanel, addItemPanel;
-	private ArrayList<JPanel> menuItemPanels;
-	private MenuBar menuBar;
-	private Vector<FoodDescription> items;
-	private JButton addItemButton, editItemButton, removeItemButton;
+    private JLabel managerMenuLabel;
+    private JPanel menuLabelPanel, managerMenuPanel, addItemPanel;
+    private ArrayList<JPanel> menuItemPanels;
+    private MenuBar menuBar;
+    private Vector<FoodDescription> items;
+    private JButton addItemButton;
 
 
 
     public ManagerMenuGUI(Vector<FoodDescription> items){
-    	this.items = items;
+        this.items = items;
         managerMenuPanel = new JPanel();
         addItemPanel = new JPanel();
         menuItemPanels = new ArrayList<>();
-        addItemButton = new JButton("Add Item");
-        editItemButton = new JButton("Edit Item");
-        removeItemButton = new JButton("Remove Item");
-
+        addItemButton = new JButton("Add Item to the Menu");
         createAndShowGUI();
     }
 
@@ -55,13 +52,12 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
 
         addItemPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
         addItemPanel.add(addItemButton, BorderLayout.CENTER);
-        addItemPanel.add(editItemButton, BorderLayout.PAGE_START);
-        addItemPanel.add(removeItemButton, BorderLayout.PAGE_END);
 
         BoxLayout boxLayout = new BoxLayout(managerMenuPanel, BoxLayout.Y_AXIS);
         managerMenuPanel.setLayout(boxLayout);
 
         for(int i = 0; i < items.size(); i++){
+
             MenuItemPanel panel = new MenuItemPanel(items.get(i), this);
             panel.setPreferredSize(new Dimension(550, 175));
             panel.setBorder(border);
@@ -70,12 +66,21 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         }
 
 
+
         JScrollPane scrollPane = new JScrollPane(managerMenuPanel);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         add(menuLabelPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(addItemPanel, BorderLayout.SOUTH);
-        
+
+        menuBar = new MenuBar();
+        menuBar.removeCartMenu();
+        menuBar.removeHelpMenu();
+        menuBar.getBackMenu().addActionListener(this);
+        setJMenuBar(menuBar);
+
+
+
         menuBar = new MenuBar();
         menuBar.removeCartMenu();
         menuBar.removeHelpMenu();
@@ -101,13 +106,11 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         if(e.getSource() == menuBar.getBackMenu()){
             dispose();
             new ManagerMainPageGUI();
+
         }else if(e.getSource() == addItemButton) {
-        	dispose();
-        	AddItemGUI addItemGUI = new AddItemGUI();
-        } else if(e.getSource() == editItemButton) {
             dispose();
-        } else if(e.getSource() == removeItemButton) {
-            dispose();
+            AddItemGUI addItemGUI = new AddItemGUI();
+
         }
     }
 }

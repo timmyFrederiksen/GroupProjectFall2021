@@ -17,22 +17,20 @@ public class MenuItemPanel extends JPanel implements ActionListener{
     private JPanel p, centerPanel, rightPanel, leftPanel;
     private JTextField name, category, price, descriptionText;
     private JTextArea description;
-    
+
     private JButton removeButton = new JButton("Remove Item");
     private JButton editButton = new JButton("Edit Item");
-    
+
     private FoodDescription fd;
-    
+
     private ManagerMenuGUI managerMenuGUI;
 
 
     public MenuItemPanel(String name, String category, Double price, String description){
-    	
-    	
-    	this.name = new JTextField(name); 
-    	this.category = new JTextField(category); 
-    	this.descriptionText = new JTextField();    
-    	this.price = new JTextField(price.toString());    
+        this.name = new JTextField(name);
+        this.category = new JTextField(category);
+        this.descriptionText = new JTextField();
+        this.price = new JTextField(price.toString());
         this.description = new JTextArea(description);
         this.name.setColumns(15);
         centerPanel = new JPanel();
@@ -42,37 +40,37 @@ public class MenuItemPanel extends JPanel implements ActionListener{
     }
 
     public MenuItemPanel(FoodDescription foodDescription) {
-    	fd = foodDescription;
-    	this.name = new JTextField(foodDescription.getName()); 
-    	this.category = new JTextField(foodDescription.getCategory()); 
-    	this.descriptionText = new JTextField();    
-    	this.price = new JTextField(foodDescription.getPrice().toString());    
+        fd = foodDescription;
+        this.name = new JTextField(foodDescription.getName());
+        this.category = new JTextField(foodDescription.getCategory());
+        this.descriptionText = new JTextField();
+        this.price = new JTextField(foodDescription.getPrice().toString());
         this.description = new JTextArea(foodDescription.getDetails());
-        
+
         this.name.setColumns(15);
         centerPanel = new JPanel();
         rightPanel = new JPanel();
         leftPanel = new JPanel();
         createAndShowGUI();
-	}
+    }
 
-	public MenuItemPanel(FoodDescription foodDescription, ManagerMenuGUI managerMenuGUI) {
-		this.managerMenuGUI = managerMenuGUI;
-		fd = foodDescription;
-    	this.name = new JTextField(foodDescription.getName()); 
-    	this.category = new JTextField(foodDescription.getCategory()); 
-    	this.descriptionText = new JTextField();    
-    	this.price = new JTextField(foodDescription.getPrice().toString());    
+    public MenuItemPanel(FoodDescription foodDescription, ManagerMenuGUI managerMenuGUI) {
+        this.managerMenuGUI = managerMenuGUI;
+        fd = foodDescription;
+        this.name = new JTextField(foodDescription.getName());
+        this.category = new JTextField(foodDescription.getCategory());
+        this.descriptionText = new JTextField();
+        this.price = new JTextField(foodDescription.getPrice().toString());
         this.description = new JTextArea(foodDescription.getDetails());
-        
+
         this.name.setColumns(15);
         centerPanel = new JPanel();
         rightPanel = new JPanel();
         leftPanel = new JPanel();
         createAndShowGUI();
-	}
+    }
 
-	private void createAndShowGUI() {
+    private void createAndShowGUI() {
         String[] labels = {"Item Name: ", "Item Category: ", "Item Price: ", "Item Description: "};
         JTextField[] textFields = {name, category, price, descriptionText};
         int numPairs = labels.length;
@@ -109,26 +107,24 @@ public class MenuItemPanel extends JPanel implements ActionListener{
         leftPanel.add(scroll);
 
 
-        centerPanel.setPreferredSize(new Dimension(125, 125));
-        rightPanel.setPreferredSize(new Dimension(125, 125));
+        centerPanel.setPreferredSize(new Dimension(75, 125));
 
-
-        /*rightPanel.add(editButton);
+        rightPanel.add(editButton);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 15)));
-        rightPanel.add(removeButton);*/
+        rightPanel.add(removeButton);
 
 
         add(leftPanel, BorderLayout.LINE_START);
         add(centerPanel, BorderLayout.CENTER);
         add(rightPanel, BorderLayout.LINE_END);
-        
+
         removeButton.addActionListener(this);
         editButton.addActionListener(this);
-        
-        
+
+
     }
     //@Override
-    
+
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == removeButton) {
             MenuDAO gateway = new MenuDAO();
@@ -147,14 +143,14 @@ public class MenuItemPanel extends JPanel implements ActionListener{
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
-            managerMenuGUI.dispose();	
+            managerMenuGUI.dispose();
             new ManagerMenuGUI(items);
-            
+
 
         }
         else if(e.getSource() == editButton) {
-        	AddItemGUI addItemGUI = new AddItemGUI();
-        	managerMenuGUI.dispose();
+            AddItemGUI addItemGUI = new AddItemGUI(fd);
+            managerMenuGUI.dispose();
         }
     }
 
