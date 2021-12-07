@@ -77,8 +77,23 @@ public class ManagerLoginGUI extends JFrame implements ActionListener{
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	//if()
+            	Manager manager = new Manager(usernameText.getText(), String.valueOf(passwordText.getPassword()));
+            	if(manager.managerExists()) {
+            		
+   
                 dispose();
                 ManagerMainPageGUI managerMainPageGUI = new ManagerMainPageGUI();
+            	}else {
+            		failure.setText("Incorrect Credentails!");
+            	}
+            }
+        });
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                ManagerRegistrarGUI ManagerRegistrarGUI = new ManagerRegistrarGUI();
             }
         });
     }

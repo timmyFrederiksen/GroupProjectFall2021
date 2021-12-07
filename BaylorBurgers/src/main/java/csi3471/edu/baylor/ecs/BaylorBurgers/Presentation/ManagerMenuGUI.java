@@ -61,6 +61,12 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         add(menuLabelPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(addItemPanel, BorderLayout.SOUTH);
+        
+        menuBar = new MenuBar();
+        menuBar.removeCartMenu();
+        menuBar.removeHelpMenu();
+        menuBar.getBackMenu().addActionListener(this);
+        setJMenuBar(menuBar);
 
 
 
@@ -89,12 +95,12 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         this.setSize(700, 700);
         this.setVisible(true);
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == menuBar.getBackMenu()){
             dispose();
             new ManagerMainPageGUI();
+
         }
     }
 }
