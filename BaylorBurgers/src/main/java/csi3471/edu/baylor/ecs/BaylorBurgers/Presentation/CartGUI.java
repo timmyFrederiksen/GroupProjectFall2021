@@ -60,6 +60,7 @@ public class CartGUI extends JDialog implements ActionListener {
         menuBar = new MenuBar();
         menuBar.removeCartMenu();
         menuBar.getBackMenu().addActionListener(this);
+        menuBar.getHelp().addActionListener(this);
         setJMenuBar(menuBar);
 
 
@@ -89,6 +90,9 @@ public class CartGUI extends JDialog implements ActionListener {
             dispose();
         }else if(e.getSource() == checkoutButton) {
             PaymentGUI paymentGUI = new PaymentGUI();
+        }
+        else if(e.getSource()== menuBar.getHelp()) {
+        	JOptionPane.showMessageDialog(new JFrame("Help Request"), "An employee will assist you momentarily", "Warning", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

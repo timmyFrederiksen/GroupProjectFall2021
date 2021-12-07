@@ -65,6 +65,7 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         setJMenuBar(menuBar);
         menuBar.getBackMenu().addActionListener(this);
         menuBar.getCartMenu().addActionListener(this);
+        menuBar.getHelp().addActionListener(this);
 
         drinksButton.addActionListener(this);
         foodButton.addActionListener(this);
@@ -122,7 +123,11 @@ public class MainMenuGUI extends JFrame implements ActionListener{
             }
             CategoryGUI categoryGUI = new CategoryGUI(new Category("Food"), items);
         }
-        
+        else if(e.getSource() == menuBar.getHelp()) {
+        	
+        	JOptionPane.showMessageDialog(new JFrame("Help Request"), "An employee will assist you momentarily", "Warning", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
 }

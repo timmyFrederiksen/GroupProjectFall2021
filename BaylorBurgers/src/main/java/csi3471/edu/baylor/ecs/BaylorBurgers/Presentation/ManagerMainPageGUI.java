@@ -66,7 +66,9 @@ public class ManagerMainPageGUI extends JFrame implements ActionListener{
         add(mainMenuHeader, BorderLayout.NORTH);
         add(mainMenuButtons, BorderLayout.CENTER);
 
+
         viewMenuButton.addActionListener(this);
+
 
     }
 
