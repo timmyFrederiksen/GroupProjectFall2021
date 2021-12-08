@@ -30,7 +30,6 @@ public class ItemGUI extends JDialog {
 
         for(int i = 0; i < labelTitles.length; i++){
             JLabel label = new JLabel(labelTitles[i] + itemLabels[i]);
-            //label.setPreferredSize(new Dimension(100, 20));
             titleLabels.add(label);
         }
         detailsLabels = new ArrayList<>();
@@ -45,20 +44,6 @@ public class ItemGUI extends JDialog {
     }
     
 	private void addGUIComponents() {
-        //GridLayout detailsGrid = new GridLayout(2, 2);
-        //JPanel detailsPanel = new JPanel();
-        //detailsPanel.setBorder(new EmptyBorder(new Insets(0, 25, 0, 0)));
-        //detailsPanel.setPreferredSize(new Dimension(10, 10));
-        //detailsPanel.setLayout(detailsGrid);
-
-        /*for(int i = 0; i < titleLabels.size(); i++){
-            Border border = BorderFactory.createLineBorder(Color.BLACK);
-            titleLabels.get(i).setBorder(border);
-            detailsLabels.get(i).setBorder(border);
-            detailsPanel.add(titleLabels.get(i));
-            detailsPanel.add(detailsLabels.get(i));
-        }*/
-
         JPanel descriptionPanel = new JPanel();
         Color green = new Color(21, 71, 52);
         Color gold = new Color(255, 184, 28);
@@ -74,7 +59,6 @@ public class ItemGUI extends JDialog {
         JButton orderButton = new JButton("Order " + itemDescription.getName());
 
         descriptionPanel.setBorder(new EmptyBorder(new Insets(50, 25, 25, 0)));
-
 
         for(JLabel label : titleLabels){
             descriptionPanel.add(label);
