@@ -11,7 +11,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class CategoryGUI extends JFrame implements ActionListener{
+/**
+ * This class creates and manages the GUI associated with category objects.
+ * <p>
+ * This class extends JFrame and implements ActionListener.
+ */
+public class CategoryGUI extends JFrame implements ActionListener {
 
     private Category category;
     private MenuBar menuBar;
@@ -25,6 +30,12 @@ public class CategoryGUI extends JFrame implements ActionListener{
     
     private Vector<FoodDescription> items;
 
+    /**
+     * This function constructs a CategoryGUI with specified Category
+     * and FoodDescriptions.
+     * @param category The provided Category
+     * @param items Vector of FoodDescriptions
+     */
     public CategoryGUI(Category category, Vector<FoodDescription> items){
         foodItemButtons = new ArrayList<>();
         // add Buttons
@@ -34,6 +45,11 @@ public class CategoryGUI extends JFrame implements ActionListener{
         
         createAndShowGUI();
     }
+    
+    /**
+     * This function adds GUI components to the GUI backbone for a 
+     * CategoryGUI object.
+     */
     private void addGUIComponents() {
         categoryLabel = new JLabel(category.getCategoryName());
         categoryLabel.setFont(new Font("Arial", Font.PLAIN, 48));
@@ -104,6 +120,10 @@ public class CategoryGUI extends JFrame implements ActionListener{
         add(categoryHeader, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
     }
+    
+    /**
+     * This function creates a GUI backbone for a CategoryGUI object.
+     */
     private void createAndShowGUI() {
         this.setTitle("Baylor Burgers " + category.getCategoryName());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -114,6 +134,12 @@ public class CategoryGUI extends JFrame implements ActionListener{
         this.setSize(800, 625);
         this.setVisible(true);
     }
+    
+    /**
+     * This function listens for a button press and if one is pressed,
+     * it will execute the given functionality for the button
+     * @param e The button that was pushed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == menuBar.getBackMenu()){
