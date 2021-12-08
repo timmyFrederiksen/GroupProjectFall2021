@@ -6,15 +6,23 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
-public class LoginGUI extends JPanel implements ActionListener{
+/**
+ * 
+ * This class creates and manages start menu for the program. 
+ * <p>
+ * this class extends JPanel and implements ActionListener.
+ */
+public class LoginGUI extends JPanel implements ActionListener {
 
     private JButton customerViewButton;
     private JButton managerViewButton;
     private JPanel buttonPanel;
     private static JFrame frame;
 
-
+    /**
+     * This function constructs the LoginGUI and creates the UI for
+     * the display.
+     */
     public LoginGUI(){
         super();
         customerViewButton = new JButton("Customer View");
@@ -44,6 +52,10 @@ public class LoginGUI extends JPanel implements ActionListener{
         managerViewButton.addActionListener(this);
 
     }
+    
+    /**
+     * This function creates the GUI backbone for the LoginGUI object.
+     */
     private static void createAndShowGUI() {
         //Create and set up the window.
         frame = new JFrame("Baylor Burgers");
@@ -59,15 +71,29 @@ public class LoginGUI extends JPanel implements ActionListener{
         frame.pack();
         frame.setVisible(true);
     }
+    
+    /** 
+     * This function begins the GUI construction process.
+     */
     public static void showGUI(){
         createAndShowGUI();
     }
+    
+    /**
+     * This is the entry point of the application.
+     * @param args should be empty.
+     */
     public static void main(String[] args) {
         //Schedule a job for the event-dispatching thread:
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(LoginGUI::createAndShowGUI);
     }
 
+    /**
+     * This function overrides the default behavior from ActionListener.
+     * @param e The button that was clicked. This determines which GUI
+     * to transition to.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == customerViewButton){

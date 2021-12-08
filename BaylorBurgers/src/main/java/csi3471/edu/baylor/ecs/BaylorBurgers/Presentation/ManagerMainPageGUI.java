@@ -14,16 +14,28 @@ import java.io.*;
 import java.sql.SQLException;
 import java.util.Vector;
 
-public class ManagerMainPageGUI extends JFrame implements ActionListener{
+/**
+ * This class creates and manages GUI for the main manager page.
+ * <p>
+ * This class extends JFrame and implements ActionListener
+ */
+public class ManagerMainPageGUI extends JFrame implements ActionListener {
     private JLabel mainMenuLabel;
     private JPanel mainMenuPanel, mainMenuHeader, mainMenuButtons;
     private JButton viewMenuButton, viewPurchasesButton;
     private MenuBar menuBar;
 
+    /**
+     * This function begins the process of building the GUI for
+     * ManagerMainPageGUI.
+     */
     public ManagerMainPageGUI(){
         createAndShowGUI();
     }
 
+    /**
+     * This function adds GUI components to the GUI and displays it.
+     */
     private void addGUIComponents() {
         mainMenuLabel = new JLabel("Manager Main Page");
         mainMenuLabel.setFont(new Font("Arial", Font.PLAIN, 48));
@@ -75,6 +87,9 @@ public class ManagerMainPageGUI extends JFrame implements ActionListener{
         viewMenuButton.addActionListener(this);
     }
 
+    /** 
+     * This function creates a GUI backbone for the ManagerMainPageGUI.
+     */
     private void createAndShowGUI() {
         this.setTitle("Baylor Burgers Manager Main Page");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -85,6 +100,14 @@ public class ManagerMainPageGUI extends JFrame implements ActionListener{
         this.setSize(675, 375);
         this.setVisible(true);
     }
+    
+    /**
+     * This function listens for a button push on the GUI and
+     * implements logic for each individual button. Overrides default
+     * functionality in ActionListener.
+     * @param e Determines which button was hit and indicates which
+     * functionality needs to happen.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == menuBar.getBackMenu()){
