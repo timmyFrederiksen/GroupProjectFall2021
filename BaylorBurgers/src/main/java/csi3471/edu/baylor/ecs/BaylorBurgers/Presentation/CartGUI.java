@@ -11,6 +11,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * This class creates and manages the GUI associated with the Cart menu.
+ * <p>
+ * This class extends JDialog and implements ActionListener.
+ */
 public class CartGUI extends JDialog implements ActionListener {
     private JLabel cartLabel;
     private JPanel cartLabelPanel, cartPanel, checkoutPanel;
@@ -18,6 +23,9 @@ public class CartGUI extends JDialog implements ActionListener {
     private MenuBar menuBar;
     private JButton checkoutButton;
 
+    /**
+     * This function constructs a CartGUI object.
+     */
     public CartGUI(){
         cartPanel = new JPanel();
         checkoutPanel = new JPanel();
@@ -26,10 +34,12 @@ public class CartGUI extends JDialog implements ActionListener {
         createAndShowGUI();
     }
 
+    /**
+     * This function adds GUI components to the GUI backbone in a CartGUI 
+     * object. 
+     */
     private void addGUIComponents() {
     	
-    	
-
         cartLabel = new JLabel("Cart");
         cartLabel.setFont(new Font("Arial", Font.PLAIN, 48));
         cartLabel.setPreferredSize(new Dimension(500, 100));
@@ -80,6 +90,10 @@ public class CartGUI extends JDialog implements ActionListener {
 
         checkoutButton.addActionListener(this);
     }
+    
+    /**
+     * This function creates a GUI backbone for a CartGUI object.
+     */
     private void createAndShowGUI() {
         this.setTitle("Baylor Burgers Cart");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -91,6 +105,11 @@ public class CartGUI extends JDialog implements ActionListener {
         this.setVisible(true);
     }
 
+    /**
+     * This function listens for button presses and executes the given
+     * instructions for the pressed button.
+     * @param e The button that was pushed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == menuBar.getBackMenu()){
