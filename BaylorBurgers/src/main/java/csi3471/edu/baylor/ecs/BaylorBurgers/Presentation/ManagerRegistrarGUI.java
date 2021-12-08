@@ -111,7 +111,7 @@ public class ManagerRegistrarGUI extends JFrame  {
             		String managerString = m.toString() + "\n";
             		FileWriter fWriter;
 					try {
-						fWriter = new FileWriter(filename);
+						fWriter = new FileWriter(filename, true);
 						fWriter.write(managerString);
 						fWriter.close();
 					} catch (IOException e1) {
