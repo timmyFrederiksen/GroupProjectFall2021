@@ -12,7 +12,12 @@ import java.util.Vector;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class MenuItemPanel extends JPanel implements ActionListener{
+/**
+ * This class creates and manages GUI for menu item panels.
+ * <p>
+ * This class extends JPanel and implements ActionListener.
+ */
+public class MenuItemPanel extends JPanel implements ActionListener {
 
     private JPanel p, centerPanel, rightPanel, leftPanel;
     private JTextField name, category, price, descriptionText;
@@ -26,6 +31,13 @@ public class MenuItemPanel extends JPanel implements ActionListener{
     private ManagerMenuGUI managerMenuGUI;
 
 
+    /**
+     * This function constructs a MenuItemPanel with given parameters.
+     * @param name Name of the item
+     * @param category Category of the item
+     * @param price Price of the item
+     * @param description Description of the item
+     */
     public MenuItemPanel(String name, String category, Double price, String description){
         this.name = new JTextField(name);
         this.category = new JTextField(category);
@@ -39,6 +51,11 @@ public class MenuItemPanel extends JPanel implements ActionListener{
         createAndShowGUI();
     }
 
+    /**
+     * This function constructs a MenuItemPanel with a provided
+     * FoodDescription object.
+     * @param foodDescription The FoodDescription to be displayed
+     */
     public MenuItemPanel(FoodDescription foodDescription) {
         fd = foodDescription;
         this.name = new JTextField(foodDescription.getName());
@@ -54,6 +71,12 @@ public class MenuItemPanel extends JPanel implements ActionListener{
         createAndShowGUI();
     }
 
+    /**
+     * Constructs a MenuItemPanel with given FoodDescription and a
+     * reference to the manager menu GUI.
+     * @param foodDescription The FoodDescription object to be displayed.
+     * @param managerMenuGUI The provided ManagerMenuGUI object
+     */
     public MenuItemPanel(FoodDescription foodDescription, ManagerMenuGUI managerMenuGUI) {
         this.managerMenuGUI = managerMenuGUI;
         fd = foodDescription;
@@ -70,6 +93,9 @@ public class MenuItemPanel extends JPanel implements ActionListener{
         createAndShowGUI();
     }
 
+    /**
+     * This function creates and displays the MenuItemPanelGUI
+     */
     private void createAndShowGUI() {
 
         setPreferredSize(new Dimension(550, 175));
@@ -129,10 +155,13 @@ public class MenuItemPanel extends JPanel implements ActionListener{
         removeButton.addActionListener(this);
         editButton.addActionListener(this);
 
-
     }
-    //@Override
 
+    /**
+     * This function listens for a button press and performs the
+     * pressed button's provided functionality.
+     * @param e The button that was pressed.
+     */
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == removeButton) {
             MenuDAO gateway = new MenuDAO();
@@ -150,8 +179,6 @@ public class MenuItemPanel extends JPanel implements ActionListener{
                 e1.printStackTrace();
             }
             managerMenuGUI.dispose();
-
-
 
         }
         else if(e.getSource() == editButton) {
