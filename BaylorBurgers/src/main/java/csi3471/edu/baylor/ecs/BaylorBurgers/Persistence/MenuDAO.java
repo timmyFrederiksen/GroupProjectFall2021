@@ -11,6 +11,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 
+/**
+ * This class handles menu database access and transactions.
+ */
 public class MenuDAO {
     private static final String DB_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
     private static final String DB_CONNECTION = "jdbc:derby:menuconnect;create=true";
@@ -20,8 +23,16 @@ public class MenuDAO {
     private Statement statement;
     private Connection dbConnection;
 
+    /**
+     * Constructs a MenuDAO object.
+     */
     public MenuDAO() {
     }
+    
+    /**
+     * This function creates a table to hold Employee login credentials.
+     * @throws SQLException
+     */
     public void createEmployeeTable() throws SQLException {
         this.dbConnection = null;
         this.statement = null;
@@ -78,6 +89,10 @@ public class MenuDAO {
 
     }
 	*/
+    /**
+     * This function accesses the database.
+     * @return Returns a connection to the database.
+     */
     public static Connection getDBConnection() {
         Connection dbConnection = null;
 
@@ -96,6 +111,11 @@ public class MenuDAO {
         }
     }
 
+    /**
+     * This function enters a new FoodDescription object into the database.
+     * @param e The FoodDescription object to be entered into the database.
+     * @throws SQLException
+     */
     public void save(FoodDescription e) throws SQLException {
         this.dbConnection = null;
         this.statement = null;
@@ -167,6 +187,12 @@ public class MenuDAO {
         return e;
     }
 	*/
+    
+    /**
+     * This function deletes a FoodDescription from the database.
+     * @param name String containing the name of the FoodDescription.
+     * @throws SQLException
+     */
     public void delete(String name) throws SQLException {
         this.dbConnection = null;
         this.statement = null;
@@ -192,6 +218,12 @@ public class MenuDAO {
 
     }
     
+    /**
+     * This function accesses the database to get all FoodDescriptions that
+     * are currently in the database.
+     * @return A vector of all FoodDescriptions currently in the database.
+     * @throws SQLException
+     */
     public Vector<FoodDescription> findAll() throws SQLException {
         this.dbConnection = null;
         this.statement = null;
@@ -262,6 +294,13 @@ public class MenuDAO {
     }
 	*/
     //"Drinks or Food"
+    /**
+     * This function accesses the database to find all FoodDescription objects
+     * that matches the provided category.
+     * @param query The category of FoodDescription to be accessed
+     * @return A vector of all FoodDescription items that match the category.
+     * @throws SQLException
+     */
     public Vector<FoodDescription> find(String query) throws SQLException {
         this.dbConnection = null;
         this.statement = null;

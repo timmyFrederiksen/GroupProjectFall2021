@@ -12,7 +12,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class ManagerMenuGUI extends JFrame implements ActionListener{
+/**
+ * This class creates and manages GUI for the manager menu.
+ * <p>
+ * This class extends JFrame and implements ActionListener
+ */
+public class ManagerMenuGUI extends JFrame implements ActionListener {
     private JLabel managerMenuLabel;
     private JPanel menuLabelPanel, addItemPanel;
     private static JPanel managerMenuPanel = new JPanel();
@@ -21,8 +26,10 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
     private Vector<FoodDescription> items;
     private JButton addItemButton;
 
-
-
+    /**
+     * This function constructs a ManagerMenuGUI object and 
+     * creates a basic backbone for the GUI.
+     */
     public ManagerMenuGUI(){
         addItemPanel = new JPanel();
         menuItemPanels = new ArrayList<>();
@@ -30,6 +37,9 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
 
     }
 
+    /**
+     * This function adds GUI components to the GUI backbone.
+     */
     private void addGUIComponents() {
 
         managerMenuLabel = new JLabel("Menu");
@@ -84,6 +94,11 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         addItemButton.addActionListener(this);
 
     }
+    
+    /**
+     * This function updates the Panel for when a new item is added.
+     * @param items The list of menu items currently in the menu.
+     */
     public void updatePanel(Vector<FoodDescription> items){
         managerMenuPanel = new JPanel();
         Border border = BorderFactory.createLineBorder(Color.BLACK);
@@ -101,6 +116,10 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         managerMenuPanel.repaint();
     }
      */
+    
+    /**
+     * This function sets basic GUI frame properties.
+     */
     public void createAndShowGUI() {
         this.setTitle("Baylor Burgers Manager Menu View");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -112,6 +131,12 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         this.setSize(700, 700);
         this.setVisible(true);
     }
+    
+    /**
+     * Overrides default ActionListener behavior and handles
+     * button logic for a ManagerMenuGUI object.
+     * @param e This indicated which button was pressed.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == menuBar.getBackMenu()){
