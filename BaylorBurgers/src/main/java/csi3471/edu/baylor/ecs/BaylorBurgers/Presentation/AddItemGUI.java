@@ -6,7 +6,6 @@ import csi3471.edu.baylor.ecs.BaylorBurgers.Persistence.MenuDAO;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -127,26 +126,53 @@ class AddItemGUI extends JDialog implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         if(e.getSource() == saveInfo) {
-            MenuDAO gateway = new MenuDAO();
 
-            try {
-                FoodDescription query = new FoodDescription(textFields.get(0).getText(),
-                        (String)categoryBox.getSelectedItem(), Double.parseDouble(textFields.get(2).getText()), textFields.get(3).getText());
-                query.setId(id);
+            Boolean isValid = true;
+            String name = textFields.get(0).getText();
+            String price = textFields.get(2).getText();
+            String description = textFields.get(3).getText();
 
-                gateway.save(query);
-                Vector<FoodDescription> items = null;
-                items = gateway.findAll();
-                ManagerMenuGUI m = new ManagerMenuGUI();
-                m.updatePanel(items);
-                //m.createAndShowGUI();
-                m.createAndShowGUI();
-
-            } catch (SQLException e1) {
-                e1.printStackTrace();
+            if(name.equals("") || price.equals("") || description.equals("")){
+                isValid = false;
             }
-            dispose();
+            if(description.length() >= 255 || name.length() >= 255){
+                isValid = false;
+            }
+
+            try{
+                double t = Double.parseDouble(price);
+            } catch (NumberFormatException numberFormatException) {
+                isValid = false;
+            }
+
+
+            if (isValid) {
+                MenuDAO gateway = new MenuDAO();
+
+                try {
+                    FoodDescription query = new FoodDescription(textFields.get(0).getText(),
+                            (String)categoryBox.getSelectedItem(), Double.parseDouble(textFields.get(2).getText()), textFields.get(3).getText());
+                    query.setId(id);
+
+                    gateway.save(query);
+                    Vector<FoodDescription> items = null;
+                    items = gateway.findAll();
+                    ManagerMenuGUI m = new ManagerMenuGUI();
+                    m.updatePanel(items);
+                    //m.createAndShowGUI();
+                    m.createAndShowGUI();
+
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+                dispose();
+            } else {
+                // Invalid Card Info
+                JOptionPane.showMessageDialog(new JFrame("Error"), "Invalid Information: For More Info Read Guide", "Warning", JOptionPane.ERROR_MESSAGE);
+            }
+
 
 
         }else if(e.getSource() == cancelInfo) {
