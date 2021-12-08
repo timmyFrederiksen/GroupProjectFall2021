@@ -1,6 +1,7 @@
 package csi3471.edu.baylor.ecs.BaylorBurgers.Business;
 
 import java.time.LocalTime;
+import java.util.Objects;
 
 /**
  * FoodDescription describe an item to be ordered, contains name, category,
@@ -120,5 +121,16 @@ public class FoodDescription {
 	}
 
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		FoodDescription that = (FoodDescription) o;
+		return Objects.equals(name, that.name) && Objects.equals(category, that.category) && Objects.equals(price, that.price) && Objects.equals(details, that.details);
+	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, category, price, details);
+	}
 }
