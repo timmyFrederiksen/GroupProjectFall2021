@@ -60,7 +60,7 @@ public class MenuItemPanel extends JPanel implements ActionListener{
         this.name = new JTextField(foodDescription.getName());
         this.category = new JTextField(foodDescription.getCategory());
         this.descriptionText = new JTextField();
-        this.price = new JTextField(foodDescription.getPrice().toString());
+        this.price = new JTextField(String.format("%.2f", foodDescription.getPrice()));
         this.description = new JTextArea(foodDescription.getDetails());
 
         this.name.setColumns(15);
