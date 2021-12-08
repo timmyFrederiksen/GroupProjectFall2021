@@ -6,7 +6,6 @@ import csi3471.edu.baylor.ecs.BaylorBurgers.Persistence.MenuDAO;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
