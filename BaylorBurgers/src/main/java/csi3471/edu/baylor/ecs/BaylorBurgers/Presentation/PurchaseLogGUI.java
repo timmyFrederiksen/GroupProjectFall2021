@@ -14,20 +14,45 @@ import csi3471.edu.baylor.ecs.BaylorBurgers.Business.Cart;
 
 import java.util.Random;
 
+/**
+ * 
+ * This class functions as a receipt of the purchase and constructs and
+ * manages GUI for this purpose
+ * <p>
+ * This class extends JDialog
+ */
 public class PurchaseLogGUI extends JDialog {
-	
+
 	private String cardNum = null;
 	
+	/**
+	 * Constructs the PurchaseLogGUI with the given choice for the String 
+	 * parameter's meaning. This constructor builds the GUI for the receipt.
+	 * @param cardNum String that contains the card number for the purchase (choice = 1)
+	 * or the manager who facilitates the purchase (choice = 2).
+	 * @param choice Indicates the purpose of the cardNum parameter, see cardNum above.
+	 */
     public PurchaseLogGUI(String cardNum, int choice){
     	this.cardNum = cardNum;
         createAndShowGUI(choice);
     }
     
+    /**
+     * Constructs the PurchaseLogGUI with inactive cardNum string, and the
+     * GUI will not include them.
+     */
     public PurchaseLogGUI() {
     	this.cardNum = "";
     	createAndShowGUI(0);
     }
     
+    /**
+     * Creates the GUI backbone for a PurchaseLogGUI, this includes
+     * a price, an order number, and (depending on the type) something else.
+     * @param type If type = 0, nothing additional is displayed. If type = 1,
+     * the card number used for the purchase is displayed. If type = 2, the
+     * manager who facilitated the purchase is displayed.
+     */
     private void createAndShowGUI(int type){
         this.setTitle("Receipt");
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -40,6 +65,13 @@ public class PurchaseLogGUI extends JDialog {
         this.setVisible(true);
     }
     
+    /**
+     * This function adds the individual components to the GUI backbone and
+     * arranges and displays them to the user.
+     * @param type  If type = 0, nothing additional is displayed. If type = 1,
+     * the card number used for the purchase is displayed. If type = 2, the
+     * manager who facilitated the purchase is displayed.
+     */
     private void addGUIComponents(int type) {
         JPanel receiptPanel = new JPanel();
         receiptPanel.setLayout(new GridLayout(4, 1, 2, 2));
