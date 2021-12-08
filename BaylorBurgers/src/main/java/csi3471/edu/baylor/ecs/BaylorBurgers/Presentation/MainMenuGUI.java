@@ -49,9 +49,12 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         drinksButton = new JButton("Drinks");
         foodButton = new JButton("Food");
 
-        drinksButton.setBackground(Color.WHITE);
-        foodButton.setBackground(Color.WHITE);
-
+        Color green = new Color(21, 71, 52);
+        Color gold = new Color(255, 184, 28);
+        mainMenuLabel.setBackground(gold);
+        mainMenuButtons.setBackground(gold);
+        mainMenuHeader.setBackground(green);
+        
 
         drinksButton.setPreferredSize(new Dimension(300, 300));
         foodButton.setPreferredSize(new Dimension(300, 300));
@@ -60,8 +63,8 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         mainMenuButtons.add(foodButton);
 
         mainMenuHeader.add(mainMenuLabel);
-
-             menuBar = new MenuBar();
+      
+        menuBar = new MenuBar();
         setJMenuBar(menuBar);
         menuBar.getBackMenu().addActionListener(this);
         menuBar.getCartMenu().addActionListener(this);
