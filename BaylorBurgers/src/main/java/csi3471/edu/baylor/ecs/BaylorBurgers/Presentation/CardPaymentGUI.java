@@ -17,18 +17,29 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * CardPaymentGUI creates and manages the GUI for entering card payment
+ * information; this class also checks for valid input.
+ * <p>
+ * CardPaymentGUI extends from JDialog
+ */
 class CardPaymentGUI extends JDialog {
     private String[] input = null;
     ArrayList<JTextField> textFields = new ArrayList<>();
     private String[] names = new String[]{"Card Number:", "CVV:", "Expiration Month:", 
     		"Expiration Year:"};
 
+    /**
+     * Constructor for CardPaymentGUI.
+     */
     public CardPaymentGUI() {
         super();
         createAndShowGUI();
     }
 
-
+    /**
+     * Creates the GUI for CardPaymentGUI and displays it.
+     */
     private void createAndShowGUI() {
     	
         setPreferredSize(new Dimension(450, 300));
