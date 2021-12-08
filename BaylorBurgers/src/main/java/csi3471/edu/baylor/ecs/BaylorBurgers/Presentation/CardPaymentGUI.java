@@ -116,6 +116,11 @@ class CardPaymentGUI extends JDialog {
             			isValid = false;
             		}
             	}
+                if(isValid) {
+                    if (!(Integer.parseInt(expMonth) > 0 && Integer.parseInt(expMonth) <= 12)){
+                        isValid = false;
+                    }
+                }
             	
             	// Expiration Year check (1-2 digits)
             	if (expYear.length() != 4) {

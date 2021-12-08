@@ -59,6 +59,7 @@ public class ItemGUI extends JDialog {
     private void addGUIComponents() {
         //JPanel descriptionPanel = new JPanel();
         JPanel areaPanel = new JPanel();
+        areaPanel.setPreferredSize(new Dimension(400, 400));
         areaPanel.setLayout(new SpringLayout());
         Color green = new Color(21, 71, 52);
         Color gold = new Color(255, 184, 28);
@@ -73,7 +74,8 @@ public class ItemGUI extends JDialog {
         JLabel descriptTitleLabel = new JLabel("Item Description:");
         JTextArea descriptionArea = new JTextArea(itemDescription.getDetails());
         JLabel descriptionLabel = new JLabel(itemDescription.getDetails());
-        JButton orderButton = new JButton("Order " + itemDescription.getName());
+        JButton orderButton = new JButton("");
+        orderButton.setText("Order " + itemDescription.getName());
 
         descriptionArea.setEditable(false);
         descriptionArea.setWrapStyleWord(true);
@@ -81,8 +83,9 @@ public class ItemGUI extends JDialog {
         scroll.setPreferredSize(new Dimension(150, 50));
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        areaPanel.setBorder(new EmptyBorder(new Insets(25, 25, 25, 0)));
-        //descriptionPanel.setBorder(new EmptyBorder(new Insets(50, 25, 25, 0)));
+        areaPanel.setBorder(new EmptyBorder(new Insets(25, 25, 25, 25)));
+
+        //descriptionPanel.setBorder(new EmptyBorder(new Insets(50, 25, 25, 25)));
 
         for(JLabel label : titleLabels){
             areaPanel.add(label);
@@ -105,9 +108,8 @@ public class ItemGUI extends JDialog {
                 6, 1,
                 6, 6,
                 6, 18);
-
-        add(areaPanel);
         //add(descriptionPanel);
+        add(areaPanel);
 
         orderButton.addActionListener(new ActionListener() {
             @Override
