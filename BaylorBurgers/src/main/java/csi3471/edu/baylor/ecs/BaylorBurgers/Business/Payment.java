@@ -7,6 +7,7 @@ import csi3471.edu.baylor.ecs.BaylorBurgers.Presentation.*;
 import java.util.Date;
 
 /**
+ * @deprecated
  * @see PaymentGUI
  * @see PurchaseItemGUI
  */
