@@ -71,6 +71,8 @@ public class MenuItemPanel extends JPanel implements ActionListener{
     }
 
     private void createAndShowGUI() {
+
+        setPreferredSize(new Dimension(550, 175));
         String[] labels = {"Item Name: ", "Item Category: ", "Item Price: ", "Item Description: "};
         JTextField[] textFields = {name, category, price, descriptionText};
         int numPairs = labels.length;
@@ -107,13 +109,11 @@ public class MenuItemPanel extends JPanel implements ActionListener{
         leftPanel.setBackground(gold);
         centerPanel.setBackground(gold);
 
-        description.setPreferredSize(new Dimension(50, 30));
         JScrollPane scroll = new JScrollPane(description);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         leftPanel.add(p);
-        //leftPanel.add(Box.createRigidArea(new Dimension(0, 15)));
+        scroll.setPreferredSize(new Dimension(60, 50));
         leftPanel.add(scroll);
-
 
         centerPanel.setPreferredSize(new Dimension(75, 125));
 

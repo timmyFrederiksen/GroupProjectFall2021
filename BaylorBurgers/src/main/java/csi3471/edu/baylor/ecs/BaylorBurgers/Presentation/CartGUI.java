@@ -50,7 +50,7 @@ public class CartGUI extends JDialog implements ActionListener {
 
         for(int i = 0; i < c.getItems().size(); i++){
             CartItemPanel panel = new CartItemPanel(c.getItems().get(i), this);
-            panel.setPreferredSize(new Dimension(500, 150));
+            panel.setPreferredSize(new Dimension(500, 175));
             panel.setBorder(border);
             cartPanel.add(panel);
             cartPanel.add(Box.createRigidArea(new Dimension(0, 20)));

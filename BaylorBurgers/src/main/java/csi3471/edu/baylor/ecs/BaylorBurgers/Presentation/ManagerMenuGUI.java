@@ -51,8 +51,8 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         menuLabelPanel.setBackground(green);
         addItemPanel.setBackground(gold);
 
-        managerMenuPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
-        menuLabelPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
+        managerMenuPanel.setBorder(new EmptyBorder(10, 10, 10 ,10));
+        menuLabelPanel.setBorder(new EmptyBorder(10, 10, 10 ,10));
 
         addItemPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
         addItemPanel.add(addItemButton, BorderLayout.CENTER);

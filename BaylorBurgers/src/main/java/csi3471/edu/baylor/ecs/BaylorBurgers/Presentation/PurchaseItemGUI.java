@@ -4,7 +4,7 @@ import csi3471.edu.baylor.ecs.BaylorBurgers.Business.*;
 
 import javax.swing.*;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
@@ -38,10 +38,11 @@ public class PurchaseItemGUI extends JDialog {
             listOfQuantities.add(i + 1);
         }
         JComboBox quantityCB = new JComboBox(listOfQuantities);
+
         quantityCB.setEditable(false);
 
         //JTextField quantity = new JTextField();
-        quantityCB.setBounds(10, 50, 65, 25);
+        quantityCB.setBounds(10, 50, 75, 30);
         panel.add(quantityCB);
 
         JLabel notesLabel = new JLabel("Are there any changes you would like to make to the item?");

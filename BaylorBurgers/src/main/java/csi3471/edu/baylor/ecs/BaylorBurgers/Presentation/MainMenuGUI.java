@@ -118,7 +118,6 @@ public class MainMenuGUI extends JFrame implements ActionListener{
                 //gateway.createEmployeeTable();
                 items = gateway.find("Food");
             } catch (SQLException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
             CategoryGUI categoryGUI = new CategoryGUI(new Category("Food"), items);
