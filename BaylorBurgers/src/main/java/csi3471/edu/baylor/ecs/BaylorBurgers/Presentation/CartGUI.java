@@ -42,7 +42,7 @@ public class CartGUI extends JDialog implements ActionListener {
         cartLabelPanel.add(cartLabel);
 
         Border border = BorderFactory.createLineBorder(Color.BLACK);
-        cartPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
+        cartPanel.setBorder(new EmptyBorder(10, 10, 10 ,10));
 
         BoxLayout boxLayout = new BoxLayout(cartPanel, BoxLayout.Y_AXIS);
         cartPanel.setLayout(boxLayout);
@@ -56,14 +56,14 @@ public class CartGUI extends JDialog implements ActionListener {
             cartPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         }
 
-        cartLabelPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
+        cartLabelPanel.setBorder(new EmptyBorder(0, 10, 0 ,10));
         
         Color green = new Color(21, 71, 52);
         Color gold = new Color(255, 184, 28);
         cartLabelPanel.setBackground(green);
         cartPanel.setBackground(gold);
 
-        checkoutPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
+        checkoutPanel.setBorder(new EmptyBorder(0, 10, 0 ,10));
         checkoutPanel.add(checkoutButton, BorderLayout.CENTER);
 
         menuBar = new MenuBar();
@@ -100,9 +100,6 @@ public class CartGUI extends JDialog implements ActionListener {
         } else if(e.getSource() == checkoutButton) {
             
             PaymentGUI paymentGUI = new PaymentGUI();
-        }
-        else if(e.getSource()== menuBar.getHelp()) {
-            JOptionPane.showMessageDialog(new JFrame("Help Request"), "An employee will assist you momentarily", "Warning", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

@@ -24,6 +24,7 @@ public class LoginGUI extends JPanel implements ActionListener{
         managerViewButton.setSize(150, 10);
 
         buttonPanel = new JPanel();
+
         BoxLayout boxLayout = new BoxLayout(buttonPanel, BoxLayout.Y_AXIS);
 
         buttonPanel.setLayout(boxLayout);

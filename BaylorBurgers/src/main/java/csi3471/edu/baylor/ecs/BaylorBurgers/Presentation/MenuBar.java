@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuBar extends JMenuBar {
+public class MenuBar extends JMenuBar implements ActionListener{
     private JMenu menu;
     private JMenuItem backMenu, helpMenu, cartMenu;
     public MenuBar(){
@@ -19,6 +19,8 @@ public class MenuBar extends JMenuBar {
         menu.add(backMenu);
         menu.add(helpMenu);
         menu.add(cartMenu);
+
+        helpMenu.addActionListener(this);
 
         add(menu);
     }
@@ -54,5 +56,14 @@ public class MenuBar extends JMenuBar {
 
     public void setCartMenu(JMenuItem cartMenu) {
         this.cartMenu = cartMenu;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == helpMenu){
+            JOptionPane.showMessageDialog(new JFrame("Help Request"),
+                    "An employee will assist you momentarily.", "Warning",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

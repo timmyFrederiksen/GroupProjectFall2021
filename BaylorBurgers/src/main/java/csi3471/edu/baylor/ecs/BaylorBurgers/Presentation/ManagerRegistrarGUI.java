@@ -97,12 +97,9 @@ public class ManagerRegistrarGUI extends JFrame  {
 						fWriter.write(managerString);
 						fWriter.close();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					failure.setText("You are registered!");
-             
-             
                 }else {
                 	JOptionPane.showMessageDialog(new JFrame("Error"), "Manager already exists", "Warning", JOptionPane.ERROR_MESSAGE);
                 }

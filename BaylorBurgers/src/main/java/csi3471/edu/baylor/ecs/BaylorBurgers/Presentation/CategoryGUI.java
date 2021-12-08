@@ -123,8 +123,5 @@ public class CategoryGUI extends JFrame implements ActionListener{
             dispose();
             new CartGUI();
         }
-        else if(e.getSource() == menuBar.getHelp()) {
-        	JOptionPane.showMessageDialog(new JFrame("Help Request"), "An employee will assist you momentarily", "Warning", JOptionPane.ERROR_MESSAGE);
-        }
     }
 }
