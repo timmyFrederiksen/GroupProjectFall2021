@@ -10,6 +10,14 @@ import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * 
+ * This class creates and manages a GUI to prompt
+ * a manager for login information to indicate that
+ * the payment has been handled.
+ * <p>
+ * This class extends JFrame.
+ */
 public class ManagerPaymentConfirmGUI extends JFrame {
 
     private JPanel panel;
@@ -19,10 +27,18 @@ public class ManagerPaymentConfirmGUI extends JFrame {
     private JTextField usernameText;
     private JPasswordField passwordText;
 
+    /**
+     * This function creates a ManagerPaymentConfirmGUI and begins
+     * building it.
+     */
     ManagerPaymentConfirmGUI(){
         createAndShowGUI();
     }
 
+    /**
+     * This function creates the GUI backbone for a 
+     * ManagerPaymentConfirmGUI object.
+     */
     public void createAndShowGUI() {
         setTitle("Manager Payment Confirmation");
         setSize(500, 300);
@@ -33,6 +49,12 @@ public class ManagerPaymentConfirmGUI extends JFrame {
 
         setVisible(true);
     }
+    
+    /**
+     * This function adds the components to the GUI backbone
+     * and displays to the user. This function determines if entered
+     * information is valid credentials for manager.
+     */
     public void addGUIComponents() {
         Color gold = new Color(255, 184, 28);
     	
