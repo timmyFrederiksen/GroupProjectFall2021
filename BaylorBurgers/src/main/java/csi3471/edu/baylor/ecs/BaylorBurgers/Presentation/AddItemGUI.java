@@ -12,7 +12,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-class AddItemGUI extends JDialog implements ActionListener{
+/**
+ * This class creates and manages the GUI associated with adding an item to 
+ * the menu.
+ * <p>
+ * This class extends JDialog and implements ActionListener
+ */
+class AddItemGUI extends JDialog implements ActionListener {
     private JPanel listPane;
     private JTextField nameField, categoryField, priceField, descriptionField;
     private JComboBox categoryBox;
@@ -25,7 +31,9 @@ class AddItemGUI extends JDialog implements ActionListener{
 
     private Long id;
 
-
+    /**
+     * This function constructs an AddItemGUI object. 
+     */
     public AddItemGUI() {
         super();
         id = null;
@@ -39,7 +47,11 @@ class AddItemGUI extends JDialog implements ActionListener{
         createAndShowGUI();
     }
 
-
+    /**
+     * This function constructs an AddItemGUI object with specified a
+     * FoodDescription object.
+     * @param fd The specified FoodDescription object
+     */
     public AddItemGUI(FoodDescription fd) {
         super();
         id = fd.getId();
@@ -56,7 +68,10 @@ class AddItemGUI extends JDialog implements ActionListener{
         createAndShowGUI();
     }
 
-
+    /**
+     * This function creates and displays the GUI for adding an
+     * item to the menu. 
+     */
     private void createAndShowGUI() {
         setPreferredSize(new Dimension(450, 300));
         setTitle("Add Item");
@@ -123,7 +138,11 @@ class AddItemGUI extends JDialog implements ActionListener{
         setLocationRelativeTo(getParent());
     }
 
-
+    /**
+     * This function listens for a button press and will perform the
+     * designated actions upon said press.
+     * @param e The button that has been pressed 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
