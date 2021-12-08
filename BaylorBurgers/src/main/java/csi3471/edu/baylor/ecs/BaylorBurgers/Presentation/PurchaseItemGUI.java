@@ -15,25 +15,26 @@ public class PurchaseItemGUI extends JDialog {
     JPanel panel;
     protected FoodDescription itemType;
 
-    public PurchaseItemGUI(FoodDescription itemType){
-    	this.itemType = itemType;
+    public PurchaseItemGUI(FoodDescription itemType) {
+        this.itemType = itemType;
         panel = new JPanel();
         createAndShowGUI();
     }
-    private void addGUIComponents(){
+
+    private void addGUIComponents() {
         panel.setLayout(null);
 
         JLabel label = new JLabel("How many of this item would you like? (max 50)");
         label.setBounds(10, 20, 450, 25);
         panel.add(label);
-        
+
         Color green = new Color(21, 71, 52);
         Color gold = new Color(255, 184, 28);
         panel.setBackground(gold);
         this.setBackground(green);
 
         Vector<Integer> listOfQuantities = new Vector<>();
-        for(int i = 0; i < 50; i++){
+        for (int i = 0; i < 50; i++) {
             listOfQuantities.add(i + 1);
         }
         JComboBox quantityCB = new JComboBox(listOfQuantities);
@@ -72,17 +73,20 @@ public class PurchaseItemGUI extends JDialog {
         purchaseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	Integer index = quantityCB.getSelectedIndex()+1;
-            	if(index > 0) {
-            	
-                CartItem item = new CartItem(itemType, index, notes.getText(), (double)itemType.getPrice());
-                Cart c = new Cart();
-                c.addItem(item);
-                JOptionPane.showMessageDialog(new JFrame("Purchased!"), "You have purchased your item(s)", "Successful", JOptionPane.PLAIN_MESSAGE);
-            	}
+                Integer index = quantityCB.getSelectedIndex() + 1;
+                if (index > 0) {
+                    CartItem item = new CartItem(itemType, index, notes.getText(),
+                            (double) itemType.getPrice());
+                    Cart c = new Cart();
+                    c.addItem(item);
+                    dispose();
+                    JOptionPane.showMessageDialog(new JFrame("Purchased!"),
+                            "You have purchased your item(s)", "Successful", JOptionPane.PLAIN_MESSAGE);
+                }
             }
         });
     }
+
     private void createAndShowGUI() {
 
         this.setTitle("Baylor Burgers");
@@ -94,7 +98,6 @@ public class PurchaseItemGUI extends JDialog {
         this.setSize(500, 500);
         this.setVisible(true);
     }
-
 
 
 }

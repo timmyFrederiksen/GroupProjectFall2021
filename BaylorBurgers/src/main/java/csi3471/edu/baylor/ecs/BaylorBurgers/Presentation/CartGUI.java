@@ -87,7 +87,6 @@ public class CartGUI extends JDialog implements ActionListener {
 
         addGUIComponents();
 
-        //this.pack();
         this.setSize(750, 650);
         this.setVisible(true);
     }
@@ -98,7 +97,6 @@ public class CartGUI extends JDialog implements ActionListener {
             new MainMenuGUI();
             dispose();
         } else if(e.getSource() == checkoutButton) {
-            
             PaymentGUI paymentGUI = new PaymentGUI();
         }
     }
