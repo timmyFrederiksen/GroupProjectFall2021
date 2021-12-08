@@ -13,20 +13,29 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Vector;
 
-
-public class MainMenuGUI extends JFrame implements ActionListener{
+/**
+ * This class creates and manages the GUI associated with the main menu.
+ * <p>
+ * This class extends JFrame and implements ActionListener.
+ */
+public class MainMenuGUI extends JFrame implements ActionListener {
 
     private JLabel mainMenuLabel;
     private JPanel mainMenuHeader, mainMenuButtons;
     private JButton drinksButton, foodButton;
     private MenuBar menuBar;
 
-
+    /**
+     * This function constructs a MainMenuGUI object.
+     */
     public MainMenuGUI(){
         super();
         createAndShowGUI();
     }
 
+    /**
+     * This function adds GUI components to the GUI backbone.
+     */
     private void addGUIComponents() {
         mainMenuLabel = new JLabel("Main Menu");
         mainMenuLabel.setFont(new Font("Arial", Font.PLAIN, 48));
@@ -79,6 +88,9 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         //add(viewCart, BorderLayout.SOUTH);
     }
 
+    /**
+     * This function creates a GUI backbone for a MainMenuGUI object.
+     */
     private void createAndShowGUI() {
         this.setTitle("Baylor Burgers Main Menu");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,6 +102,11 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         this.setVisible(true);
     }
 
+    /**
+     * This function listens for a button press and performs the
+     * designated actions for the given button.
+     * @param e The button that was pressed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == menuBar.getBackMenu()){
