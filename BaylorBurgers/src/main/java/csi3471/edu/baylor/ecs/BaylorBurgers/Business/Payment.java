@@ -1,14 +1,16 @@
 package csi3471.edu.baylor.ecs.BaylorBurgers.Business;
 
+
+
+import csi3471.edu.baylor.ecs.BaylorBurgers.Presentation.*;
+
 import java.util.Date;
 
 /**
- * @deprecated
- * @see PaymentGUI.java
- * @see PurchaseItem.java
+ * @see PaymentGUI
+ * @see PurchaseItemGUI
  */
 public class Payment {
-	
 	public static Integer orderNumberGlobal = 100;
 	protected Date transactionDate;
 	protected Boolean isComplete;

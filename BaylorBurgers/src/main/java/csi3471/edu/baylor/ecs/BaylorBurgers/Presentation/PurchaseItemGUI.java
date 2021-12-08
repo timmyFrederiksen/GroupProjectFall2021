@@ -14,9 +14,9 @@ import java.util.Vector;
  * <p>
  * This class extends JDialog
  */
-public class PurchaseItemGUI extends JDialog {
+public class PurchaseItemGUI extends JDialog{
 
-    JPanel panel;
+    private JPanel panel;
     protected FoodDescription itemType;
 
     /**
@@ -104,7 +104,6 @@ public class PurchaseItemGUI extends JDialog {
      * Creates a GUI backbone for a PurchaseItemGUI.
      */
     private void createAndShowGUI() {
-
         this.setTitle("Baylor Burgers");
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setResizable(false);
@@ -114,6 +113,4 @@ public class PurchaseItemGUI extends JDialog {
         this.setSize(500, 500);
         this.setVisible(true);
     }
-
-
 }

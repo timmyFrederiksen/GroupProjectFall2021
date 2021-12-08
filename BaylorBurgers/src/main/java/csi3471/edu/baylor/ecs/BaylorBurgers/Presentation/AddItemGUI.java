@@ -191,9 +191,6 @@ class AddItemGUI extends JDialog implements ActionListener {
                 // Invalid Card Info
                 JOptionPane.showMessageDialog(new JFrame("Error"), "Invalid Information: For More Info Read Guide", "Warning", JOptionPane.ERROR_MESSAGE);
             }
-
-
-
         }else if(e.getSource() == cancelInfo) {
             dispose();
         }

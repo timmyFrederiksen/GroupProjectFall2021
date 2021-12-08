@@ -55,7 +55,6 @@ class CartFormGUI extends JDialog implements ActionListener {
         Color gold = new Color(255, 184, 28);
         listPane.setBackground(green);
         this.setBackground(gold);
-        //listPane.setLayout(new BoxLayout(listPane, BoxLayout.Y_AXIS));
 
         JLabel label = new JLabel("Enter Information:");
         label.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -68,7 +67,6 @@ class CartFormGUI extends JDialog implements ActionListener {
         JPanel infoPane = new JPanel(new SpringLayout());
 
         textFields.add(nameField);
-        //textFields.add(categoryField);
         textFields.add(priceField);
         textFields.add(customizationField);
 
@@ -121,9 +119,9 @@ class CartFormGUI extends JDialog implements ActionListener {
             try {
                 //gateway.createEmployeeTable();
                 gateway.save(new FoodDescription(textFields.get(0).getText(),
-                        (String)categoryBox.getSelectedItem(), Double.parseDouble(textFields.get(2).getText()), textFields.get(3).getText()));
+                        (String)categoryBox.getSelectedItem(), Double.parseDouble(textFields.get(2).getText()),
+                        textFields.get(3).getText()));
             } catch (SQLException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
             dispose();

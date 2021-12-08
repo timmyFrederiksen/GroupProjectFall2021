@@ -21,7 +21,6 @@ public class ManagerMenuGUI extends JFrame implements ActionListener {
     private JLabel managerMenuLabel;
     private JPanel menuLabelPanel, addItemPanel;
     private static JPanel managerMenuPanel = new JPanel();
-    private ArrayList<JPanel> menuItemPanels;
     private MenuBar menuBar;
     private Vector<FoodDescription> items;
     private JButton addItemButton;
@@ -32,9 +31,7 @@ public class ManagerMenuGUI extends JFrame implements ActionListener {
      */
     public ManagerMenuGUI(){
         addItemPanel = new JPanel();
-        menuItemPanels = new ArrayList<>();
         addItemButton = new JButton("Add Item to the Menu");
-
     }
 
     /**

@@ -20,10 +20,9 @@ public class ItemGUI extends JDialog {
 
     private FoodDescription itemDescription;
 
-    String[] labelTitles = new String[]{"Item Name: ", "Item Price: $"};
-    String[] itemLabels;
+    private String[] labelTitles = new String[]{"Item Name: ", "Item Price: $"};
+    private String[] itemLabels;
     private ArrayList<JLabel> titleLabels;
-    private ArrayList<JLabel> detailsLabels;
 
     /**
      * Constructs an ItemGUI object and begins the GUI building process. 
@@ -42,13 +41,6 @@ public class ItemGUI extends JDialog {
             JLabel label = new JLabel(labelTitles[i] + itemLabels[i]);
             titleLabels.add(label);
         }
-        detailsLabels = new ArrayList<>();
-        /*JLabel itemName =  new JLabel(itemDescription.getName());
-        itemName.setPreferredSize(new Dimension(100, 20));
-        detailsLabels.add(itemName);
-        JLabel itemPrice =  new JLabel(itemDescription.getPrice().toString());
-        itemPrice.setPreferredSize(new Dimension(100, 20));
-        detailsLabels.add(itemPrice);*/
 
         createAndShowGUI();
     }

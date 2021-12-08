@@ -98,10 +98,10 @@ public class LoginGUI extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == customerViewButton){
             frame.dispose();
-            MainMenuGUI mainMenuGUI = new MainMenuGUI();
+            new MainMenuGUI();
         }else if(e.getSource() == managerViewButton){
             frame.dispose();
-            ManagerLoginGUI managerLoginGUI = new ManagerLoginGUI();
+            new ManagerLoginGUI();
         }
     }
 }

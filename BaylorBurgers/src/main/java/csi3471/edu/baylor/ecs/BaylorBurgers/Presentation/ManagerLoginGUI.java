@@ -95,29 +95,8 @@ public class ManagerLoginGUI extends JFrame implements ActionListener {
 
         add(panel, BorderLayout.CENTER);
 
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	//if()
-            	Manager manager = new Manager(usernameText.getText(), String.valueOf(passwordText.getPassword()));
-            	if(manager.managerExists()) {
-            		
-   
-                dispose();
-                ManagerMainPageGUI managerMainPageGUI = new ManagerMainPageGUI();
-            	}else {
-            		failure.setText("Incorrect Credentials!");
-            	}
-            }
-        });
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                ManagerRegistrarGUI ManagerRegistrarGUI = new ManagerRegistrarGUI();
-            }
-        });
-
+        loginButton.addActionListener(this);
+        registerButton.addActionListener(this);
     }
 
     /**
@@ -130,6 +109,17 @@ public class ManagerLoginGUI extends JFrame implements ActionListener {
         if(e.getSource() == menuBar.getBackMenu()){
             dispose();
             javax.swing.SwingUtilities.invokeLater(LoginGUI::showGUI);
+        }else if(e.getSource() == loginButton){
+            Manager manager = new Manager(usernameText.getText(), String.valueOf(passwordText.getPassword()));
+            if(manager.managerExists()) {
+                dispose();
+                new ManagerMainPageGUI();
+            }else {
+                failure.setText("Incorrect Credentials!");
+            }
+        }else if(e.getSource() == registerButton){
+            dispose();
+            new ManagerRegistrarGUI();
         }
     }
 }

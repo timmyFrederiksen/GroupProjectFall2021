@@ -116,7 +116,7 @@ public class CartGUI extends JDialog implements ActionListener {
             new MainMenuGUI();
             dispose();
         } else if(e.getSource() == checkoutButton) {
-            PaymentGUI paymentGUI = new PaymentGUI();
+            new PaymentGUI();
         }
     }
 }

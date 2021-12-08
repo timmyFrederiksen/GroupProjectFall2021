@@ -21,7 +21,7 @@ public class CartItemPanel extends JPanel implements ActionListener {
 	private CartItem ci;
     private CartGUI cartDisplay;
 
-    private JButton removeButton, editButton;
+    private JButton removeButton;
 
     /**
      * Constructs a CartItemPanel.
@@ -38,7 +38,6 @@ public class CartItemPanel extends JPanel implements ActionListener {
         formPanel = new JPanel();
         detailPanel = new JPanel();
         removeButton = new JButton("Remove Item");
-        editButton = new JButton("Edit Item");
         centerPanel = new JPanel();
         rightPanel = new JPanel();
         createAndShowGUI();
@@ -60,7 +59,6 @@ public class CartItemPanel extends JPanel implements ActionListener {
         formPanel = new JPanel();
         detailPanel = new JPanel();
         removeButton = new JButton("Remove Item");
-        editButton = new JButton("Edit Item");
         centerPanel = new JPanel();
         rightPanel = new JPanel();
         this.cartDisplay = cartGUI;
