@@ -8,7 +8,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ManagerLoginGUI extends JFrame implements ActionListener{
+/**
+ * This class creates and manages the GUI for the manager login event.
+ * <p>
+ * This class extends JFrame and implements ActionListener.
+ */
+public class ManagerLoginGUI extends JFrame implements ActionListener {
 
     private JPanel panel;
     private JLabel passwordLabel;
@@ -19,10 +24,17 @@ public class ManagerLoginGUI extends JFrame implements ActionListener{
     private JPasswordField passwordText;
     private MenuBar menuBar;
 
+    /**
+     * This function constructs the ManagerLoginGUI object and
+     * begins building the GUI.
+     */
     ManagerLoginGUI(){
         createAndShowGUI();
     }
 
+    /**
+     * This function creates the GUI backbone for a ManagerLoginGUI.
+     */
     public void createAndShowGUI() {
         setTitle("Manager Login");
         setSize(500, 300);
@@ -33,6 +45,11 @@ public class ManagerLoginGUI extends JFrame implements ActionListener{
 
         setVisible(true);
     }
+    
+    /**
+     * This function adds the GUI components to the GUI backbone for
+     * a ManagerLoginGUI and also handles user input and the button logic.
+     */
     public void addGUIComponents() {
         panel = new JPanel();
         panel.setVisible(true);
@@ -103,6 +120,11 @@ public class ManagerLoginGUI extends JFrame implements ActionListener{
 
     }
 
+    /**
+     * @param e Determines if the button was hit and then
+     * provides the functionality for that button. Overrides the
+     * default implementation from ActionListener.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == menuBar.getBackMenu()){
