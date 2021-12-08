@@ -21,8 +21,8 @@ public class ItemGUI extends JDialog {
     private ArrayList<JLabel> detailsLabels;
 
     public ItemGUI(String text, Vector<FoodDescription> items) {
-    	itemDescription = null;
-    	itemDescription = items.stream().filter(s->s.getName() == text).collect(Collectors.toList()).get(0);
+        itemDescription = null;
+        itemDescription = items.stream().filter(s->s.getName() == text).collect(Collectors.toList()).get(0);
 
         itemLabels = new String[]{itemDescription.getName(), String.format("%.2f", itemDescription.getPrice())};
 
@@ -42,38 +42,59 @@ public class ItemGUI extends JDialog {
 
         createAndShowGUI();
     }
-    
-	private void addGUIComponents() {
-        JPanel descriptionPanel = new JPanel();
+
+    private void addGUIComponents() {
+        //JPanel descriptionPanel = new JPanel();
+        JPanel areaPanel = new JPanel();
+        areaPanel.setLayout(new SpringLayout());
         Color green = new Color(21, 71, 52);
         Color gold = new Color(255, 184, 28);
-        descriptionPanel.setBackground(gold);
+        //descriptionPanel.setBackground(gold);
+        areaPanel.setBackground(gold);
         this.setBackground(green);
 
-        BoxLayout boxLayout = new BoxLayout(descriptionPanel, BoxLayout.Y_AXIS);
+        //BoxLayout boxLayout = new BoxLayout(descriptionPanel, BoxLayout.Y_AXIS);
+        //descriptionPanel.setLayout(boxLayout);
 
-        descriptionPanel.setLayout(boxLayout);
 
         JLabel descriptTitleLabel = new JLabel("Item Description:");
+        JTextArea descriptionArea = new JTextArea(itemDescription.getDetails());
         JLabel descriptionLabel = new JLabel(itemDescription.getDetails());
         JButton orderButton = new JButton("Order " + itemDescription.getName());
 
-        descriptionPanel.setBorder(new EmptyBorder(new Insets(50, 25, 25, 0)));
+        descriptionArea.setEditable(false);
+        descriptionArea.setWrapStyleWord(true);
+        JScrollPane scroll = new JScrollPane(descriptionArea);
+        scroll.setPreferredSize(new Dimension(150, 50));
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        areaPanel.setBorder(new EmptyBorder(new Insets(25, 25, 25, 0)));
+        //descriptionPanel.setBorder(new EmptyBorder(new Insets(50, 25, 25, 0)));
 
         for(JLabel label : titleLabels){
-            descriptionPanel.add(label);
-            descriptionPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+            areaPanel.add(label);
+            //descriptionPanel.add(label);
+            //descriptionPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         }
+
+        areaPanel.add(descriptTitleLabel);
+        areaPanel.add(scroll);
+
+        /*descriptTitleLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         descriptionPanel.add(descriptTitleLabel);
         descriptionPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-        descriptionPanel.add(descriptionLabel);
-        descriptionPanel.add(Box.createRigidArea(new Dimension(0, 100)));
-        descriptionPanel.add(orderButton);
+        descriptionPanel.add(scroll);*/
 
-        //GridLayout itemGridLayout = new GridLayout(2, 1);
-        //this.setLayout(itemGridLayout);
-        //add(detailsPanel);
-        add(descriptionPanel);
+        areaPanel.add(Box.createRigidArea(new Dimension(0, 50)));
+        areaPanel.add(orderButton);
+
+        SpringUtilities.makeCompactGrid(areaPanel,
+                6, 1,
+                6, 6,
+                6, 18);
+
+        add(areaPanel);
+        //add(descriptionPanel);
 
         orderButton.addActionListener(new ActionListener() {
             @Override
@@ -91,7 +112,7 @@ public class ItemGUI extends JDialog {
         addGUIComponents();
 
         //this.pack();
-        this.setSize(400, 450);
+        this.setSize(425, 450);
         this.setVisible(true);
     }
 }
