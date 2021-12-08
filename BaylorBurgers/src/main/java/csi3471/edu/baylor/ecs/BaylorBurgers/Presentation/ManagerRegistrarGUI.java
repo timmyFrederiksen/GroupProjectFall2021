@@ -17,6 +17,12 @@ import javax.swing.JTextField;
 
 import csi3471.edu.baylor.ecs.BaylorBurgers.Business.Manager;
 
+/**
+ * This class creates and handles GUI for manager registration
+ * and also provides logic for manager registration.
+ * <p>
+ * This class extends JFrame.
+ */
 public class ManagerRegistrarGUI extends JFrame  {
 	private JPanel panel;
     private JLabel passwordLabel;
@@ -26,10 +32,17 @@ public class ManagerRegistrarGUI extends JFrame  {
     private JTextField usernameText;
     private JPasswordField passwordText;
 
+    /**
+     * This function begins the process of building the GUI for
+     * a ManagerRegistrarGUI object.
+     */
     ManagerRegistrarGUI(){
         createAndShowGUI();
     }
-
+    
+    /**
+     * This function creates the backbone for the GUI.
+     */
     public void createAndShowGUI() {
         setTitle("Manager Registration");
         setSize(500, 300);
@@ -40,6 +53,11 @@ public class ManagerRegistrarGUI extends JFrame  {
 
         setVisible(true);
     }
+    
+    /**
+     * This function adds GUI components to the GUI backbone, and also
+     * handles logic behind the GUI. 
+     */
     public void addGUIComponents() {
         panel = new JPanel();
         Color green = new Color(21, 71, 52);
