@@ -9,18 +9,30 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
-
+/**
+ * This class creates and manages a GUI for purchasing an item
+ * <p>
+ * This class extends JDialog
+ */
 public class PurchaseItemGUI extends JDialog {
 
     JPanel panel;
     protected FoodDescription itemType;
 
+    /**
+     * Constructs a PurchaseItemGUI from a provided FoodDescription
+     * @param itemType The provided FoodDescription
+     */
     public PurchaseItemGUI(FoodDescription itemType) {
         this.itemType = itemType;
         panel = new JPanel();
         createAndShowGUI();
     }
 
+    /**
+     * Adds GUI components to the GUI backbone and provides functionality 
+     * for the buttons.
+     */
     private void addGUIComponents() {
         panel.setLayout(null);
 
@@ -88,6 +100,9 @@ public class PurchaseItemGUI extends JDialog {
         });
     }
 
+    /**
+     * Creates a GUI backbone for a PurchaseItemGUI.
+     */
     private void createAndShowGUI() {
 
         this.setTitle("Baylor Burgers");

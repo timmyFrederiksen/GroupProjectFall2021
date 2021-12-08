@@ -9,7 +9,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+/**
+ * This class creates and manages the GUI associated with Cart item panels.
+ * <p>
+ * This class extends JPanel implements ActionListener.
+ */
 public class CartItemPanel extends JPanel implements ActionListener {
 	private JLabel itemName, itemQuantity, itemPrice, itemDetailLabel;
 	private JTextArea itemDetailText;
@@ -19,6 +23,10 @@ public class CartItemPanel extends JPanel implements ActionListener {
 
     private JButton removeButton, editButton;
 
+    /**
+     * Constructs a CartItemPanel.
+     * @param ci CartItem to be displayed
+     */
     public CartItemPanel(CartItem ci) {
         this.ci = ci;
     	itemName = new JLabel("Item Name: " + ci.getItemType().getName());
@@ -35,6 +43,12 @@ public class CartItemPanel extends JPanel implements ActionListener {
         rightPanel = new JPanel();
         createAndShowGUI();
     }
+    
+    /**
+     * Constructs a CartItemPanel.
+     * @param ci CartItem to be displayed
+     * @param cartGUI CartGUI to display to
+     */
     public CartItemPanel(CartItem ci, CartGUI cartGUI) {
         this.ci = ci;
         itemName = new JLabel("Item Name: " + ci.getItemType().getName());
@@ -53,7 +67,9 @@ public class CartItemPanel extends JPanel implements ActionListener {
         createAndShowGUI();
     }
 
-
+    /**
+     * Creates GUI and displays it.
+     */
     private void createAndShowGUI() {
 
         setPreferredSize(new Dimension(500, 175));
@@ -108,6 +124,11 @@ public class CartItemPanel extends JPanel implements ActionListener {
         add(rightPanel, BorderLayout.LINE_END);
     }
 
+    /**
+     * Listens for button presses and executes command designated by
+     * the pressed button.
+     * @param e The button that was pressed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == removeButton){

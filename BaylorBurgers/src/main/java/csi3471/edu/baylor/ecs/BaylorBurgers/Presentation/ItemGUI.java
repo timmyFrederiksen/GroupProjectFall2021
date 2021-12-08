@@ -11,6 +11,11 @@ import java.util.ArrayList;
 import java.util.Vector;
 import java.util.stream.Collectors;
 
+/**
+ * This class creates and manages the GUI for items.
+ * <p>
+ * This class extends JDialog.
+ */
 public class ItemGUI extends JDialog {
 
     private FoodDescription itemDescription;
@@ -20,6 +25,11 @@ public class ItemGUI extends JDialog {
     private ArrayList<JLabel> titleLabels;
     private ArrayList<JLabel> detailsLabels;
 
+    /**
+     * Constructs an ItemGUI object and begins the GUI building process. 
+     * @param text String used as a filter
+     * @param items Vector of FoodDescription objects provided
+     */
     public ItemGUI(String text, Vector<FoodDescription> items) {
         itemDescription = null;
         itemDescription = items.stream().filter(s->s.getName() == text).collect(Collectors.toList()).get(0);
@@ -43,6 +53,9 @@ public class ItemGUI extends JDialog {
         createAndShowGUI();
     }
 
+    /**
+     * Adds GUI components to the GUI backbone and adds button functionality.
+     */
     private void addGUIComponents() {
         //JPanel descriptionPanel = new JPanel();
         JPanel areaPanel = new JPanel();
@@ -104,6 +117,10 @@ public class ItemGUI extends JDialog {
             }
         });
     }
+    
+    /**
+     * Creates GUI backbone and displays it after components are added.
+     */
     private void createAndShowGUI() {
         this.setTitle("Baylor Burgers " + itemDescription.getName());
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

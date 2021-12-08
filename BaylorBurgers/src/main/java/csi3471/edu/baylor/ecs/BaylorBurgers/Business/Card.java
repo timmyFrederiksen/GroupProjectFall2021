@@ -2,6 +2,10 @@ package csi3471.edu.baylor.ecs.BaylorBurgers.Business;
 
 import java.util.Date;
 
+/**
+ * @deprecated
+ * @see CardPaymentGUI.java
+ */
 public class Card extends Payment {
 
 	private String cardNumber;

@@ -2,6 +2,11 @@ package csi3471.edu.baylor.ecs.BaylorBurgers.Business;
 
 import java.util.Date;
 
+/**
+ * @deprecated
+ * @see PaymentGUI.java
+ * @see PurchaseItem.java
+ */
 public class Payment {
 	
 	public static Integer orderNumberGlobal = 100;

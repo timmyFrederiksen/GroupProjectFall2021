@@ -12,7 +12,12 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-class CartFormGUI extends JDialog implements ActionListener{
+/**
+ * This class creates and manages GUI associated with cart display.
+ * <p>
+ * This class extends JDialog and implements ActionListener
+ */
+class CartFormGUI extends JDialog implements ActionListener {
     private JPanel listPane;
     private JTextField nameField, quantityField, priceField, customizationField;
     private JComboBox categoryBox;
@@ -22,7 +27,9 @@ class CartFormGUI extends JDialog implements ActionListener{
     private ArrayList<JTextField> textFields = new ArrayList<>();
     private String[] names = new String[]{"Item Name:", "Item Price:", "Item Quantity:", "Item Customization:"};
 
-
+    /**
+     * Constructs a CartFormGUI object. 
+     */
     public CartFormGUI() {
         super();
         nameField = new JTextField(15);
@@ -35,7 +42,9 @@ class CartFormGUI extends JDialog implements ActionListener{
         createAndShowGUI();
     }
 
-
+    /**
+     * Creates GUI and displays it.
+     */
     private void createAndShowGUI() {
         setPreferredSize(new Dimension(450, 300));
         setTitle("Add Item");
@@ -100,6 +109,10 @@ class CartFormGUI extends JDialog implements ActionListener{
     }
 
 
+    /**
+     * Listens for button presses and executes commands for the pressed button.
+     * @param e Button that was pressed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == saveInfo) {
