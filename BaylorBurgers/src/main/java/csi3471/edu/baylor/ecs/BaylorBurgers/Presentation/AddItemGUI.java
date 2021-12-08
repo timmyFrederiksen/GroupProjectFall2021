@@ -26,6 +26,7 @@ class AddItemGUI extends JDialog implements ActionListener{
 
     private Long id;
 
+
     public AddItemGUI() {
         super();
         id = null;
@@ -62,7 +63,7 @@ class AddItemGUI extends JDialog implements ActionListener{
         setTitle("Add Item");
 
         listPane = new JPanel();
-        
+
         Color green = new Color(21, 71, 52);
         Color gold = new Color(255, 184, 28);
         listPane.setBackground(green);
@@ -115,7 +116,7 @@ class AddItemGUI extends JDialog implements ActionListener{
         newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
         newPanel.add(label);
         newPanel.add(infoPane);
-        
+
 
         add(newPanel);
         setVisible(true);
@@ -130,37 +131,26 @@ class AddItemGUI extends JDialog implements ActionListener{
             MenuDAO gateway = new MenuDAO();
 
             try {
-                //gateway.createEmployeeTable();
                 FoodDescription query = new FoodDescription(textFields.get(0).getText(),
                         (String)categoryBox.getSelectedItem(), Double.parseDouble(textFields.get(2).getText()), textFields.get(3).getText());
                 query.setId(id);
+
                 gateway.save(query);
+                Vector<FoodDescription> items = null;
+                items = gateway.findAll();
+                ManagerMenuGUI m = new ManagerMenuGUI();
+                m.updatePanel(items);
+                //m.createAndShowGUI();
+                m.createAndShowGUI();
+
             } catch (SQLException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
             dispose();
-            Vector<FoodDescription> items = null;
-            try {
-                //gateway.createEmployeeTable();
-                items = gateway.findAll();
-            } catch (SQLException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            new ManagerMenuGUI(items);
+
+
         }else if(e.getSource() == cancelInfo) {
             dispose();
-            MenuDAO gateway = new MenuDAO();
-            Vector<FoodDescription> items = null;
-            try {
-                //gateway.createEmployeeTable();
-                items = gateway.findAll();
-            } catch (SQLException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            new ManagerMenuGUI(items);
         }
     }
 }

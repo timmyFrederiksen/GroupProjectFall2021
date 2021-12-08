@@ -139,20 +139,18 @@ public class MenuItemPanel extends JPanel implements ActionListener{
             try {
                 //gateway.createEmployeeTable();
                 gateway.delete(name.getText());
-            } catch (SQLException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            Vector<FoodDescription> items = null;
-            try {
-                //gateway.createEmployeeTable();
+                Vector<FoodDescription> items = null;
                 items = gateway.findAll();
+                ManagerMenuGUI m = new ManagerMenuGUI();
+                m.updatePanel(items);
+                //m.createAndShowGUI();
+                m.createAndShowGUI();
             } catch (SQLException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
             managerMenuGUI.dispose();
-            new ManagerMenuGUI(items);
+
 
 
         }

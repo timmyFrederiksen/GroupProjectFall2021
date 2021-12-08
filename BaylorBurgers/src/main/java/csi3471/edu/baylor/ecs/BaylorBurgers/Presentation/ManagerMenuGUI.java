@@ -14,7 +14,8 @@ import java.util.Vector;
 
 public class ManagerMenuGUI extends JFrame implements ActionListener{
     private JLabel managerMenuLabel;
-    private JPanel menuLabelPanel, managerMenuPanel, addItemPanel;
+    private JPanel menuLabelPanel, addItemPanel;
+    private static JPanel managerMenuPanel = new JPanel();
     private ArrayList<JPanel> menuItemPanels;
     private MenuBar menuBar;
     private Vector<FoodDescription> items;
@@ -22,13 +23,11 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
 
 
 
-    public ManagerMenuGUI(Vector<FoodDescription> items){
-        this.items = items;
-        managerMenuPanel = new JPanel();
+    public ManagerMenuGUI(){
         addItemPanel = new JPanel();
         menuItemPanels = new ArrayList<>();
         addItemButton = new JButton("Add Item to the Menu");
-        createAndShowGUI();
+
     }
 
     private void addGUIComponents() {
@@ -51,8 +50,8 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         menuLabelPanel.setBackground(green);
         addItemPanel.setBackground(gold);
 
-        managerMenuPanel.setBorder(new EmptyBorder(10, 10, 10 ,10));
-        menuLabelPanel.setBorder(new EmptyBorder(10, 10, 10 ,10));
+        managerMenuPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
+        menuLabelPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
 
         addItemPanel.setBorder(new EmptyBorder(0, 10, 0 ,0));
         addItemPanel.add(addItemButton, BorderLayout.CENTER);
@@ -60,17 +59,6 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         BoxLayout boxLayout = new BoxLayout(managerMenuPanel, BoxLayout.Y_AXIS);
         managerMenuPanel.setLayout(boxLayout);
         managerMenuPanel.setBackground(gold);
-        
-        for(int i = 0; i < items.size(); i++){
-
-            MenuItemPanel panel = new MenuItemPanel(items.get(i), this);
-            panel.setPreferredSize(new Dimension(550, 175));
-            panel.setBorder(border);
-            managerMenuPanel.add(panel);
-            managerMenuPanel.add(Box.createRigidArea(new Dimension(0, 25)));
-        }
-
-
 
         JScrollPane scrollPane = new JScrollPane(managerMenuPanel);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -96,7 +84,24 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
         addItemButton.addActionListener(this);
 
     }
-    private void createAndShowGUI() {
+    public void updatePanel(Vector<FoodDescription> items){
+        managerMenuPanel = new JPanel();
+        Border border = BorderFactory.createLineBorder(Color.BLACK);
+
+        for(int i = 0; i < items.size(); i++){
+            MenuItemPanel panel = new MenuItemPanel(items.get(i), this);
+            panel.setPreferredSize(new Dimension(550, 175));
+            panel.setBorder(border);
+            managerMenuPanel.add(panel);
+            managerMenuPanel.add(Box.createRigidArea(new Dimension(0, 25)));
+        }
+    }
+    /*
+    public void update() {
+        managerMenuPanel.repaint();
+    }
+     */
+    public void createAndShowGUI() {
         this.setTitle("Baylor Burgers Manager Menu View");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         //this.setResizable(false);
@@ -117,4 +122,6 @@ public class ManagerMenuGUI extends JFrame implements ActionListener{
             AddItemGUI addItemGUI = new AddItemGUI();
         }
     }
+
+
 }

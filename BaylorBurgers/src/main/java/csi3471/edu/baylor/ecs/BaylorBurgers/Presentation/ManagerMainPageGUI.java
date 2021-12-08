@@ -40,7 +40,7 @@ public class ManagerMainPageGUI extends JFrame implements ActionListener{
         Color gold = new Color(255, 184, 28);
         mainMenuHeader.setBackground(green);
         mainMenuButtons.setBackground(gold);
-        
+
         EmptyBorder panelBorder = new EmptyBorder(10, 10 , 0, 0);
         //Border border = BorderFactory.createLineBorder(Color.BLACK);
         //mainMenuLabel.setBorder(border);
@@ -66,7 +66,7 @@ public class ManagerMainPageGUI extends JFrame implements ActionListener{
         menuBar.removeCartMenu();
         menuBar.removeHelpMenu();
         menuBar.getBackMenu().addActionListener(this);
-        
+
         setJMenuBar(menuBar);
         add(mainMenuHeader, BorderLayout.NORTH);
         add(mainMenuButtons, BorderLayout.CENTER);
@@ -91,17 +91,18 @@ public class ManagerMainPageGUI extends JFrame implements ActionListener{
             dispose();
             ManagerLoginGUI managerLoginGUI = new ManagerLoginGUI();
         }else if(e.getSource() == viewMenuButton) {
-        	 dispose();
-             MenuDAO gateway = new MenuDAO();
-             Vector<FoodDescription> items = null;
-             try {
-                 //gateway.createEmployeeTable();
-                 items = gateway.findAll();
-             } catch (SQLException e1) {
-                 // TODO Auto-generated catch block
-                 e1.printStackTrace();
-             }
-             ManagerMenuGUI managerMenuGUI = new ManagerMenuGUI(items);
+            dispose();
+            MenuDAO gateway = new MenuDAO();
+
+            Vector<FoodDescription> items = null;
+            try {
+                items = gateway.findAll();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            ManagerMenuGUI m = new ManagerMenuGUI();
+            m.updatePanel(items);
+            m.createAndShowGUI();
         }
     }
 }
