@@ -8,15 +8,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+/**
+ * This class creates and manages Payment options.
+ * <p>
+ * This class extends JDialog.
+ */
 public class PaymentGUI extends JDialog {
 	
 	private JLabel rewardLabel;
 	private JLabel priceLabel = null;
 	
+	/**
+	 * This constructs a PaymentGUI objects and begins building it.
+	 */
     public PaymentGUI(){
         createAndShowGUI();
     }
     
+    /** 
+     * This function creates the GUI backbone for the PaymentGUI object.
+     */
     private void createAndShowGUI(){
         this.setTitle("Baylor Burgers Pay for Cart");
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -29,6 +40,10 @@ public class PaymentGUI extends JDialog {
         this.setVisible(true);
     }
     
+    /**
+     * This function adds GUI components to the GUI backbone. It also
+     * handles button presses.
+     */
     private void addGUIComponents() {
         JPanel paymentPanel = new JPanel();
         
