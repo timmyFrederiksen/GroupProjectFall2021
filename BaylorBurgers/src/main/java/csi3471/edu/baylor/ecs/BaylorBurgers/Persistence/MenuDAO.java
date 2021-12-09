@@ -43,9 +43,7 @@ public class MenuDAO {
             this.dbConnection = getDBConnection();
             this.statement = this.dbConnection.createStatement();
             this.statement.executeUpdate("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY('derby.language.sequence.preallocator', '1')");
-            System.out.println(createTableSQL);
             this.statement.execute(createTableSQL);
-            System.out.println("Table \"employee\" is created!");
         } catch (SQLException var6) {
             System.out.println(var6.getMessage());
         } finally {
@@ -127,11 +125,9 @@ public class MenuDAO {
             if (e.getId() != null) {
                 String query = "UPDATE MENU SET NAME = '" + e.getName() + "', CATEGORYNAME= '" + e.getCategory() + "', PRICE = " + e.getPrice() + ", DESCRIPTION = '" + e.getDetails() + "' WHERE ID = " + e.getId();
                 this.statement.executeUpdate(query);
-                System.out.println("Employee updated in Employee table.");
             } else {
     		
             this.statement.executeUpdate("INSERT INTO MENU(NAME, CATEGORYNAME, PRICE, DESCRIPTION) VALUES('" + e.getName() + "', '" + e.getCategory() + "', " + e.getPrice() + ", '" + e.getDetails() +  "')");
-            System.out.println("Employee inserted into Employee table.");
             }
         } catch (SQLException var6) {
             System.out.println(var6.getMessage() + "\n" + var6.getCause().getMessage());
@@ -201,7 +197,6 @@ public class MenuDAO {
             this.dbConnection = getDBConnection();
             this.statement = this.dbConnection.createStatement();
             this.statement.executeUpdate("DELETE FROM MENU WHERE NAME = '" + name +"'");
-            System.out.println("Employee removed from Employee table.");
         } catch (SQLException var6) {
             System.out.println(var6.getMessage());
             System.out.println("Did not succeed: delete");
@@ -240,7 +235,6 @@ public class MenuDAO {
                 descriptions.add(e);
             }
 
-            System.out.println("Found all Employees in the Employee table.");
         } catch (SQLException var7) {
             System.out.println(var7.getMessage());
             System.out.println("Did not succeed: findAll");
@@ -317,7 +311,6 @@ public class MenuDAO {
                 descriptions.add(e);
             }
 
-            System.out.println("Found all Employees in the Employee table.");
         } catch (SQLException var7) {
             System.out.println(var7.getMessage());
             System.out.println("Did not succeed: findAll");

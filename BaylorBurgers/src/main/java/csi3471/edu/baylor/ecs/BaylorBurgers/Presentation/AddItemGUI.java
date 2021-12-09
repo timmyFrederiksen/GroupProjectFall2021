@@ -156,7 +156,7 @@ class AddItemGUI extends JDialog implements ActionListener {
             if(name.equals("") || price.equals("") || description.equals("")){
                 isValid = false;
             }
-            if(description.length() >= 255 || name.length() >= 15){
+            if(description.length() >= 255 || name.length() > 20){
                 isValid = false;
             }
 

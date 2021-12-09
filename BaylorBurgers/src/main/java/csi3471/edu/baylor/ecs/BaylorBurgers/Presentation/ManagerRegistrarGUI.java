@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -106,18 +107,26 @@ public class ManagerRegistrarGUI extends JFrame  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Manager m = new Manager(usernameText.getText(), new String(passwordText.getPassword()));
-                if(!m.managerExists()) {
-                	String filename = "./target/resources/managers.txt";
+                if(usernameText.getText().equals("") || new String(passwordText.getPassword()).equals("")){
+                    JOptionPane.showMessageDialog(new JFrame("Error"),
+                            "Invalid credentials.", "Warning", JOptionPane.ERROR_MESSAGE);
+
+                }
+                else if(!m.managerExists()) {
+                	String filename = "./target/managers.txt";
             		String managerString = m.toString() + "\n";
             		FileWriter fWriter;
 					try {
 						fWriter = new FileWriter(filename, true);
 						fWriter.write(managerString);
 						fWriter.close();
-					} catch (IOException e1) {
+					} catch(FileNotFoundException e1){}
+					catch(IOException e1) {
 						e1.printStackTrace();
 					}
 					failure.setText("You are registered!");
+					dispose();
+					new ManagerMainPageGUI();
                 }else {
                 	JOptionPane.showMessageDialog(new JFrame("Error"), "Manager already exists", "Warning", JOptionPane.ERROR_MESSAGE);
                 }

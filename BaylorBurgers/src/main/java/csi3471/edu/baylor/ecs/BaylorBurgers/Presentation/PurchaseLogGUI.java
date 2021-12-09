@@ -5,10 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import csi3471.edu.baylor.ecs.BaylorBurgers.Business.Cart;
 
@@ -111,8 +108,7 @@ public class PurchaseLogGUI extends JDialog {
         doneButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				// Exits program
+                // Exits program
 				System.exit(0);
 			}
         });

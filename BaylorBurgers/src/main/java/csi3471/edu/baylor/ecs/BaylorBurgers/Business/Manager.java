@@ -86,7 +86,7 @@ public class Manager {
 	public Boolean managerExists() {
 
 		Boolean isInFile = false;
-		String filename = "./target/resources/managers.txt";
+		String filename = "./target/managers.txt";
 		String managerString = this.toString();
 		Scanner scanner = null;
 		String checkStr = null;
@@ -101,8 +101,7 @@ public class Manager {
 				}
 			}
 		} catch (FileNotFoundException e) {
-			// File not found
-			e.printStackTrace();
+			isInFile = false;
 		}
 		
 		return isInFile;
