@@ -28,5 +28,20 @@ public class CartTester {
 		assertTrue(c.getItems().contains(testItem));
 	}
 	
+	@Test
+	public void testPrice() {
+		c= new Cart();
+		c.addItem(testItem);
+		assertTrue(c.getTotalPrice() == 12.0);
+	}
+	
+	@Test
+	public void testDiscount() {
+		c = new Cart();
+		c.addItem(testItem);
+		c.addDiscount(100.0);
+		assertTrue(c.getTotalPrice() == 0.0);
+	}
+	
 }
 
