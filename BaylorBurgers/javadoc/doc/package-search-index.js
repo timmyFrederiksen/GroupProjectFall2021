@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"csi3471.edu.baylor.ecs.BaylorBurgers.Presentation"}]

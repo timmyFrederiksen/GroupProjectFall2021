@@ -3,8 +3,7 @@ package csi3471.edu.baylor.ecs.BaylorBurgers.Business;
 import java.util.Date;
 
 /**
- * @deprecated
- * @see CardPaymentGUI.java
+ * This objects holds the values of a card, that the user can use to pay for a cart with.
  */
 public class Card extends Payment {
 

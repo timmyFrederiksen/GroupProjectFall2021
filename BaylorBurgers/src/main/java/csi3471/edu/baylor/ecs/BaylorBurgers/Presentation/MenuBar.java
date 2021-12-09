@@ -17,7 +17,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
     private JMenuItem backMenu, helpMenu, cartMenu;
     
     /**
-     * This class constructs a MenuBar object using JMenu & JMenuItem.
+     * This class constructs a MenuBar object using JMenu and JMenuItem.
      */
     public MenuBar() {
     	menu = new JMenu("Menu");

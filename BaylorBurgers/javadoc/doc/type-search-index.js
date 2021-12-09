@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"csi3471.edu.baylor.ecs.BaylorBurgers.Presentation","l":"MainMenuGUI"}]
