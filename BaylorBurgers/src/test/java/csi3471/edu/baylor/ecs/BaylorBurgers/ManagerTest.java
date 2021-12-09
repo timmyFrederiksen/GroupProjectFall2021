@@ -36,7 +36,7 @@ public class ManagerTest {
 	public void testManagerExists() {
 		Manager m = new Manager("user4", "pass4");
 		Manager m1 = new Manager("user5", "pass5");
-		String filename = "./target/resources/managers.txt";
+		String filename = "./target/managers.txt";
 		String managerString = m.toString() + "\n";
 		FileWriter fWriter;
 		try {
